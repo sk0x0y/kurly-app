@@ -1,4 +1,21 @@
 {
   "name": "kurly-app",
-  "packageManager": "yarn@3.2.4"
+  "version": "1.0.0",
+  "author": {
+    "email": "seokyeong.yang@kakao.com",
+    "name": "Yang Seok Yeong"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sk0x0y/kurly-app.git"
+  },
+  "packageManager": "yarn@3.2.4",
+  "workspaces": [
+    "packages/*"
+  ],
+  "engines": {
+    "node": ">=16"
+  },
+  "private": true,
+  "license": "UNLICENSED"
 }
