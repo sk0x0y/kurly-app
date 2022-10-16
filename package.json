@@ -17,5 +17,9 @@
     "node": ">=16"
   },
   "private": true,
-  "license": "UNLICENSED"
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "@types/prettier": "^2",
+    "prettier": "^2.7.1"
+  }
 }
