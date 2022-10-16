@@ -2181,6 +2181,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["normalize.css", [\
+        ["npm:8.0.1", {\
+          "packageLocation": "./.yarn/cache/normalize.css-npm-8.0.1-6124fb39b6-4698cae88e.zip/node_modules/normalize.css/",\
+          "packageDependencies": [\
+            ["normalize.css", "npm:8.0.1"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["object-assign", [\
         ["npm:4.1.1", {\
           "packageLocation": "./.yarn/cache/object-assign-npm-4.1.1-1004ad6dec-fcc6e4ea8c.zip/node_modules/object-assign/",\
@@ -2974,6 +2983,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint", "npm:8.25.0"],\
             ["eslint-config-next", "virtual:6e9a9c1bb2d4eeef4bcbb02637eda15d2d5bb331c7a1e5529988a557dee635de863e1f09502cbbb23e19d89feac23910032416e639c62d21b66813ee7c7bdf04#npm:12.3.1"],\
             ["next", "virtual:6e9a9c1bb2d4eeef4bcbb02637eda15d2d5bb331c7a1e5529988a557dee635de863e1f09502cbbb23e19d89feac23910032416e639c62d21b66813ee7c7bdf04#npm:12.3.1"],\
+            ["normalize.css", "npm:8.0.1"],\
             ["react", "npm:18.2.0"],\
             ["react-dom", "virtual:6e9a9c1bb2d4eeef4bcbb02637eda15d2d5bb331c7a1e5529988a557dee635de863e1f09502cbbb23e19d89feac23910032416e639c62d21b66813ee7c7bdf04#npm:18.2.0"],\
             ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=701156"]\
