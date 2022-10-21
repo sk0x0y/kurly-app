@@ -4,4 +4,18 @@
     "next",
     "airbnb"
   ],
+  "rules": {
+    "react/react-in-jsx-scope": "off",
+    "react/jsx-filename-extension": "off",
+    "react/jsx-props-no-spreading": "off",
+    "react/no-unknown-property": "off",
+    "react/function-component-definition": "off",
+    "import/extensions": ["error", "ignorePackages", {
+      // "js": "never",
+      // "mjs": "never",
+      // "jsx": "never"
+      "tsx": "never"
+    }],
+    "jsx-a11y/control-has-associated-label": "off"
+  }
 }
