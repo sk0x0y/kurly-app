@@ -11,7 +11,7 @@ function Header() {
           margin: 0 auto;
         `}
       >
-        {/* 헤더 첫번째 라인 */}
+        {/* 헤더 첫번째 라인 부가 메뉴 */}
         <div
           css={css`
             display: flex;
@@ -20,6 +20,7 @@ function Header() {
             font-size: 12px;
           `}
         >
+          {/* 회원가입 */}
           <Link href="/">
             <button
               type="button"
@@ -34,6 +35,7 @@ function Header() {
             </button>
           </Link>
 
+          {/* Divider */}
           <div
             css={css`
               display: inline-block;
@@ -44,6 +46,7 @@ function Header() {
             `}
           />
 
+          {/* 로그인 */}
           <Link href="/">
             <button
               type="button"
@@ -57,6 +60,7 @@ function Header() {
             </button>
           </Link>
 
+          {/* Divider */}
           <div
             css={css`
               display: inline-block;
@@ -67,6 +71,7 @@ function Header() {
             `}
           />
 
+          {/* 고객센터 */}
           <div
             css={css`
               line-height: 35px;
