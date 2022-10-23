@@ -25,10 +25,12 @@ function Header() {
             <button
               type="button"
               css={css`
+                margin-top: 2px;
                 padding: 0;
                 border: 0;
                 background-color: transparent;
                 color: rgb(95, 0, 128);
+                cursor: pointer;
               `}
             >
               회원가입
@@ -51,9 +53,11 @@ function Header() {
             <button
               type="button"
               css={css`
+                margin-top: 2px;
                 padding: 0;
                 border: 0;
                 background-color: transparent;
+                cursor: pointer;
               `}
             >
               로그인
@@ -81,9 +85,11 @@ function Header() {
               <button
                 type="button"
                 css={css`
+                  margin-top: 2px;
                   padding: 0;
                   border: 0;
                   background-color: transparent;
+                  cursor: pointer;
                 `}
               >
                 고객센터
