@@ -20,6 +20,12 @@
   "license": "UNLICENSED",
   "devDependencies": {
     "@types/prettier": "^2",
-    "prettier": "^2.7.1"
+    "prettier": "^2.7.1",
+    "typescript": "^4.8.4"
+  },
+  "scripts": {
+    "nextjs:dev": "yarn workspace web.nextjs dev",
+    "nextjs:build": "yarn workspace web.nextjs build",
+    "nextjs:lint": "yarn workspace web.nextjs lint"
   }
 }
