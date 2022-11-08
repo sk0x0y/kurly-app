@@ -2,7 +2,8 @@
   "extends": [
     // "next/core-web-vitals"
     "next",
-    "airbnb"
+    "airbnb",
+    "plugin:prettier/recommended"
   ],
   "rules": {
     "react/react-in-jsx-scope": "off",
