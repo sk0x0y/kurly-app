@@ -1,7 +1,25 @@
-import { css } from '@emotion/react';
+import { useState } from 'react';
 import Link from 'next/link';
+import { css } from '@emotion/react';
+import SiteMap from '../footer/SiteMap';
+import Contact from '../footer/Contact';
 
+export interface ISiteMap {
+  id: number;
+  name: string;
+  href: string;
+  isStrong?: boolean;
+}
 function Footer() {
+  const [siteMaps] = useState<ISiteMap[]>([
+    { id: 1, name: '컬리소개', href: '/introduce' },
+    { id: 2, name: '컬리소개영상', href: '/introduce-media' },
+    { id: 3, name: '인재채용', href: '/recruit' },
+    { id: 4, name: '이용약관', href: '/agreement' },
+    { id: 5, name: '개인정보처리방침', href: '/privacy', isStrong: true },
+    { id: 6, name: '이용안내', href: '/guide' },
+  ]);
+
   return (
     <footer
       css={css`
@@ -25,56 +43,12 @@ function Footer() {
           `}
         >
           {/* Footer 첫번째 라인 좌측 컨텐츠 */}
-          <div>
-            <h2
-              css={css`
-                display: inline;
-              `}
-            >
-              고객행복센터
-            </h2>
-            <span>365일 오전 7시 - 오후 7시</span>
-            <p
-              css={css`
-                margin: 0;
-              `}
-            >
-              <strong>1644-1107</strong>
-            </p>
-
-            {/* B2C 문의하기 버튼 */}
-            <div>
-              <Link href="/kakao">
-                <button type="button">카카오톡 문의</button>
-              </Link>
-            </div>
-
-            {/* B2B 비회원 문의하기 */}
-            <div>
-              <p>
-                비회원 문의 : &nbsp;
-                <Link href="mailto:help@kurlycorp.com">
-                  <button type="button">help@kurlycorp.com</button>
-                </Link>
-              </p>
-            </div>
-          </div>
+          <Contact />
 
           {/* Footer 첫번째 라인 우측 컨텐츠 */}
           <div>
-            <ul
-              css={css`
-                list-style: none;
-                margin: 0;
-                padding: 0 0 29px;
-              `}
-            >
-              <li>
-                <Link href="/">
-                  <button type="button">컬리소개</button>
-                </Link>
-              </li>
-            </ul>
+            {/* 사이트맵 */}
+            <SiteMap siteMaps={siteMaps} />
 
             <div>회사정보</div>
 
