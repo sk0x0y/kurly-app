@@ -10,12 +10,16 @@
     "react/jsx-props-no-spreading": "off",
     "react/no-unknown-property": "off",
     "react/function-component-definition": "off",
+    "react/no-unused-prop-types": "off",
+    "react/require-default-props": "off",
     "import/extensions": ["error", "ignorePackages", {
       // "js": "never",
       // "mjs": "never",
       // "jsx": "never"
-      "tsx": "never"
+      "tsx": "never",
+      "ts": "never"
     }],
+    "import/no-cycle": "off",
     "jsx-a11y/control-has-associated-label": "off"
   }
 }
