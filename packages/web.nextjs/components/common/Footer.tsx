@@ -1,8 +1,11 @@
 import { useState } from 'react';
-import Link from 'next/link';
 import { css } from '@emotion/react';
 import SiteMap from '../footer/SiteMap';
 import Contact from '../footer/Contact';
+import CompanyAddress from '../footer/CompanyAddress';
+import SocialShortcut from '../footer/SocialShortcut';
+import Trust from '../footer/Trust';
+import Notification from '../footer/Notification';
 
 export interface ISiteMap {
   id: number;
@@ -47,29 +50,19 @@ function Footer() {
 
           {/* Footer 첫번째 라인 우측 컨텐츠 */}
           <div>
-            {/* 사이트맵 */}
             <SiteMap siteMaps={siteMaps} />
 
-            <div>회사정보</div>
+            <CompanyAddress />
 
-            <ul
-              css={css`
-                list-style: none;
-                margin: 0;
-                padding: 28px 0 0;
-              `}
-            >
-              <li>
-                <Link href="/kakao">
-                  <button type="button">카카오톡 문의</button>
-                </Link>
-              </li>
-            </ul>
+            <SocialShortcut />
           </div>
         </div>
 
         {/* Footer 두번째 라인 */}
-        <div>두번째</div>
+        <Trust />
+
+        {/* Footer 세번째 라인 */}
+        <Notification />
       </div>
     </footer>
   );
