@@ -1221,6 +1221,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["dom7", [\
+        ["npm:4.0.4", {\
+          "packageLocation": "./.yarn/cache/dom7-npm-4.0.4-637bc4420a-b38604f74e.zip/node_modules/dom7/",\
+          "packageDependencies": [\
+            ["dom7", "npm:4.0.4"],\
+            ["ssr-window", "npm:4.0.2"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["emoji-regex", [\
         ["npm:9.2.2", {\
           "packageLocation": "./.yarn/cache/emoji-regex-npm-9.2.2-e6fac8d058-8487182da7.zip/node_modules/emoji-regex/",\
@@ -3273,6 +3283,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["ssr-window", [\
+        ["npm:4.0.2", {\
+          "packageLocation": "./.yarn/cache/ssr-window-npm-4.0.2-01f9c0151e-df18260092.zip/node_modules/ssr-window/",\
+          "packageDependencies": [\
+            ["ssr-window", "npm:4.0.2"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["string.prototype.matchall", [\
         ["npm:4.0.7", {\
           "packageLocation": "./.yarn/cache/string.prototype.matchall-npm-4.0.7-aaeb75dcaa-fc09f3ccbf.zip/node_modules/string.prototype.matchall/",\
@@ -3425,6 +3444,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/supports-preserve-symlinks-flag-npm-1.0.0-f17c4d0028-53b1e247e6.zip/node_modules/supports-preserve-symlinks-flag/",\
           "packageDependencies": [\
             ["supports-preserve-symlinks-flag", "npm:1.0.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["swiper", [\
+        ["npm:8.4.4", {\
+          "packageLocation": "./.yarn/unplugged/swiper-npm-8.4.4-c63bd6daca/node_modules/swiper/",\
+          "packageDependencies": [\
+            ["swiper", "npm:8.4.4"],\
+            ["dom7", "npm:4.0.4"],\
+            ["ssr-window", "npm:4.0.2"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -3613,6 +3643,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["normalize.css", "npm:8.0.1"],\
             ["react", "npm:18.2.0"],\
             ["react-dom", "virtual:6e9a9c1bb2d4eeef4bcbb02637eda15d2d5bb331c7a1e5529988a557dee635de863e1f09502cbbb23e19d89feac23910032416e639c62d21b66813ee7c7bdf04#npm:18.2.0"],\
+            ["swiper", "npm:8.4.4"],\
             ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=701156"]\
           ],\
           "linkType": "SOFT"\
