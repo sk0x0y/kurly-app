@@ -3454,6 +3454,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["swiper", "npm:8.4.4"],\
             ["dom7", "npm:4.0.4"],\
+            ["react", "npm:18.2.0"],\
             ["ssr-window", "npm:4.0.2"]\
           ],\
           "linkType": "HARD"\
