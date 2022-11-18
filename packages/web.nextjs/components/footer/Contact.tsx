@@ -173,7 +173,6 @@ function Contact() {
       >
         비회원 문의 :
         <Button.Anchor
-          name="help@kurlycorp.com"
           href="mailto:help@kurlycorp.com"
           options={{
             additionalStyle: [
@@ -183,11 +182,12 @@ function Contact() {
               `,
             ],
           }}
-        />
+        >
+          help@kurlycorp.com
+        </Button.Anchor>
         <br />
         비회원 대량주문 문의 :
         <Button.Anchor
-          name="kurlygift@kurlycorp.com"
           href="mailto:kurlygift@kurlycorp.com"
           options={{
             additionalStyle: [
@@ -197,7 +197,9 @@ function Contact() {
               `,
             ],
           }}
-        />
+        >
+          kurlygift@kurlycorp.com
+        </Button.Anchor>
       </div>
     </div>
   );

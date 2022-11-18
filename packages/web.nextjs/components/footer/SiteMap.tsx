@@ -12,7 +12,9 @@ function SiteMap(props: IProps) {
     <ul css={style.siteMapContainer}>
       {siteMaps.map(siteMap => (
         <li key={siteMap.id} css={style.siteMapItem}>
-          <Button.Anchor name={siteMap.name} href={siteMap.href} isStrong={siteMap.isStrong} />
+          <Button.Anchor href={siteMap.href} isStrong={siteMap.isStrong}>
+            {siteMap.name}
+          </Button.Anchor>
         </li>
       ))}
     </ul>
