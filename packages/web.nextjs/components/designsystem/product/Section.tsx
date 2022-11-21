@@ -1,16 +1,25 @@
+import { useState } from 'react';
 import { css } from '@emotion/react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation } from 'swiper';
+import { Swiper as SwiperClass } from 'swiper/types';
 import Typography from '../typography';
 import Button from '../button';
 import Product from './index';
 import ArrowRight from '../icon/ArrowRight';
+import { IProduct } from './Product.interface';
+import ProductEntity from '../_entity/Product.entity';
+import { ICollectionOptions } from './Collection';
 
 interface IProps {
   title: string;
   subTitle?: string;
   href?: string;
+  options?: ICollectionOptions;
 }
 function Section(props: IProps) {
-  const { title, subTitle, href } = props;
+  const { title, subTitle, href, options } = props;
+  const [products] = useState<IProduct[]>(ProductEntity);
 
   return (
     <section
@@ -113,7 +122,22 @@ function Section(props: IProps) {
         </div>
 
         {/* 상품 컬렉션 아이템 */}
-        <Product.Collection />
+        <Swiper
+          slidesPerView="auto"
+          spaceBetween={18}
+          navigation
+          modules={[Navigation]}
+          onSlideChange={() => window.console.log('slide change')}
+          onSwiper={(swiper: SwiperClass) => window.console.log(swiper)}
+        >
+          {products.map(product => (
+            <div key={product.id}>
+              <SwiperSlide style={{ width: 249 }}>
+                <Product.Collection product={product} options={options} />
+              </SwiperSlide>
+            </div>
+          ))}
+        </Swiper>
       </div>
     </section>
   );

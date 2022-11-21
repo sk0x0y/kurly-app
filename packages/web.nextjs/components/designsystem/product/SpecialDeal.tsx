@@ -1,8 +1,18 @@
-import Image from 'next/image';
+import { useState } from 'react';
 import { css } from '@emotion/react';
 import Typography from '../typography';
+import Product from './index';
+import { IProduct } from './Product.interface';
+import SpecialDealEntity from '../_entity/SpecialDeal.entity';
+import { ICollectionOptions } from './Collection';
 
-function SpecialDeal() {
+interface IProps {
+  options?: ICollectionOptions;
+}
+function SpecialDeal(props: IProps) {
+  const { options } = props;
+  const [products] = useState<IProduct[]>(SpecialDealEntity);
+
   return (
     <section
       css={css`
@@ -79,13 +89,17 @@ function SpecialDeal() {
         </div>
 
         {/* 우측 공간 */}
-        <div>
-          <div css={css``}>
-            <div css={css``}>
-              <Image src="/goods/1653035652427l0.jpeg" width={338} height={434} />
+        <div
+          css={css`
+            display: flex;
+            gap: 18px;
+          `}
+        >
+          {products.map(product => (
+            <div key={product.id}>
+              <Product.Collection product={product} options={options} />
             </div>
-            <div>설명</div>
-          </div>
+          ))}
         </div>
       </div>
     </section>

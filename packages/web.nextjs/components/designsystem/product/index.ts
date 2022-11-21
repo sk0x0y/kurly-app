@@ -1,11 +1,13 @@
 import Collection from './Collection';
 import Section from './Section';
 import SpecialDeal from './SpecialDeal';
+import MerchandiserChoice from './MerchandiserChoice';
 
 const Product = {
   Section,
   Collection,
   SpecialDeal,
+  MerchandiserChoice,
 };
 
 // class Product {
