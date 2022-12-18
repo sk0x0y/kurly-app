@@ -9,7 +9,7 @@ function HomeMain() {
       <div>
         <Carousel />
       </div>
-
+      
       <Product.Section title="이 상품 어때요?" options={{ imageSize: { width: 249, height: 320 } }} />
 
       <Content.Banner src="https://product-image.kurly.com/banner/random-band/pc/img/7c298e33-7ece-4a2c-b654-32e9658522bd.jpg" />
