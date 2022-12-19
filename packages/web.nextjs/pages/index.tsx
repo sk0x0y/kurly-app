@@ -21,7 +21,6 @@ const Home: NextPage = () => (
     <Header />
 
     <main>
-      <Button.Common>dd</Button.Common>
       <HomeMain />
     </main>
 
