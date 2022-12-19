@@ -4,6 +4,7 @@ import Head from 'next/head';
 import Header from '../components/common/Header';
 import Footer from '../components/common/Footer';
 import HomeMain from '../components/home/HomeMain';
+import Button from '../components/designsystem/button';
 // import styles from '../styles/Home.module.css';
 
 const Home: NextPage = () => (
@@ -20,6 +21,7 @@ const Home: NextPage = () => (
     <Header />
 
     <main>
+      <Button.Common>dd</Button.Common>
       <HomeMain />
     </main>
 
