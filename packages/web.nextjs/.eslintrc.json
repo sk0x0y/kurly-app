@@ -21,6 +21,7 @@
       "ts": "never"
     }],
     "import/no-cycle": "off",
-    "jsx-a11y/control-has-associated-label": "off"
+    "jsx-a11y/control-has-associated-label": "off",
+    "prettier/prettier": "off"
   }
 }

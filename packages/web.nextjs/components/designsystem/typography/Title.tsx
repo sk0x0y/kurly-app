@@ -29,11 +29,11 @@ function Title(props: IProps) {
         <h2
           css={[
             defaultStyle,
-            options ? options.additionalStyle : null,
             css`
               font-weight: 500;
               font-size: 20px;
             `,
+            options ? options.additionalStyle : null,
           ]}
         >
           {children}

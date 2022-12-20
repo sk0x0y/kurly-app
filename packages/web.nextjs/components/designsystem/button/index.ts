@@ -1,4 +1,5 @@
 import { css } from '@emotion/react';
+import Common from './Common';
 import Anchor from './Anchor';
 import Shortcut from './Shortcut';
 
@@ -11,6 +12,7 @@ export const defaultStyle = css`
 `;
 
 const Button = {
+  Common,
   Anchor,
   Shortcut,
 };
