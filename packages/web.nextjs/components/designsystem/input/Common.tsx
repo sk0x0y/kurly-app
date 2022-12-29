@@ -2,6 +2,7 @@ import { css } from '@emotion/react';
 import { InputHTMLAttributes } from 'react';
 
 interface IProps extends InputHTMLAttributes<HTMLInputElement> {
+
   options?: {
     width?: number;
     height?: number;
