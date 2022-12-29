@@ -1,6 +1,8 @@
 import { css } from '@emotion/react';
+import { InputHTMLAttributes } from 'react';
 
-interface IProps {
+interface IProps extends InputHTMLAttributes<HTMLInputElement> {
+
   options?: {
     width?: number;
     height?: number;
@@ -14,10 +16,11 @@ interface IProps {
   };
 }
 function Common(props: IProps) {
-  const { options } = props;
+  const { options, placeholder } = props;
 
   return (
     <input
+      placeholder={placeholder}
       css={css`
         width: ${options?.width ?? '100%'};
         height: ${options?.height ?? 46}px;
