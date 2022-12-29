@@ -21,7 +21,7 @@ function Header() {
           `}
         >
           {/* 회원가입 */}
-          <Link href="/">
+          <Link href="/signup">
             <button
               type="button"
               css={css`
