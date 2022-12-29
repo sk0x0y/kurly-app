@@ -8,6 +8,8 @@ interface ButtonOptions {
   border?: string;
   borderRadius?: number;
   backgroundColor?: string;
+  fontWeight?: number;
+  fontSize?: number;
   color?: string;
 }
 interface IProps {
@@ -23,11 +25,13 @@ function Common(props: IProps) {
       css={css`
         display: ${options?.display ?? 'block'};
         width: ${options?.width ?? '100%'};
-        height: ${options?.height ?? '44px'};
+        height: ${options?.height ?? 44}px;
         border: ${options?.border ?? '1px solid rgb(95, 0, 128)'};
         border-radius: ${options?.borderRadius ?? '3px'};
         background-color: ${options?.backgroundColor ?? 'transparent'};
         text-align: center;
+        font-weight: ${options?.fontWeight ?? 400};
+        font-size: ${options?.fontSize ?? 16}px;
         color: ${options?.color ?? 'rgb(95, 0, 128)'};
         cursor: pointer;
       `}
