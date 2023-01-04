@@ -28,6 +28,7 @@
         "labelAttributes": ["htmlFor"]
       }
     ],
+    "jsx-a11y/anchor-is-valid": "off",
     "prettier/prettier": "off"
   }
 }
