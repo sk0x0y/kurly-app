@@ -1,5 +1,6 @@
+import Section from './Section';
 import Banner from './Banner';
 
-const Content = { Banner };
+const Content = { Section, Banner };
 
 export default Content;
