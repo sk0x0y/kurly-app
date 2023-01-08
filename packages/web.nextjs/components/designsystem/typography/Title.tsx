@@ -16,9 +16,10 @@ interface IProps {
   options?: {
     additionalStyle?: SerializedStyles[];
   };
+  styles?: SerializedStyles;
 }
 function Title(props: IProps) {
-  const { level, children, options } = props;
+  const { level, children, options, styles } = props;
 
   switch (level) {
     case 'h1':
@@ -34,6 +35,7 @@ function Title(props: IProps) {
               font-size: 20px;
             `,
             options ? options.additionalStyle : null,
+            styles,
           ]}
         >
           {children}
