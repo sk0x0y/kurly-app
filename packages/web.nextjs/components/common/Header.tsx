@@ -49,7 +49,7 @@ function Header() {
           />
 
           {/* 로그인 */}
-          <Link href="/">
+          <Link href="/signin">
             <button
               type="button"
               css={css`
