@@ -1,6 +1,5 @@
 import React from 'react';
 import { css } from '@emotion/react';
-import Input from '../designsystem/input';
 import Button from '../designsystem/button';
 
 interface IProps {
@@ -12,6 +11,7 @@ interface IProps {
   button?: {
     disabled?: boolean;
     text?: string;
+    visible?: boolean;
   };
   children?: React.ReactNode;
 }
@@ -64,6 +64,8 @@ function FormItem(props: IProps) {
 
       <div
         css={css`
+          // visible false 면 보이게 또는 text false 면 안보이게
+          display: ${(button?.visible ?? 'block') || (button?.text ?? 'none')};
           width: 120px;
           margin-left: 8px;
         `}
