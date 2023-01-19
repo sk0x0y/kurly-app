@@ -6,7 +6,7 @@ import { Swiper as SwiperClass } from 'swiper/types';
 import Product from './index';
 import Typography from '../typography';
 import Button from '../button';
-import { IProduct } from './Product.interface';
+import { IProduct } from '../../../types/product/Product.interface';
 import ProductEntity from '../_entity/Product.entity';
 import { ICollectionOptions } from './Collection';
 import { IMerchandiserChoiceCategory } from './MerchandiserChoiceCategory.interface';

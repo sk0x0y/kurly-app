@@ -7,7 +7,7 @@ import Typography from '../typography';
 import Button from '../button';
 import Product from './index';
 import ArrowRight from '../icon/ArrowRight';
-import { IProduct } from './Product.interface';
+import { IProduct } from '../../../types/product/Product.interface';
 import ProductEntity from '../_entity/Product.entity';
 import { ICollectionOptions } from './Collection';
 

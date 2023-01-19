@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { css } from '@emotion/react';
 import Typography from '../typography';
 import Product from './index';
-import { IProduct } from './Product.interface';
+import { IProduct } from '../../../types/product/Product.interface';
 import SpecialDealEntity from '../_entity/SpecialDeal.entity';
 import { ICollectionOptions } from './Collection';
 

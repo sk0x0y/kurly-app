@@ -2,7 +2,7 @@ import Image from 'next/image';
 import { css } from '@emotion/react';
 import Typography from '../typography';
 import CartIcon from '../icon/CartIcon';
-import { IProduct } from './Product.interface';
+import { IProduct } from '../../../types/product/Product.interface';
 
 export interface ICollectionOptions {
   imageSize?: {
