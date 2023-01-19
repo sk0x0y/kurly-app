@@ -6,7 +6,7 @@ const DeliverType = {
 export interface IProduct {
   id: number;
   src: string; // TODO: 구 이미지 구조 will be deprecated
-  image: {
+  image?: {
     // NOTE: 새로운 이미지 구조
     src: string;
   };
@@ -21,6 +21,9 @@ export interface IProduct {
       rate: number;
       price: number;
     };
+  };
+  review?: {
+    count: number;
   };
   tags?: string[]; // TODO: 추후 태그 컴포넌트가 담길 것
 }
