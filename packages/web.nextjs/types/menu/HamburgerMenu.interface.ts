@@ -7,7 +7,8 @@ interface ChildrenMenu {
 export interface IHamburgerMenu {
   id: number;
   image: {
-    src: string;
+    default: string;
+    active?: string;
   };
   url: string;
   name: string;
