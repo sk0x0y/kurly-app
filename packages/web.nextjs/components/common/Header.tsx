@@ -1,10 +1,20 @@
 import { css } from '@emotion/react';
 import Link from 'next/link';
 import Image from 'next/image';
+import Divider from '../header/Divider';
+import HamburgerMenuWrapper from '../header/HamburgerMenuWrapper';
+import CommonCenterMenu from '../header/CommonCenterMenu';
+import DeliveryInformation from '../header/DeliveryInformation';
 
 function Header() {
   return (
-    <header>
+    <header
+      css={css`
+        position: relative;
+        z-index: 1000;
+        box-shadow: rgb(0 0 0 / 7%) 0 3px 4px 0;
+      `}
+    >
       <div
         css={css`
           width: 1050px;
@@ -37,16 +47,7 @@ function Header() {
             </button>
           </Link>
 
-          {/* Divider */}
-          <div
-            css={css`
-              display: inline-block;
-              width: 1px;
-              height: 13px;
-              margin: 0 12px;
-              background-color: rgb(217, 217, 217);
-            `}
-          />
+          <Divider />
 
           {/* 로그인 */}
           <Link href="/signin">
@@ -64,16 +65,7 @@ function Header() {
             </button>
           </Link>
 
-          {/* Divider */}
-          <div
-            css={css`
-              display: inline-block;
-              width: 1px;
-              height: 13px;
-              margin: 0 12px;
-              background-color: rgb(217, 217, 217);
-            `}
-          />
+          <Divider />
 
           {/* 고객센터 */}
           <div
@@ -269,6 +261,7 @@ function Header() {
         {/* 헤더 세번째 상단 공통 메뉴 */}
         <div
           css={css`
+            z-index: 1000;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -276,188 +269,13 @@ function Header() {
           `}
         >
           {/* 카테고리 햄버거 메뉴 */}
-          <div
-            css={css`
-              display: flex;
-              cursor: pointer;
-
-              &:hover {
-                color: rgb(95, 0, 128);
-              }
-            `}
-          >
-            <Image src="/hamburger.svg" width={16} height={16} />
-            <span
-              css={css`
-                margin-left: 12px;
-                padding-top: 2px;
-                font-weight: 500;
-                font-size: 16px;
-                letter-spacing: -0.3px;
-              `}
-            >
-              카테고리
-            </span>
-          </div>
+          <HamburgerMenuWrapper />
 
           {/* 중앙 공통 메뉴 */}
-          <ul
-            css={css`
-              display: flex;
-              margin: 0;
-              padding: 0;
-              list-style: none;
-            `}
-          >
-            <li
-              css={css`
-                width: 150px;
-                padding-top: 5px;
-                text-align: center;
-              `}
-            >
-              <Link href="/">
-                <button
-                  type="button"
-                  css={css`
-                    padding: 0;
-                    border: 0;
-                    background-color: transparent;
-                    font-weight: 500;
-                    font-size: 16px;
-                    cursor: pointer;
-
-                    &:hover {
-                      border-bottom: 1px solid rgb(95, 0, 128);
-                      color: rgb(95, 0, 128);
-                    }
-                  `}
-                >
-                  신상품
-                </button>
-              </Link>
-            </li>
-
-            <li
-              css={css`
-                width: 150px;
-                padding-top: 5px;
-                text-align: center;
-              `}
-            >
-              <Link href="/">
-                <button
-                  type="button"
-                  css={css`
-                    padding: 0;
-                    border: 0;
-                    background-color: transparent;
-                    font-weight: 500;
-                    font-size: 16px;
-                    cursor: pointer;
-
-                    &:hover {
-                      border-bottom: 1px solid rgb(95, 0, 128);
-                      color: rgb(95, 0, 128);
-                    }
-                  `}
-                >
-                  베스트
-                </button>
-              </Link>
-            </li>
-
-            <li
-              css={css`
-                width: 150px;
-                padding-top: 5px;
-                text-align: center;
-              `}
-            >
-              <Link href="/">
-                <button
-                  type="button"
-                  css={css`
-                    padding: 0;
-                    border: 0;
-                    background-color: transparent;
-                    font-weight: 500;
-                    font-size: 16px;
-                    cursor: pointer;
-
-                    &:hover {
-                      border-bottom: 1px solid rgb(95, 0, 128);
-                      color: rgb(95, 0, 128);
-                    }
-                  `}
-                >
-                  알뜰쇼핑
-                </button>
-              </Link>
-            </li>
-
-            <li
-              css={css`
-                width: 150px;
-                padding-top: 5px;
-                text-align: center;
-              `}
-            >
-              <Link href="/">
-                <button
-                  type="button"
-                  css={css`
-                    padding: 0;
-                    border: 0;
-                    background-color: transparent;
-                    font-weight: 500;
-                    font-size: 16px;
-                    cursor: pointer;
-
-                    &:hover {
-                      border-bottom: 1px solid rgb(95, 0, 128);
-                      color: rgb(95, 0, 128);
-                    }
-                  `}
-                >
-                  특가/혜택
-                </button>
-              </Link>
-            </li>
-          </ul>
+          <CommonCenterMenu />
 
           {/* 우측 배송 안내 */}
-          <div
-            css={css`
-              line-height: 56px;
-            `}
-          >
-            <Link href="/delivery/guide">
-              <button
-                type="button"
-                css={css`
-                  padding: 6px 16px;
-                  border: 1px solid rgb(238, 238, 238);
-                  border-radius: 18px;
-                  background-color: transparent;
-                  font-size: 13px;
-                  letter-spacing: -0.32px;
-                  color: rgb(102, 102, 102);
-                `}
-              >
-                <span
-                  css={css`
-                    font-weight: 500;
-                    color: rgb(95, 0, 128);
-                  `}
-                >
-                  샛별・낮
-                </span>
-                &nbsp;
-                <span>배송안내</span>
-              </button>
-            </Link>
-          </div>
+          <DeliveryInformation />
         </div>
       </div>
     </header>
