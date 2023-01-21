@@ -26,7 +26,7 @@ function HamburgerMenuWrapper() {
           height: 100%;
           cursor: pointer;
 
-          &:hover {
+          &:hover > span {
             color: rgb(95, 0, 128);
           }
         `}
