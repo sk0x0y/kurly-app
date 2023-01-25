@@ -9,14 +9,15 @@ export default class HamburgerMenuEntity {
 
   constructor() {
     this._entity = [
-      {
-        id: 1,
-        image: {
-          default: '/hamburger/a5tXHWOGWZXPvBA1KVTQpIjCGDYHOOPRVRJBail4.png',
-        },
-        url: '/categories/177',
-        name: '2023 설 선물세트',
-      },
+      // {
+      //   id: 1,
+      //   image: {
+      //     default: '/hamburger/a5tXHWOGWZXPvBA1KVTQpIjCGDYHOOPRVRJBail4.png',
+      //     active: '/hamburger/a5tXHWOGWZXPvBA1KVTQpIjCGDYHOOPRVRJBail4.png',
+      //   },
+      //   url: '/categories/177',
+      //   name: '2023 설 선물세트',
+      // },
       {
         id: 2,
         image: {
@@ -25,6 +26,49 @@ export default class HamburgerMenuEntity {
         },
         url: '/categories/907',
         name: '채소',
+        children: [
+          {
+            id: 1,
+            url: '/categories/907/008',
+            name: '친환경',
+          },
+          // ·
+          {
+            id: 2,
+            url: '/categories/907/001',
+            name: '감자·고구마·당근',
+          },
+          {
+            id: 3,
+            url: '/categories/907/002',
+            name: '시금치·쌈채소·나물',
+          },
+          {
+            id: 4,
+            url: '/categories/907/003',
+            name: '브로콜리·파프리카·양배추',
+          },
+          {
+            id: 5,
+            url: '/categories/907/005',
+            name: '양파·대파·마늘·배추',
+          },
+          {
+            id: 6,
+            url: '/categories/907/004',
+            name: '오이·호박·고추',
+          },
+          {
+            id: 7,
+            url: '/categories/907/007',
+            name: '냉동·이색·간편채소',
+          },
+          {
+            id: 8,
+            url: '/categories/907/006',
+            name: '콩나물·버섯',
+          },
+        ],
       },
       {
         id: 3,
