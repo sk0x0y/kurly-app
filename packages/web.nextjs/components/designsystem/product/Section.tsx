@@ -8,7 +8,7 @@ import Button from '../button';
 import Product from './index';
 import ArrowRight from '../icon/ArrowRight';
 import { IProduct } from '../../../types/product/Product.interface';
-import ProductEntity from '../_entity/Product.entity';
+import ProductEntity from '../../home/_entity/Product.entity';
 import { ICollectionOptions } from './Collection';
 
 interface IProps {
@@ -19,7 +19,7 @@ interface IProps {
 }
 function Section(props: IProps) {
   const { title, subTitle, href, options } = props;
-  const [products] = useState<IProduct[]>(ProductEntity);
+  const [products] = useState<IProduct[]>(new ProductEntity().entity);
 
   return (
     <section
@@ -131,11 +131,9 @@ function Section(props: IProps) {
           onSwiper={(swiper: SwiperClass) => window.console.log(swiper)}
         >
           {products.map(product => (
-            <div key={product.id}>
-              <SwiperSlide style={{ width: 249 }}>
-                <Product.Collection product={product} options={options} />
-              </SwiperSlide>
-            </div>
+            <SwiperSlide key={product.id} style={{ width: 249 }}>
+              <Product.Collection product={product} options={options} />
+            </SwiperSlide>
           ))}
         </Swiper>
       </div>
