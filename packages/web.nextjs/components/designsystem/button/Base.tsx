@@ -2,14 +2,16 @@ import React from 'react';
 import { css, SerializedStyles } from '@emotion/react';
 
 interface IProps {
+  onClick: () => void;
   styles?: SerializedStyles;
   children?: React.ReactNode;
 }
 function Base(props: IProps) {
-  const { styles, children } = props;
+  const { onClick, styles, children } = props;
 
   return (
     <button
+      onClick={onClick}
       type="button"
       css={[
         css`
