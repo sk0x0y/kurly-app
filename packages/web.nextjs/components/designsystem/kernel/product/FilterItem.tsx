@@ -10,9 +10,8 @@ function FilterItem(props: IProps) {
   return (
     <ul
       css={css`
-        opacity: ${isExpanded ? 0 : 1};
-        max-height: ${isExpanded ? 0 : '100vh'};
-        height: auto;
+        opacity: ${isExpanded ? 1 : 0};
+        max-height: ${isExpanded ? '100vh' : 0};
         transition: all 250ms cubic-bezier(0.83, 0, 0.17, 1) 0s;
         overflow: hidden;
       `}
