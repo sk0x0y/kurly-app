@@ -12,6 +12,7 @@ function FilterContainer(props: IProps) {
     <div
       css={css`
         width: 220px;
+        max-height: calc(100vh - 120px);
         margin-right: 47px;
         flex-shrink: 0;
         overflow: scroll;
