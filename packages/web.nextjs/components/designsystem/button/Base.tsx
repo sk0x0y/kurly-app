@@ -2,7 +2,7 @@ import React from 'react';
 import { css, SerializedStyles } from '@emotion/react';
 
 interface IProps {
-  onClick: () => void;
+  onClick?: () => void;
   styles?: SerializedStyles;
   children?: React.ReactNode;
 }
