@@ -23,7 +23,9 @@ function CollectionBanner(props: IProps) {
     >
       {/* NOTE: Next Image 사용 시 부모 요소에 position: relative; 를 적용해야 이미지가 가득 참 */}
       <Link href={url ?? '/'}>
-        <Image layout="fill" src={image ? image?.src : '/dummy/1050x400.png'} alt="배너 이미지" priority />
+        <a>
+          <Image layout="fill" src={image ? image?.src : '/dummy/1050x400.png'} alt="배너 이미지" priority />
+        </a>
       </Link>
     </div>
   );
