@@ -109,7 +109,9 @@ function Header() {
           >
             {/* 컬리 로고 */}
             <Link href="/">
-              <Image src="/logo.svg" width="82" height="42" style={{ cursor: 'pointer' }} />
+              <a>
+                <Image src="/logo.svg" width="82" height="42" style={{ cursor: 'pointer' }} />
+              </a>
             </Link>
 
             {/* 로고 옆 마켓컬리, 뷰티컬리 페이지 바로가기 */}
