@@ -4528,7 +4528,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-hook-form", "virtual:6e9a9c1bb2d4eeef4bcbb02637eda15d2d5bb331c7a1e5529988a557dee635de863e1f09502cbbb23e19d89feac23910032416e639c62d21b66813ee7c7bdf04#npm:7.41.1"],\
             ["sass", "npm:1.56.1"],\
             ["swiper", "npm:8.4.4"],\
-            ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=701156"]\
+            ["typescript", "patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=701156"],\
+            ["zustand", "virtual:6e9a9c1bb2d4eeef4bcbb02637eda15d2d5bb331c7a1e5529988a557dee635de863e1f09502cbbb23e19d89feac23910032416e639c62d21b66813ee7c7bdf04#npm:4.3.3"]\
           ],\
           "linkType": "SOFT"\
         }]\
@@ -4608,6 +4609,33 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/yocto-queue-npm-0.1.0-c6c9a7db29-f77b3d8d00.zip/node_modules/yocto-queue/",\
           "packageDependencies": [\
             ["yocto-queue", "npm:0.1.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["zustand", [\
+        ["npm:4.3.3", {\
+          "packageLocation": "./.yarn/cache/zustand-npm-4.3.3-54371efe26-fe0277ab0c.zip/node_modules/zustand/",\
+          "packageDependencies": [\
+            ["zustand", "npm:4.3.3"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:6e9a9c1bb2d4eeef4bcbb02637eda15d2d5bb331c7a1e5529988a557dee635de863e1f09502cbbb23e19d89feac23910032416e639c62d21b66813ee7c7bdf04#npm:4.3.3", {\
+          "packageLocation": "./.yarn/__virtual__/zustand-virtual-6d9e2e124c/0/cache/zustand-npm-4.3.3-54371efe26-fe0277ab0c.zip/node_modules/zustand/",\
+          "packageDependencies": [\
+            ["zustand", "virtual:6e9a9c1bb2d4eeef4bcbb02637eda15d2d5bb331c7a1e5529988a557dee635de863e1f09502cbbb23e19d89feac23910032416e639c62d21b66813ee7c7bdf04#npm:4.3.3"],\
+            ["@types/immer", null],\
+            ["@types/react", "npm:18.0.21"],\
+            ["immer", null],\
+            ["react", "npm:18.2.0"],\
+            ["use-sync-external-store", "virtual:9c107638b64f46e36852dd3f3be0a9616ba777c80e5c999723f8685acedd5fca5fea026bab026c159ff77e4570592b3abbe5d2154f88e2359947526723b23878#npm:1.2.0"]\
+          ],\
+          "packagePeers": [\
+            "@types/immer",\
+            "@types/react",\
+            "immer",\
+            "react"\
           ],\
           "linkType": "HARD"\
         }]\

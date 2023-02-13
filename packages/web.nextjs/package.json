@@ -15,7 +15,8 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-hook-form": "^7.41.1",
-    "swiper": "^8.4.4"
+    "swiper": "^8.4.4",
+    "zustand": "^4.3.3"
   },
   "devDependencies": {
     "@types/node": "18.8.3",
