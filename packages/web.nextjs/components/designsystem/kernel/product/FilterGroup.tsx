@@ -1,15 +1,27 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { css } from '@emotion/react';
 import Button from '../../button';
 import Kernel from '../index';
 import ArrowUp from '../../icon/ArrowUp';
 
+const UserInterfaceEnum = {
+  CHECKBOX: 0, // NOTE: Input CheckBox
+  SORTABLE_CHECKBOX: 1, // NOTE: Input CheckBox been sortable
+  RADIO: 2, // NOTE: Input Radio
+} as const;
 interface IProps {
-  entities: any[];
+  name?: string;
+  type?: typeof UserInterfaceEnum[keyof typeof UserInterfaceEnum];
+  expand?: boolean;
+  entities?: any[];
 }
 function FilterGroup(props: IProps) {
-  const { entities } = props;
+  const { name, expand, entities } = props;
   const [isExpanded, setIsExpended] = useState(false);
+
+  useEffect(() => {
+    return expand ? setIsExpended(true) : setIsExpended(false);
+  }, [expand]);
 
   return (
     <div
@@ -35,7 +47,7 @@ function FilterGroup(props: IProps) {
             font-size: 15px;
           `}
         >
-          카테고리
+          {name ?? <span>Please input name</span>}
         </span>
 
         <span
@@ -50,7 +62,21 @@ function FilterGroup(props: IProps) {
         </span>
       </Button.Base>
 
-      <Kernel.Product.FilterItem isExpanded={isExpanded} entities={entities} />
+      {entities && <Kernel.Product.FilterItem isExpanded={isExpanded} entities={entities} />}
+
+      {!entities && (
+        <span
+          css={css`
+            display: block;
+            opacity: ${isExpanded ? 0 : 1};
+            max-height: ${isExpanded ? 0 : '100vh'};
+            transition: all 250ms cubic-bezier(0.83, 0, 0.17, 1) 0s;
+            overflow: hidden;
+          `}
+        >
+          Please input entities
+        </span>
+      )}
       {/* {isExpanded && (children ?? 'Not have children')} */}
     </div>
   );
