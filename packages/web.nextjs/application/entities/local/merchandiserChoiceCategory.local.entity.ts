@@ -1,14 +1,10 @@
-import { IMerchandiserChoiceCategory } from '../../designsystem/product/MerchandiserChoiceCategory.interface';
+import { IMerchandiserChoiceCategory } from '../../../infrastructure/interface/MerchandiserChoiceCategory.interface';
 
-export default class MerchandiserChoiceCategoryEntity {
-  private readonly _entity: IMerchandiserChoiceCategory[];
-
-  get entity() {
-    return this._entity;
-  }
+export class MerchandiserChoiceCategoryLocalEntity {
+  entity: IMerchandiserChoiceCategory[];
 
   constructor() {
-    this._entity = [
+    this.entity = [
       {
         id: 1,
         categoryId: 907,

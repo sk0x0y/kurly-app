@@ -1,24 +1,20 @@
-import { useState } from 'react';
 import { css } from '@emotion/react';
+import { Swiper as SwiperClass } from 'swiper/types';
 import { Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Swiper as SwiperClass } from 'swiper/types';
 import Product from './index';
 import Typography from '../typography';
 import Button from '../button';
-import { IProduct } from '../../../types/product/Product.interface';
-import ProductEntity from '../../home/_entity/Product.entity';
 import { ICollectionOptions } from './Collection';
-import { IMerchandiserChoiceCategory } from './MerchandiserChoiceCategory.interface';
-import MerchandiserChoiceCategoryEntity from '../../home/_entity/MerchandiserChoiceCategory.entity';
+import { useLocalMerchandiserChoiceCategoryEntity, useLocalProductEntity } from '../../../infrastructure/zustand';
 
 interface IProps {
   options?: ICollectionOptions;
 }
 function MerchandiserChoice(props: IProps) {
   const { options } = props;
-  const [categories] = useState<IMerchandiserChoiceCategory[]>(new MerchandiserChoiceCategoryEntity().entity);
-  const [products] = useState<IProduct[]>(new ProductEntity().entity);
+  const categories = useLocalMerchandiserChoiceCategoryEntity();
+  const products = useLocalProductEntity();
 
   return (
     <section

@@ -1,14 +1,10 @@
-import { IProduct } from '../../../types/product/Product.interface';
+import { IProduct } from '../../../infrastructure/interface/product.interface';
 
-export default class ProductEntity {
-  private readonly _entity: IProduct[];
-
-  get entity() {
-    return this._entity;
-  }
+export class ProductLocalEntity {
+  entity: IProduct[];
 
   constructor() {
-    this._entity = [
+    this.entity = [
       {
         id: 1,
         src: '/goods/165303896298l0.jpeg',

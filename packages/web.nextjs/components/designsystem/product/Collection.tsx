@@ -2,7 +2,7 @@ import Image from 'next/image';
 import { css } from '@emotion/react';
 import Typography from '../typography';
 import CartIcon from '../icon/CartIcon';
-import { IProduct } from '../../../types/product/Product.interface';
+import { IProduct } from '../../../infrastructure/interface/product.interface';
 
 export interface ICollectionOptions {
   imageSize?: {
@@ -11,7 +11,8 @@ export interface ICollectionOptions {
   };
 }
 interface IProps {
-  product: Omit<IProduct, 'id'>;
+  // product: Omit<IProduct, 'id'>;
+  product: IProduct;
   options?: ICollectionOptions;
 }
 function Collection(props: IProps) {

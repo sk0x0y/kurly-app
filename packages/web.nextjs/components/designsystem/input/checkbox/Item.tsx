@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { InputHTMLAttributes } from 'react';
 import { css, SerializedStyles } from '@emotion/react';
 
-interface IProps {
+interface IProps extends InputHTMLAttributes<HTMLInputElement> {
+  onClick?: () => void;
   id?: string;
   styles?: {
     container?: SerializedStyles;
@@ -11,7 +12,7 @@ interface IProps {
   children?: React.ReactNode;
 }
 function Item(props: IProps) {
-  const { id, styles, children } = props;
+  const { checked, onClick, id, styles, children } = props;
 
   return (
     <label
@@ -26,6 +27,8 @@ function Item(props: IProps) {
       ]}
     >
       <input
+        onClick={onClick}
+        checked={checked}
         id={id}
         type="checkbox"
         css={[
