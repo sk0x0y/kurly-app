@@ -5,10 +5,13 @@ import Product from '../../components/designsystem/product';
 import Kernel from '../../components/designsystem/kernel';
 import Pagination from '../../components/designsystem/pagination/Pagination';
 import ItemSortTab from '../../components/designsystem/tab/ItemSortTab';
-import { useLocalCategoryEntity } from '../../infrastructure/zustand';
+import { useLocalCategoryEntity, useLocalProductEntity } from '../../infrastructure/zustand';
 
 function NewProduct() {
   const categoryEntity = useLocalCategoryEntity();
+  const productEntity = useLocalProductEntity();
+
+  // TODO: 추후 react-query 로 API Fetch 해서 Entity 에 Dispatch 해 줄 예정
 
   return (
     <Content.Section
@@ -59,7 +62,21 @@ function NewProduct() {
           `}
         >
           <ItemSortTab />
-          <div>{/*<*/}</div>
+          <div
+            css={css`
+              display: grid;
+              grid-template-columns: repeat(auto-fill, 249px);
+              gap: 31px 18px;
+            `}
+          >
+            {productEntity.map(product => (
+              <Product.Collection
+                key={product.id}
+                product={product}
+                options={{ imageSize: { width: 249, height: 320 } }}
+              />
+            ))}
+          </div>
           <Pagination />
         </div>
       </div>
