@@ -4,6 +4,7 @@ import { css, SerializedStyles } from '@emotion/react';
 interface IProps {
   id?: string;
   styles?: {
+    container?: SerializedStyles;
     default?: SerializedStyles;
     checked?: SerializedStyles;
   };
@@ -15,11 +16,14 @@ function Item(props: IProps) {
   return (
     <label
       htmlFor={id}
-      css={css`
-        display: flex;
-        align-items: center;
-        padding: 8px 0;
-      `}
+      css={[
+        css`
+          display: flex;
+          align-items: center;
+          padding: 8px 0;
+        `,
+        styles?.container,
+      ]}
     >
       <input
         id={id}

@@ -1,27 +1,34 @@
-import React from 'react';
+import React, { InputHTMLAttributes } from 'react';
 import { css, SerializedStyles } from '@emotion/react';
 
-interface IProps {
+interface IProps extends InputHTMLAttributes<HTMLInputElement> {
+  onClick?: () => void;
   id?: string;
   styles?: {
+    container?: SerializedStyles;
     default?: SerializedStyles;
     checked?: SerializedStyles;
   };
   children?: React.ReactNode;
 }
 function Item(props: IProps) {
-  const { id, styles, children } = props;
+  const { checked, onClick, id, styles, children } = props;
 
   return (
     <label
       htmlFor={id}
-      css={css`
-        display: flex;
-        align-items: center;
-        padding: 8px 0;
-      `}
+      css={[
+        css`
+          display: flex;
+          align-items: center;
+          padding: 8px 0;
+        `,
+        styles?.container,
+      ]}
     >
       <input
+        onClick={onClick}
+        checked={checked}
         id={id}
         type="checkbox"
         css={[

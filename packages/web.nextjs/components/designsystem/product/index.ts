@@ -2,12 +2,14 @@ import Collection from './Collection';
 import Section from './Section';
 import SpecialDeal from './SpecialDeal';
 import MerchandiserChoice from './MerchandiserChoice';
+import CollectionBanner from './CollectionBanner';
 
 const Product = {
   Section,
   Collection,
   SpecialDeal,
   MerchandiserChoice,
+  CollectionBanner,
 };
 
 // class Product {
