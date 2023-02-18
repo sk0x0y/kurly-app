@@ -6,7 +6,7 @@ import Typography from '../typography';
 import Button from '../button';
 import Product from './index';
 import ArrowRight from '../icon/ArrowRight';
-import { ICollectionOptions } from './Collection';
+import { ICollectionOptions } from '../../../infrastructure/interface/collectionOptions.interface';
 import { useLocalProductEntity } from '../../../infrastructure/zustand';
 
 interface IProps {

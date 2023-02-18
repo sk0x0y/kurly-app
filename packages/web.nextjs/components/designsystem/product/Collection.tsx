@@ -3,13 +3,8 @@ import { css } from '@emotion/react';
 import Typography from '../typography';
 import CartIcon from '../icon/CartIcon';
 import { IProduct } from '../../../infrastructure/interface/product.interface';
+import { ICollectionOptions } from '../../../infrastructure/interface/collectionOptions.interface';
 
-export interface ICollectionOptions {
-  imageSize?: {
-    width: number;
-    height: number;
-  };
-}
 interface IProps {
   // product: Omit<IProduct, 'id'>;
   product: IProduct;
