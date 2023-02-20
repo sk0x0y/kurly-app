@@ -1,3 +1,6 @@
+export interface IPureStore<T> {
+  entity: T;
+}
 export interface IStore<T, U> {
   dispatch: T;
   entity: U;
