@@ -22,7 +22,7 @@ function Collection(props: IProps) {
         `}
       >
         {options && options.imageSize ? (
-          <Image src={product.src} width={options.imageSize.width} height={options.imageSize.height} />
+          <Image src={product.image.src} width={options.imageSize.width} height={options.imageSize.height} />
         ) : (
           <div
             css={css`

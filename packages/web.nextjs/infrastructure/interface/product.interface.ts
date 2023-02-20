@@ -5,8 +5,8 @@ const DeliverType = {
 
 export interface IProduct {
   id: number;
-  src: string; // TODO: 구 이미지 구조 will be deprecated
-  image?: {
+  src?: string; // DEPRECATED: 구 이미지 구조 will be deprecated
+  image: {
     // NOTE: 새로운 이미지 구조
     src: string;
   };
