@@ -39,8 +39,8 @@ function Carousel() {
       navigation
       autoplay={{ delay: 3000 }}
       modules={[Navigation, Autoplay]}
-      onSlideChange={() => console.log('slide change')}
-      onSwiper={(swiper: SwiperClass) => console.log(swiper)}
+      onSlideChange={() => window.console.log('slide change')}
+      onSwiper={(swiper: SwiperClass) => window.console.log(swiper)}
       style={{ height: 370 }}
     >
       {slides.map(slide => (

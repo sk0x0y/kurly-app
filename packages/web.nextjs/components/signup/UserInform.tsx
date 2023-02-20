@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { css } from '@emotion/react';
 import FormItem from './FormItem';
 import Input from '../designsystem/input';
@@ -57,15 +58,24 @@ function UserInform() {
             fontWeight: 500,
             fontSize: 14,
           }}
+          styles={css`
+            position: relative;
+          `}
         >
-          <span>
-            <img
+          <span
+            css={css`
+              width: 20px;
+              height: 20px;
+            `}
+          >
+            <Image
               css={css`
                 margin: 4px 4px 0 0;
               `}
-              src="https://res.kurly.com/pc/service/cart/2007/ico_search.svg"
+              src="/SearchIcon.svg"
               alt=""
-              className="css-1m3kac1 e4nu7ef0"
+              width={20}
+              height={20}
             />
           </span>
           <span

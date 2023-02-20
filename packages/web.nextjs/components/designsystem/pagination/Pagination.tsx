@@ -36,7 +36,7 @@ function Pagination() {
           alt="처음 페이지로 이동하기 아이콘"
         />
       </a>
-      <a className="css-1d20dg7 e82lnfz0">
+      <a>
         <Image
           width={5}
           height={7}
@@ -61,7 +61,7 @@ function Pagination() {
           alt="다음 페이지로 이동하기 아이콘"
         />
       </a>
-      <a className="css-1d20dg7 e82lnfz0">
+      <a>
         <Image
           width={9}
           height={7}

@@ -5,7 +5,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import Product from './index';
 import Typography from '../typography';
 import Button from '../button';
-import { ICollectionOptions } from './Collection';
+import { ICollectionOptions } from '../../../infrastructure/interface/collectionOptions.interface';
 import { useLocalMerchandiserChoiceCategoryEntity, useLocalProductEntity } from '../../../infrastructure/zustand';
 
 interface IProps {

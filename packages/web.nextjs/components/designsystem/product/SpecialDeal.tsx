@@ -2,9 +2,9 @@ import { useState } from 'react';
 import { css } from '@emotion/react';
 import Typography from '../typography';
 import Product from './index';
-import { IProduct } from '../../../types/product/Product.interface';
+import { IProduct } from '../../../infrastructure/interface/product.interface';
+import { ICollectionOptions } from '../../../infrastructure/interface/collectionOptions.interface';
 import SpecialDealEntity from '../_entity/SpecialDeal.entity';
-import { ICollectionOptions } from './Collection';
 
 interface IProps {
   options?: ICollectionOptions;
