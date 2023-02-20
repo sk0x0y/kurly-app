@@ -17,6 +17,7 @@ interface ButtonOptions {
   cursor?: 'pointer' | 'default';
 }
 interface IProps {
+  // eslint-disable-next-line no-unused-vars
   onClick?: (e: MouseEvent) => void;
   styles?: SerializedStyles;
   options?: ButtonOptions;
