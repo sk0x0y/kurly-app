@@ -11,15 +11,31 @@
 // https://itchallenger.tistory.com/606s
 
 import { create } from 'zustand';
-import { store as categoryLocalSlice } from './local/category.local';
-import { store as categorySlice } from './category';
-import { store as productLocalSlice } from './local/product.local';
+import { devtools } from 'zustand/middleware';
+import { CategoryLocalSlice, store as categoryLocalSlice } from './local/category.local';
+import { CategorySlice, store as categorySlice } from './category';
+import { ProductLocalSlice, store as productLocalSlice } from './local/product.local';
+import {
+  MerchandiserChoiceCategoryLocalSlice,
+  store as merchandiserChoiceCategoryLocalSlice,
+} from './local/merchandiserChoiceCategory.local';
+import { BannerLocalSlice, store as bannerLocalSlice } from './local/banner.local';
 
-export const useGlobalStore = create()(() => ({
-  ...categoryLocalSlice(),
-  ...categorySlice(),
-  ...productLocalSlice(),
-}));
+export const useGlobalStore = create<{
+  categoryLocal: CategoryLocalSlice;
+  category: CategorySlice;
+  productLocal: ProductLocalSlice;
+  merchandiserChoiceCategoryLocal: MerchandiserChoiceCategoryLocalSlice;
+  bannerLocal: BannerLocalSlice;
+}>()(
+  devtools(() => ({
+    ...categoryLocalSlice(),
+    ...categorySlice(),
+    ...productLocalSlice(),
+    ...merchandiserChoiceCategoryLocalSlice(),
+    ...bannerLocalSlice(),
+  }))
+);
 
 export { useLocalCategoryEntity, useLocalCategoryDispatch } from './local/category.local';
 export { useCategoryEntity, useCategoryDispatch } from './category';
@@ -28,6 +44,4 @@ export {
   useLocalMerchandiserChoiceCategoryEntity,
   useLocalMerchandiserChoiceCategoryDispatch,
 } from './local/merchandiserChoiceCategory.local';
-
-// export * from './local/category.local';
-// export * from './category';
+export { useLocalBannerEntity } from './local/banner.local';
