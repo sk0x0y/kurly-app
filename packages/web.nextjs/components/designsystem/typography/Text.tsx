@@ -9,23 +9,24 @@ const TextType = {
 };
 interface IProps {
   type: keyof typeof TextType;
+  styles?: SerializedStyles;
   children: React.ReactNode;
   options?: {
     additionalStyle?: SerializedStyles[];
   };
 }
 function Text(props: IProps) {
-  const { type, children, options } = props;
+  const { type, styles, children, options } = props;
 
   switch (type) {
     case 'p':
-      return <p css={[defaultStyle, options ? options.additionalStyle : null]}>{children}</p>;
+      return <p css={[defaultStyle, options ? options.additionalStyle : null, styles]}>{children}</p>;
 
     case 'span':
-      return <span css={[defaultStyle, options ? options.additionalStyle : null]}>{children}</span>;
+      return <span css={[defaultStyle, options ? options.additionalStyle : null, styles]}>{children}</span>;
 
     case 'strong':
-      return <strong css={[defaultStyle, options ? options.additionalStyle : null]}>{children}</strong>;
+      return <strong css={[defaultStyle, options ? options.additionalStyle : null, styles]}>{children}</strong>;
 
     default:
       return null;
