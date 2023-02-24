@@ -2,7 +2,7 @@ import Image from 'next/image';
 import { css } from '@emotion/react';
 import Typography from '../typography';
 import CartIcon from '../icon/CartIcon';
-import { IProduct } from '../../../infrastructure/interface/product.interface';
+import { DeliverType, IProduct } from '../../../infrastructure/interface/product.interface';
 import { ICollectionOptions } from '../../../infrastructure/interface/collectionOptions.interface';
 
 interface IProps {
@@ -45,12 +45,26 @@ function Collection(props: IProps) {
         </div>
       </div>
 
-      {/* 상품명 */}
       <div
         css={css`
           padding: 14px 10px 0 0;
         `}
       >
+        {/* 배송 타입 */}
+        {product.deliver && (
+          <p
+            css={css`
+              padding-bottom: 2px;
+              color: rgb(153, 153, 153);
+              line-height: 19px;
+              letter-spacing: -0.5px;
+            `}
+          >
+            {product.deliver.type === DeliverType.FAST ? '샛별배송' : '택배'}
+          </p>
+        )}
+
+        {/* 상품명 */}
         <Typography.Title
           level="h3"
           options={{
@@ -66,6 +80,21 @@ function Collection(props: IProps) {
         >
           {product.name}
         </Typography.Title>
+
+        {/* 상품 설명 */}
+        {product.description && (
+          <p
+            css={css`
+              padding-top: 4px;
+              padding-bottom: 8px;
+              font-size: 12px;
+              color: rgb(153, 153, 153);
+              line-height: 18px;
+            `}
+          >
+            {product.description}
+          </p>
+        )}
 
         {/* 상품 가격 및 할인율 */}
         <div>
