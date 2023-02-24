@@ -3,6 +3,7 @@ import Section from './Section';
 import SpecialDeal from './SpecialDeal';
 import MerchandiserChoice from './MerchandiserChoice';
 import CollectionBanner from './CollectionBanner';
+import Tab from './Tab';
 
 const Product = {
   Section,
@@ -10,6 +11,7 @@ const Product = {
   SpecialDeal,
   MerchandiserChoice,
   CollectionBanner,
+  Tab,
 };
 
 // class Product {
