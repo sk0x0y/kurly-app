@@ -22,6 +22,7 @@ export interface IProduct {
       price: number;
     };
   };
+  notice?: { id: number; label: string; title: string; description?: string }[];
   review?: {
     count: number;
   };
