@@ -1,4 +1,4 @@
-const DeliverType = {
+export const DeliverType = {
   FAST: 0, // NOTE: 샛별배송
   SLOW: 1, // NOTE: 택배배송
 } as const;
