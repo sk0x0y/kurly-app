@@ -16,8 +16,15 @@ function Collection(props: IProps) {
   const { product, options } = props;
 
   return (
-    <Link href={`/product/${product.id}`}>
-      <div>
+    <Link href={`/product/${product.id}`} passHref>
+      <a
+        css={css`
+          appearance: none;
+          cursor: pointer;
+          text-decoration: none;
+          color: #333;
+        `}
+      >
         {/* 상품 이미지 */}
         <div
           css={css`
@@ -194,7 +201,7 @@ function Collection(props: IProps) {
             )}
           </div>
         </div>
-      </div>
+      </a>
     </Link>
   );
 }
