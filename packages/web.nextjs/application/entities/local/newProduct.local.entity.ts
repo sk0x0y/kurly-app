@@ -39,6 +39,94 @@ export class NewProductLocalEntity {
           },
           { id: 8, label: '유통기한(또는 소비기한)정보', title: '수령일 포함 최소 54일 남은 제품을 보내 드립니다' },
         ],
+        content: {
+          intro: {
+            title: '[멘베이] 명란 센베이 4종',
+            subTitle: '명란과 감자로 만든 특별한 센베이',
+            image: { src: '/goods/detail/gv40000486162_1.jpg' },
+            description:
+              "'멘베이'는 명란을 뜻하는 ‘멘타이코’와 ‘센베이’를 합친 말이에요. 후쿠오카에서 시작된 멘베이는 일본을 여행하는 사람이라면 꼭 사 와야 할 기념품으로 유명한데요. 감자의 담백한 풍미 사이로 느껴지는 명란의 짭조름한 감칠맛이 매력적인 과자랍니다. 센베이답게 바삭한 식감은 말할 것도 없고요. 누구나 부담 없이 즐기기 좋은 플레인부터 다양한 시즈닝으로 풍미를 더한 어니언, 보니토, 매운 맛까지 다양하게 준비했으니 취향에 따라 선택해 보세요. 가벼운 선물로도 추천해 드릴게요.",
+          },
+          checkpoint: {
+            title: "Kurly's Check Point",
+            image: [{ id: 1, src: '/goods/detail/gv30000486163_1.jpg' }],
+          },
+          pick: {
+            title: 'Kurly’s Pick',
+            image: [
+              {
+                id: 1,
+                src: '/goods/detail/gv40000486165_1.jpg',
+                height: 675,
+                paragraph: [
+                  {
+                    id: 1,
+                    title: '01. 명란 센베이 플레인',
+                    description: {
+                      weight: '박스(210g / 16개입)',
+                      characteristics:
+                        '명란의 짭조름한 감칠맛이 잘 살아있는 센베이입니다. 오랫동안 꾸준히 사랑받아온 스테디셀러예요.',
+                    },
+                  },
+                  {
+                    id: 2,
+                    title: '02. 명란 센베이 어니언',
+                    description: {
+                      weight: '박스(210g / 16개입)',
+                      characteristics: '볶은 양파의 단맛을 더한 명란 센베이입니다.',
+                    },
+                  },
+                ],
+              },
+              {
+                id: 2,
+                src: '/goods/detail/gv40000486169_1.jpg',
+                height: 675,
+                paragraph: [
+                  {
+                    id: 1,
+                    title: '03. 명란 센베이 보니토 (가쓰오부시)',
+                    description: {
+                      weight: '박스(210g / 16개입)',
+                      characteristics: '건조 가다랑어로 해산물의 풍미를 더한 명란 센베이입니다.',
+                    },
+                  },
+                  {
+                    id: 2,
+                    title: '04. 명란 센베이 핫 앤 스파이시',
+                    description: {
+                      weight: '박스(210g / 16개입)',
+                      characteristics: '매콤한 감칠맛이 매력적인 명란 센베이입니다.',
+                    },
+                  },
+                ],
+              },
+            ],
+          },
+          tip: {
+            title: 'Kurly’s Tip',
+            subTitle: '보관법',
+            description: '직사광선을 피해 건조하고 서늘한 곳에 보관해 주세요.',
+          },
+          note: { title: 'Kurly’s Note', image: [{ id: 1, src: '/goods/detail/gv00000486174_1.jpg', height: 231 }] },
+          about: {
+            title: 'About Brand',
+            image: [
+              {
+                id: 1,
+                src: '/goods/detail/gv10000486175_1.jpg',
+                height: 66,
+                paragraph: [
+                  {
+                    id: 1,
+                    text: '멘베이는 후쿠오카에서 문을 연 명란 센베이 전문점입니다. 명란젓은 후쿠오카의 대표 특산품 중 하나인데요. 멘베이에서는 명란젓과 감자로 만든 센베이를 선보여 많은 사랑을 받아왔어요. 후쿠오카를 여행하는 사람에게는 꼭 사 와야 할 기념품이기도 하죠. 담백한 감자와 짭조름한 명란의 조화로 폭발적인 인기를 얻은 멘베이는 이제 후쿠오카를 넘어 일본 전역에서 사랑받고 있습니다. 후쿠오카의 명물을 컬리에서 만나 보세요.',
+                  },
+                ],
+              },
+              { id: 2, src: '/goods/detail/gv20000486172_1.jpg', height: 4906 },
+            ],
+          },
+        },
         review: { count: 37 },
       },
       {
