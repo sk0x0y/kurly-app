@@ -20,8 +20,8 @@ function Summary(props: IProps) {
           margin-bottom: 6px;
         `}
       >
-        {record?.deliver.type === DeliverType.FAST && '샛별배송'}
-        {record?.deliver.type === DeliverType.SLOW && '택배'}
+        {record && record.deliver?.type === DeliverType.FAST && '샛별배송'}
+        {record && record.deliver?.type === DeliverType.SLOW && '택배'}
       </Typography.Text>
       <Typography.Title
         level="h2"
