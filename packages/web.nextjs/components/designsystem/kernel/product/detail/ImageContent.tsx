@@ -17,6 +17,10 @@ function ImageContent(props: IProps) {
           key={image.id}
           css={css`
             margin-bottom: 130px;
+
+            &:last-child {
+              margin-bottom: 0;
+            }
           `}
         >
           <div

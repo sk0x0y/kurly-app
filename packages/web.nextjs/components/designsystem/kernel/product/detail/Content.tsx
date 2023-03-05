@@ -13,6 +13,10 @@ function Content(props: IProps) {
     <div
       css={css`
         margin-bottom: 170px;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
       `}
     >
       {/* 컨텐츠 섹션 제목 */}
