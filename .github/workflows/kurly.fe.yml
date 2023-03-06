@@ -53,5 +53,5 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             echo "Connected with Actions!"
-            sudo docker load -i kurlyapp-web_1.0.0.tar
+            sudo docker load -i app/kurlyapp-web_1.0.0.tar
             sudo docker images
