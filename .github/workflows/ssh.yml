@@ -1,0 +1,24 @@
+name: Kurly Web App (PC) Deploy Workflow
+
+on:
+  push:
+    branches: [ "test/actions-workflow" ]
+
+env:
+  HOST: ${{ secrets.SSH_HOST }}
+  USER: ${{ secrets.SSH_USER }}
+  PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+
+jobs:
+  deployment:
+    name: Deploy Docker Image
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: SSH Remote Commands
+        uses: appleboy/ssh-action@v0.1.8
+        with:
+          host: $HOST
+          username: $USER
+          key: $PRIVATE_KEY
+          script: whoami
