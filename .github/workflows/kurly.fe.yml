@@ -55,3 +55,6 @@ jobs:
             echo "Connected with Actions!"
             sudo docker load -i app/kurlyapp-web_1.0.0.tar
             sudo docker images
+            sudo docker stop kurlyapp-web
+            sudo docker ps
+            sudo docker run --rm -d -p 3000:3000 --name kurlyapp-web kurlyapp/web:1.0.0
