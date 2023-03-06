@@ -1,5 +1,8 @@
 name: Kurly Web App (PC) Deploy Workflow
 
+env:
+  VERSON: 1.0.0
+
 on:
   push:
     branches: [ "test/actions-workflow" ]
@@ -12,7 +15,16 @@ jobs:
     steps:
       - name: Github Checkout
         uses: actions/checkout@v3
-      - run: docker build -t kurlyapp/web:$(date +%s) --platform linux/amd64 .
+
+      - name: Build and push Docker images
+        uses: docker/build-push-action@v4.0.0
+        with:
+          context: .
+          push: false
+          tags: kurlyapp/web:$VERSION
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
 
   deployment:
     name: Deploy Docker Image Stage
