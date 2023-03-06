@@ -2,7 +2,7 @@ name: Kurly Web App (PC) Deploy Workflow
 
 on:
   push:
-    branches: [ "develop" ]
+    branches: [ "test/actions-workflow" ]
 
 jobs:
   build:
