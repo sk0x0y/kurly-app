@@ -30,8 +30,8 @@ jobs:
       - name: SSH Remote Commands
         uses: appleboy/ssh-action@v0.1.8
         with:
-          host: $HOST
-          username: $USER
-          key: $PRIVATE_KEY
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             whoami
