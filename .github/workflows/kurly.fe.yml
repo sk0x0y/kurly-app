@@ -27,7 +27,16 @@ jobs:
           cache-to: type=gha,mode=max
 
       - run: |
-          docker save -o kurlyapp/web:1.0.0 kurlyapp-web_1.0.0.tar
+          docker save -o kurlyapp-web_1.0.0.tar kurlyapp/web:1.0.0
+
+      - name: SCP Command to Transfer Files
+          uses: appleboy/scp-action@v0.1.3
+          with:
+            host: ${{ secrets.SSH_HOST }}
+            username: ${{ secrets.SSH_USER }}
+            key: ${{ secrets.SSH_PRIVATE_KEY }}
+            source: "kurlyapp-web_1.0.0.tar"
+            target: "app"
 
 
   deployment:
@@ -36,15 +45,6 @@ jobs:
     needs: build
 
     steps:
-      - name: SCP Command to Transfer Files
-        uses: appleboy/scp-action@v0.1.3
-        with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USER }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          source: "kurlyapp-web_1.0.0.tar"
-          target: "app"
-
       - name: SSH Remote Commands
         uses: appleboy/ssh-action@v0.1.8
         with:
@@ -54,3 +54,4 @@ jobs:
           script: |
             echo "Connected with Actions!"
             docker load -i kurlyapp-web_1.0.0.tar
+            docker images
