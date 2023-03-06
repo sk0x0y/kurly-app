@@ -1,7 +1,8 @@
 name: Kurly Web App (PC) Deploy Workflow
 
 env:
-  DATE: $(date +%s)
+  DATE: ${{date +%s}}
+  VERSION: 1.0.0
 
 on:
   push:
