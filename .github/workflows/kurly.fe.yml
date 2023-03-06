@@ -27,7 +27,7 @@ jobs:
 #          cache-to: type=gha,mode=max
 
       - run: |
-          docker images
+          docker images \
           docker save -o kurlyapp-web_1.0.0.tar kurlyapp/web:1.0.0
 
       - name: SCP Command to Transfer Files
