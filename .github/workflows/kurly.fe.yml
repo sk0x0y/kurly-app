@@ -27,7 +27,7 @@ jobs:
           cache-to: type=gha,mode=max
 
       - run: |
-          docker save -o kurlyapp/web:1.0.0 > kurlyapp-web_1.0.0.tar
+          docker save -o kurlyapp/web:1.0.0 kurlyapp-web_1.0.0.tar
 
 
   deployment:
