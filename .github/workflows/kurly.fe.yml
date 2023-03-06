@@ -30,13 +30,13 @@ jobs:
           docker save -o kurlyapp-web_1.0.0.tar kurlyapp/web:1.0.0
 
       - name: SCP Command to Transfer Files
-          uses: appleboy/scp-action@v0.1.3
-          with:
-            host: ${{ secrets.SSH_HOST }}
-            username: ${{ secrets.SSH_USER }}
-            key: ${{ secrets.SSH_PRIVATE_KEY }}
-            source: "kurlyapp-web_1.0.0.tar"
-            target: "app"
+        uses: appleboy/scp-action@v0.1.3
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          source: "kurlyapp-web_1.0.0.tar"
+          target: "app"
 
 
   deployment:
