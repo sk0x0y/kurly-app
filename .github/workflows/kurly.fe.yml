@@ -53,8 +53,10 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             echo "Connected with Actions!"
+            sudo docker stop kurlyapp-web
+            sudo docker rm kurlyapp-web
+            sudo docker rmi kurlyapp/web:1.0.0
             sudo docker load -i app/kurlyapp-web_1.0.0.tar
             sudo docker images
-            sudo docker stop kurlyapp-web
             sudo docker ps
-            sudo docker run --rm -d -p 3000:3000 --name kurlyapp-web kurlyapp/web:1.0.0
+            sudo docker run -d -p 3000:3000 --name kurlyapp-web kurlyapp/web:1.0.0
