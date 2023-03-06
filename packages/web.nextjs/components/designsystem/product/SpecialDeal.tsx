@@ -1,17 +1,15 @@
-import { useState } from 'react';
 import { css } from '@emotion/react';
 import Typography from '../typography';
 import Product from './index';
-import { IProduct } from '../../../infrastructure/interface/product.interface';
 import { ICollectionOptions } from '../../../infrastructure/interface/collectionOptions.interface';
-import SpecialDealEntity from '../_entity/SpecialDeal.entity';
+import { useLocalSpecialDealEntity } from '../../../infrastructure/zustand';
 
 interface IProps {
   options?: ICollectionOptions;
 }
 function SpecialDeal(props: IProps) {
   const { options } = props;
-  const [products] = useState<IProduct[]>(SpecialDealEntity);
+  const products = useLocalSpecialDealEntity();
 
   return (
     <section

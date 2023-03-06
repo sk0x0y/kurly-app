@@ -5,11 +5,12 @@ import Product from '../../components/designsystem/product';
 import Kernel from '../../components/designsystem/kernel';
 import Pagination from '../../components/designsystem/pagination/Pagination';
 import ItemSortTab from '../../components/designsystem/tab/ItemSortTab';
-import { useLocalCategoryEntity, useLocalProductEntity } from '../../infrastructure/zustand';
+import { useLocalCategoryEntity, useLocalNewProductEntity, useLocalProductEntity } from '../../infrastructure/zustand';
 
 function NewProduct() {
   const categoryEntity = useLocalCategoryEntity();
-  const productEntity = useLocalProductEntity();
+  // const productEntity = useLocalProductEntity();
+  const productEntity = useLocalNewProductEntity();
 
   // TODO: 추후 react-query 로 API Fetch 해서 Entity 에 Dispatch 해 줄 예정
 

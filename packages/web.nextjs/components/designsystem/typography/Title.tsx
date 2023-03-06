@@ -43,16 +43,16 @@ function Title(props: IProps) {
       );
 
     case 'h3':
-      return <h3 css={[defaultStyle, options ? options.additionalStyle : null]}>{children}</h3>;
+      return <h3 css={[defaultStyle, options ? options.additionalStyle : null, styles]}>{children}</h3>;
 
     case 'h4':
-      return <h4 css={[defaultStyle, options ? options.additionalStyle : null]}>{children}</h4>;
+      return <h4 css={[defaultStyle, options ? options.additionalStyle : null, styles]}>{children}</h4>;
 
     case 'h5':
-      return <h5 css={[defaultStyle, options ? options.additionalStyle : null]}>{children}</h5>;
+      return <h5 css={[defaultStyle, options ? options.additionalStyle : null, styles]}>{children}</h5>;
 
     case 'h6':
-      return <h6 css={[defaultStyle, options ? options.additionalStyle : null]}>{children}</h6>;
+      return <h6 css={[defaultStyle, options ? options.additionalStyle : null, styles]}>{children}</h6>;
 
     default:
       return null;

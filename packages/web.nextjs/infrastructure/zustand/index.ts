@@ -20,6 +20,8 @@ import {
   store as merchandiserChoiceCategoryLocalSlice,
 } from './local/merchandiserChoiceCategory.local';
 import { BannerLocalSlice, store as bannerLocalSlice } from './local/banner.local';
+import { SpecialDealLocalSlice, store as specialDealLocalSlice } from './local/specialDeal.local';
+import { NewProductLocalSlice, store as newProductLocalSlice } from './local/newProduct.local';
 
 export const useGlobalStore = create<{
   categoryLocal: CategoryLocalSlice;
@@ -27,6 +29,8 @@ export const useGlobalStore = create<{
   productLocal: ProductLocalSlice;
   merchandiserChoiceCategoryLocal: MerchandiserChoiceCategoryLocalSlice;
   bannerLocal: BannerLocalSlice;
+  specialDealLocal: SpecialDealLocalSlice;
+  newProductLocal: NewProductLocalSlice;
 }>()(
   devtools(() => ({
     ...categoryLocalSlice(),
@@ -34,6 +38,8 @@ export const useGlobalStore = create<{
     ...productLocalSlice(),
     ...merchandiserChoiceCategoryLocalSlice(),
     ...bannerLocalSlice(),
+    ...specialDealLocalSlice(),
+    ...newProductLocalSlice(),
   }))
 );
 
@@ -45,3 +51,5 @@ export {
   useLocalMerchandiserChoiceCategoryDispatch,
 } from './local/merchandiserChoiceCategory.local';
 export { useLocalBannerEntity } from './local/banner.local';
+export { useLocalSpecialDealEntity } from './local/specialDeal.local';
+export { useLocalNewProductEntity } from './local/newProduct.local';

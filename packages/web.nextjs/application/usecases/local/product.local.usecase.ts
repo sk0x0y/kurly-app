@@ -1,14 +1,12 @@
-import { ProductDTO } from '../../dto/product.dto';
-import { ProductLocalEntity } from '../../entities/local/product.local.entity';
+// import { ProductDTO } from '../../dto/product.dto';
+// import { ProductLocalEntity } from '../../entities/local/product.local.entity';
+import { NewProductLocalEntity } from '../../entities/local/newProduct.local.entity';
 
 export class ProductLocalUsecase {
-  getEntity() {
-    return new ProductLocalEntity();
-  }
+  find(productId: number) {
+    const { entity: entities } = new NewProductLocalEntity();
+    const record = entities.filter(entity => entity.id === productId)[0];
 
-  hello(category?: ProductDTO) {
-    const entity = new ProductLocalEntity();
-
-    console.log('ProductLocalUsecase: ', entity);
+    return record;
   }
 }
