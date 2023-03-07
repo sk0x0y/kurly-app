@@ -8,7 +8,7 @@ import ItemSortTab from '../../components/designsystem/tab/ItemSortTab';
 // eslint-disable-next-line no-unused-vars
 import { useLocalCategoryEntity, useLocalNewProductEntity, useLocalProductEntity } from '../../infrastructure/zustand';
 
-function NewProduct() {
+function Budget() {
   const categoryEntity = useLocalCategoryEntity();
   // const productEntity = useLocalProductEntity();
   const productEntity = useLocalNewProductEntity();
@@ -23,7 +23,7 @@ function NewProduct() {
     >
       <Product.CollectionBanner
         url="/categories/490"
-        image={{ src: '/collection/banner/glVdP62yrvcvvzpsseGCDLUS3ErqbgPx8i8UGozE.png' }}
+        image={{ src: '/collection/banner/8VZCFUCCtBbOflZvly9F77qmdIeUikdrzGL4g1fO.png' }}
       />
 
       <Typography.Title
@@ -34,7 +34,7 @@ function NewProduct() {
           letter-spacing: -1px;
         `}
       >
-        신상품
+        알뜰쇼핑
       </Typography.Title>
 
       <div
@@ -86,4 +86,4 @@ function NewProduct() {
   );
 }
 
-export default NewProduct;
+export default Budget;

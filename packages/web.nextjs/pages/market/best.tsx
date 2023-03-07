@@ -8,7 +8,7 @@ import ItemSortTab from '../../components/designsystem/tab/ItemSortTab';
 // eslint-disable-next-line no-unused-vars
 import { useLocalCategoryEntity, useLocalNewProductEntity, useLocalProductEntity } from '../../infrastructure/zustand';
 
-function NewProduct() {
+function Best() {
   const categoryEntity = useLocalCategoryEntity();
   // const productEntity = useLocalProductEntity();
   const productEntity = useLocalNewProductEntity();
@@ -16,16 +16,7 @@ function NewProduct() {
   // TODO: 추후 react-query 로 API Fetch 해서 Entity 에 Dispatch 해 줄 예정
 
   return (
-    <Content.Section
-      styles={css`
-        padding-top: 0;
-      `}
-    >
-      <Product.CollectionBanner
-        url="/categories/490"
-        image={{ src: '/collection/banner/glVdP62yrvcvvzpsseGCDLUS3ErqbgPx8i8UGozE.png' }}
-      />
-
+    <Content.Section>
       <Typography.Title
         level="h2"
         styles={css`
@@ -34,7 +25,7 @@ function NewProduct() {
           letter-spacing: -1px;
         `}
       >
-        신상품
+        베스트
       </Typography.Title>
 
       <div
@@ -86,4 +77,4 @@ function NewProduct() {
   );
 }
 
-export default NewProduct;
+export default Best;
