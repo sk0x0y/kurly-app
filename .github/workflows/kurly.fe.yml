@@ -5,7 +5,8 @@ on:
     branches: [ "test/actions-workflow" ]
 
 env:
-  REGISTRY: ghcr.io/sk0x0y
+  GITHUB_SHA: ${{ github.sha }}
+  GITHUB_REPOSITORY_OWNER: ${{ github.repository_owner  }}
 
 jobs:
   build:
@@ -42,7 +43,7 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           source: "docker-compose.yml, default.conf"
-          target: "~/app"
+          target: "~/app/nginx"
 
   deployment:
     name: Deploy Docker Image Stage
@@ -58,9 +59,8 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             echo "Connected with Actions!"
-            mv default.conf ./app/nginx
-            sudo docker stop kurlyapp-web
+            cd ./app/nginx
+            mv default.conf ./conf.d
             sudo docker compose down
             sudo docker system prune -f -a
             sudo docker compose up -d
-            sudo docker run -d -p 3000:3000 —name kurlyapp-web ghcr.io/sk0x0y/kurlyapp/web:${{ github.sha }}
