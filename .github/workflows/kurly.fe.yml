@@ -70,11 +70,6 @@ jobs:
             echo ${{ github.sha }}
             cd ./app/nginx
             mv default.conf ./conf.d
-
-      - name: Deploy with Docker Compose
-        env:
-          GITHUB_SHA: ${{ github.sha }}
-        run: |
-          sudo docker compose down
-          sudo docker system prune -f -a
-          sudo docker compose up -d
+            sudo docker compose down
+            sudo docker system prune -f -a
+            sudo docker compose up -d
