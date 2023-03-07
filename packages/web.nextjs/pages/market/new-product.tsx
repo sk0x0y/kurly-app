@@ -5,6 +5,7 @@ import Product from '../../components/designsystem/product';
 import Kernel from '../../components/designsystem/kernel';
 import Pagination from '../../components/designsystem/pagination/Pagination';
 import ItemSortTab from '../../components/designsystem/tab/ItemSortTab';
+// eslint-disable-next-line no-unused-vars
 import { useLocalCategoryEntity, useLocalNewProductEntity, useLocalProductEntity } from '../../infrastructure/zustand';
 
 function NewProduct() {

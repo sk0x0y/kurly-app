@@ -23,7 +23,7 @@ function ProductId() {
   const record = dispatch.find(Number(productId));
 
   useEffect(() => {
-    console.log(record);
+    window.console.log(record);
   }, [record]);
 
   useEffect(() => {
