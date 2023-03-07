@@ -1,2 +1,3 @@
 docker-compose.yml
 01-kurlyapp-web.conf
+packages/web.nextjs/.next
