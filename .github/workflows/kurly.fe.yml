@@ -64,4 +64,4 @@ jobs:
             mv default.conf ./conf.d
             sudo docker compose down
             sudo docker system prune -f -a
-            sudo docker --env-file .env compose up -d
+            sudo docker compose --env-file .env up -d
