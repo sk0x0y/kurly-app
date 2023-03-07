@@ -57,7 +57,7 @@ jobs:
             cd ./app/nginx
             echo "GITHUB_REPOSITORY_OWNER=${{ github.repository_owner }}" > .env
             echo "GITHUB_SHA=${{ github.sha }}" >> .env
-            mv default.conf ./conf.d
+            mv 01-kurlyapp-web.conf ./conf.d
             sudo docker compose down
             sudo docker system prune -f -a
             sudo docker compose --env-file .env up -d
