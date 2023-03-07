@@ -4,6 +4,9 @@ on:
   push:
     branches: [ "test/actions-workflow" ]
 
+env:
+  REGISTRY: ghcr.io/sk0x0y
+
 jobs:
   build:
     name: Build Docker Image Stage
@@ -28,11 +31,9 @@ jobs:
         with:
           context: .
           push: true
-          tags: ghcr.io/${{ github.repository_owner }}/kurlyapp/web:1.0.0
+          tags: ghcr.io/${{ github.repository_owner }}/kurlyapp/web:${{ github.sha }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
-
-      - run: docker images
 
   deployment:
     name: Deploy Docker Image Stage
@@ -50,4 +51,4 @@ jobs:
             echo "Connected with Actions!"
             sudo docker stop kurlyapp-web
             sudo docker system prune -f
-            sudo docker run -d -p 3000:3000 --name kurlyapp-web ghcr.io/sk0x0y/kurlyapp/web:1.0.0
+            sudo docker run -d -p 3000:3000 --name kurlyapp-web ghcr.io/sk0x0y/kurlyapp/web:${{ github.sha }}
