@@ -48,10 +48,5 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             echo "Connected with Actions!"
-            sudo docker images
-            sudo docker ps -a
-            sudo docker stop kurlyapp-web
-            sudo docker rm kurlyapp-web
-            sudo docker rmi ghcr.io/sk0x0y/kurlyapp/web:*
-            sudo docker pull ghcr.io/sk0x0y/kurlyapp/web:1.0.0
+            sudo docker system prune -f
             sudo docker run -d -p 3000:3000 --name kurlyapp-web ghcr.io/sk0x0y/kurlyapp/web:1.0.0
