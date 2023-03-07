@@ -6,7 +6,9 @@ services:
     ports:
       - "80:80"
     volumes:
-      - ./app/nginx/conf.d:/etc/nginx/conf.d
+      - ./conf.d:/etc/nginx/conf.d
+    depends_on:
+      - web
 
   web:
     image: ghcr.io/${GITHUB_REPOSITORY_OWNER}/kurlyapp/web:${GITHUB_SHA}
