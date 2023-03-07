@@ -17,7 +17,7 @@ function Guide() {
             width: 100%;
           `}
           src="/delivery/guide/img_main.jpg"
-          alt="Delivery Guide Main Image"
+          alt="Delivery Guide Main"
         />
       </div>
 
