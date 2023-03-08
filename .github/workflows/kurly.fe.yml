@@ -63,7 +63,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             echo "Connected with Actions!"
-            cd ./app/kurly
+            cd ./app/kurly/docker
             echo "GITHUB_REPOSITORY_OWNER=${{ github.repository_owner }}" > .env
             echo "GITHUB_SHA=${{ github.sha }}" >> .env
             sudo docker compose down
