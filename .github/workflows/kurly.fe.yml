@@ -33,14 +33,25 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
+      - name: SCP Command to Transfer Files (Send Docker Config)
+        uses: appleboy/scp-action@v0.1.3
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          source: "./docker/docker-compose.yml"
+          target: "~/app/kurly/docker"
+          strip_components: 1
+
       - name: SCP Command to Transfer Files (Send Nginx Config)
         uses: appleboy/scp-action@v0.1.3
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          source: "./docker/docker-compose.yml, ./docker/conf.d/00-default-page.conf, ./docker/conf.d/01-kurlyapp-web.conf"
-          target: "~/app/kurly"
+          source: "./docker/conf.d"
+          target: "~/app/kurly/nginx/conf.d"
+          strip_components: 1
 
   deployment:
     name: Deploy Docker Image Stage
@@ -56,7 +67,6 @@ jobs:
           script: |
             echo "Connected with Actions!"
             cd ./app/kurly/docker
-            mv ./conf.d ../nginx
             echo "GITHUB_REPOSITORY_OWNER=${{ github.repository_owner }}" > .env
             echo "GITHUB_SHA=${{ github.sha }}" >> .env
             sudo docker compose down
