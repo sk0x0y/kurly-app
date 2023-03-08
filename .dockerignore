@@ -1,4 +1,4 @@
 docker/docker-compose.yml
-docker/00-default-page.conf
-docker/01-kurlyapp-web.conf
+docker/conf.d/00-default-page.conf
+docker/conf.d/01-kurlyapp-web.conf
 packages/web.nextjs/.next
