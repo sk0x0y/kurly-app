@@ -2,7 +2,7 @@ FROM node:lts-alpine
 
 WORKDIR /app
 
-COPY . .
+COPY .. .
 
 RUN yarn install
 RUN yarn nextjs:build
