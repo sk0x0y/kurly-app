@@ -1,5 +1,5 @@
-LABEL "repository"="https://github.com/sk0x0y/kurlyapp"
-LABEL "maintainer"="sk0x0y <seokyeong.yang@kakao.com>"
+LABEL repository="https://github.com/sk0x0y/kurlyapp"
+LABEL maintainer="sk0x0y <seokyeong.yang@kakao.com>"
 
 FROM node:lts-alpine4
 
