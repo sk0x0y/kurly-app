@@ -1,4 +1,5 @@
 import { css } from '@emotion/react';
+import { useRouter } from 'next/router';
 import Content from '../../../components/designsystem/content';
 import Typography from '../../../components/designsystem/typography';
 import Product from '../../../components/designsystem/product';
@@ -11,7 +12,6 @@ import {
   useLocalNewProductEntity,
   useLocalProductEntity,
 } from '../../../infrastructure/zustand';
-import { useRouter } from 'next/router';
 
 function SubCategoryId() {
   const router = useRouter();
