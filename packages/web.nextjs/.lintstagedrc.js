@@ -1,13 +1,17 @@
 const path = require('path');
 
 const buildEslintCommand = filenames => {
-  console.log(`next lint --fix --file ${filenames.map(f => path.relative(process.cwd(), f)).join(' --file ')}`);
+  return `yarn nextjs:lint --fix --file ${filenames
+    .map((f, index) => {
+      const target = path.relative(process.cwd(), f).split('/').slice(2).join('/');
 
-  return `yarn workspace web.nextjs lint --fix --file ${filenames
-    .map(f => path.relative(process.cwd(), f))
+      console.log('Detected Target: ', target);
+
+      return path.relative(process.cwd(), f).split('/').slice(2).join('/');
+    })
     .join(' --file ')}`;
 };
 
 module.exports = {
-  '*.{js,jsx,ts,tsx}': [buildEslintCommand],
+  '*.{ts,tsx}': [buildEslintCommand],
 };

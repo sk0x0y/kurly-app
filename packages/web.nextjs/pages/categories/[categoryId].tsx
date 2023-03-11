@@ -1,4 +1,5 @@
 import { css } from '@emotion/react';
+import { useRouter } from 'next/router';
 import Content from '../../components/designsystem/content';
 import Typography from '../../components/designsystem/typography';
 import Product from '../../components/designsystem/product';
@@ -7,7 +8,6 @@ import Pagination from '../../components/designsystem/pagination/Pagination';
 import ItemSortTab from '../../components/designsystem/tab/ItemSortTab';
 // eslint-disable-next-line no-unused-vars
 import { useLocalCategoryEntity, useLocalNewProductEntity, useLocalProductEntity } from '../../infrastructure/zustand';
-import { useRouter } from 'next/router';
 
 function CategoryId() {
   const router = useRouter();

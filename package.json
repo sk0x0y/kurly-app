@@ -18,15 +18,6 @@
   },
   "private": true,
   "license": "UNLICENSED",
-  "lint-staged": {
-    "**/*.+(ts|tsx|js|jsx)": [
-      "eslint --fix",
-      "prettier --write"
-    ],
-    "packages/web.nextjs/**/*.+(ts|tsx)": [
-      "yarn nextjs:lint"
-    ]
-  },
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
