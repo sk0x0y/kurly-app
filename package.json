@@ -43,7 +43,7 @@
     "nextjs:dev": "yarn workspace web.nextjs dev",
     "nextjs:start": "yarn workspace web.nextjs start",
     "nextjs:build": "yarn workspace web.nextjs build",
-    "nextjs:lint": "yarn workspace web.nextjs lint --fix",
+    "nextjs:lint": "yarn workspace web.nextjs lint",
     "postinstall": "husky install"
   }
 }
