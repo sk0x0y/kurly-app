@@ -1,5 +1,12 @@
 export interface ChildrenMenu {
   id: number;
+  subCategoryId: number;
+  url: string;
+  name: string;
+}
+export interface SubCategory {
+  id: number;
+  subCategoryId: number;
   url: string;
   name: string;
 }
