@@ -1,5 +1,6 @@
 import { css } from '@emotion/react';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 import Content from '../../../components/designsystem/content';
 import Typography from '../../../components/designsystem/typography';
 import Product from '../../../components/designsystem/product';
@@ -40,6 +41,61 @@ function SubCategoryId() {
         <p>CategoryID: {categoryId}</p>
         <p>SubCategoryID: {subCategoryId}</p>
       </div>
+
+      <ul
+        css={css`
+          display: grid;
+          grid-template-columns: repeat(4, 180px);
+          gap: 16px 83px;
+          overflow: hidden;
+          margin-top: 28px;
+          padding: 30px 40px;
+          border: 1px solid rgb(226, 226, 226);
+          line-height: 20px;
+        `}
+      >
+        <li>
+          <Link href={`/categories/${categoryId}`} passHref>
+            <a
+              css={css`
+                color: inherit;
+                letter-spacing: -1px;
+                text-decoration: none;
+                cursor: pointer;
+              `}
+            >
+              전체보기
+            </a>
+          </Link>
+        </li>
+
+        {categoryEntity.map(category =>
+          category.categoryId === Number(categoryId)
+            ? category.children?.map(child => (
+                <li>
+                  <Link href={child.url ?? '/'} passHref>
+                    <a
+                      css={css`
+                        font-weight: ${child?.subCategoryId === Number(subCategoryId) && 700};
+                        color: ${child?.subCategoryId === Number(subCategoryId) ? 'rgb(95, 0, 128)' : 'inherit'};
+                        letter-spacing: -1px;
+                        text-decoration: none;
+                        cursor: pointer;
+
+                        &:hover {
+                          font-weight: 700;
+                          color: rgb(95, 0, 128);
+                        }
+                      `}
+                    >
+                      {child.name}
+                    </a>
+                  </Link>
+                </li>
+              ))
+            : null
+        )}
+      </ul>
 
       <div
         css={css`
