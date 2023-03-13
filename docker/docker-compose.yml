@@ -3,6 +3,7 @@ version: '3'
 services:
   nginx:
     image: nginx:stable-alpine
+    container_name: nginx
     ports:
       - "80:80"
     volumes:
@@ -11,3 +12,4 @@ services:
 
   web:
     image: ghcr.io/${GITHUB_REPOSITORY_OWNER}/kurlyapp/web:${GITHUB_SHA}
+    container_name: web
