@@ -1,8 +1,6 @@
 /* TODO: Next.js Font Optimization 적용하기, _document.tsx 를 통한 적용 가능 */
 /* https://engschool.tistory.com/m/75 */
 
-@import url('//fonts.googleapis.com/css2?family=Gothic+A1:wght@100;200;300;400;500;600;700;800;900&display=swap');
-
 * {
   box-sizing: border-box;
 }

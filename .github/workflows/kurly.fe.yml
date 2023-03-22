@@ -67,10 +67,10 @@ jobs:
           script: |
             echo "Connected with Actions!"
             cd ./app/kurly/docker
+            chmod +x set_env.sh
             ./set_env.sh
             echo "GITHUB_REPOSITORY_OWNER=${{ github.repository_owner }}" > .env
             echo "GITHUB_WEBAPP_SHA=${{ github.sha }}" >> .env
             sudo docker compose down
             sudo docker rmi ghcr.io/sk0x0y/kurlyapp/web:$GITHUB_WEBAPP_SHA
             sudo docker compose --env-file .env up -d
-

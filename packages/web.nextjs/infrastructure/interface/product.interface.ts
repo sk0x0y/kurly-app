@@ -25,6 +25,8 @@ export type IntroType = { image?: { src: string } } & Omit<IContent, 'image'>;
 
 export interface IProduct {
   id: number;
+  categoryId?: number;
+  subCategoryId?: number;
   src?: string; // DEPRECATED: 구 이미지 구조 will be deprecated
   image: {
     // NOTE: 새로운 이미지 구조
