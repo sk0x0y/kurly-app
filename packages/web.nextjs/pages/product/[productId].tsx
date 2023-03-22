@@ -8,6 +8,7 @@ import Kernel from '../../components/designsystem/kernel';
 import Summary from '../../components/product/Summary';
 import InformationNoticeItem from '../../components/product/InformationNoticeItem';
 import { useLocalProductDispatch } from '../../infrastructure/zustand';
+import SelectAndPutInCart from '../../components/product/SelectAndPutInCart';
 
 function ProductId() {
   const router = useRouter();
@@ -70,6 +71,9 @@ function ProductId() {
                   description={item.description}
                 />
               ))}
+
+            {/* 상품 선택 및 장바구니 담기 - 구매 프로세스 */}
+            <SelectAndPutInCart />
           </div>
         </div>
       </div>
