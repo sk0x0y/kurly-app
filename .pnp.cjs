@@ -2727,6 +2727,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["immer", [\
+        ["npm:9.0.21", {\
+          "packageLocation": "./.yarn/cache/immer-npm-9.0.21-03c48c58ea-70e3c27416.zip/node_modules/immer/",\
+          "packageDependencies": [\
+            ["immer", "npm:9.0.21"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["immutable", [\
         ["npm:4.1.0", {\
           "packageLocation": "./.yarn/cache/immutable-npm-4.1.0-f6635927b8-b9bc1f14fb.zip/node_modules/immutable/",\
@@ -4975,6 +4984,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint-config-next", "virtual:6e9a9c1bb2d4eeef4bcbb02637eda15d2d5bb331c7a1e5529988a557dee635de863e1f09502cbbb23e19d89feac23910032416e639c62d21b66813ee7c7bdf04#npm:12.3.1"],\
             ["eslint-config-prettier", "virtual:6e9a9c1bb2d4eeef4bcbb02637eda15d2d5bb331c7a1e5529988a557dee635de863e1f09502cbbb23e19d89feac23910032416e639c62d21b66813ee7c7bdf04#npm:8.5.0"],\
             ["eslint-plugin-prettier", "virtual:6e9a9c1bb2d4eeef4bcbb02637eda15d2d5bb331c7a1e5529988a557dee635de863e1f09502cbbb23e19d89feac23910032416e639c62d21b66813ee7c7bdf04#npm:4.2.1"],\
+            ["immer", "npm:9.0.21"],\
             ["next", "virtual:6e9a9c1bb2d4eeef4bcbb02637eda15d2d5bb331c7a1e5529988a557dee635de863e1f09502cbbb23e19d89feac23910032416e639c62d21b66813ee7c7bdf04#npm:12.3.1"],\
             ["normalize.css", "npm:8.0.1"],\
             ["react", "npm:18.2.0"],\
@@ -5110,7 +5120,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["zustand", "virtual:6e9a9c1bb2d4eeef4bcbb02637eda15d2d5bb331c7a1e5529988a557dee635de863e1f09502cbbb23e19d89feac23910032416e639c62d21b66813ee7c7bdf04#npm:4.3.3"],\
             ["@types/immer", null],\
             ["@types/react", "npm:18.0.21"],\
-            ["immer", null],\
+            ["immer", "npm:9.0.21"],\
             ["react", "npm:18.2.0"],\
             ["use-sync-external-store", "virtual:9c107638b64f46e36852dd3f3be0a9616ba777c80e5c999723f8685acedd5fca5fea026bab026c159ff77e4570592b3abbe5d2154f88e2359947526723b23878#npm:1.2.0"]\
           ],\

@@ -2130,6 +2130,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"immer@npm:^9.0.21":
+  version: 9.0.21
+  resolution: "immer@npm:9.0.21"
+  checksum: 70e3c274165995352f6936695f0ef4723c52c92c92dd0e9afdfe008175af39fa28e76aafb3a2ca9d57d1fb8f796efc4dd1e1cc36f18d33fa5b74f3dfb0375432
+  languageName: node
+  linkType: hard
+
 "immutable@npm:^4.0.0":
   version: 4.1.0
   resolution: "immutable@npm:4.1.0"
@@ -4045,6 +4052,7 @@ __metadata:
     eslint-config-next: 12.3.1
     eslint-config-prettier: ^8.5.0
     eslint-plugin-prettier: ^4.2.1
+    immer: ^9.0.21
     next: 12.3.1
     normalize.css: ^8.0.1
     react: 18.2.0
