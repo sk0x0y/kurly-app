@@ -29,6 +29,7 @@
       }
     ],
     "jsx-a11y/anchor-is-valid": "off",
+    "jsx-a11y/click-events-have-key-events": "warn",
     "no-underscore-dangle": "off",
     "prettier/prettier": "off",
     // Adaptor <-> Interactor (Controller) <-> Usecase (Service) <-> DTO <-> Entity 구현을 위한 rules
