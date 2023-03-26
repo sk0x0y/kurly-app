@@ -1,6 +1,7 @@
-import Container from './Container';
 import Group from './Group';
+import List from './List';
+import SelectedItem from './SelectedItem';
 
-const Select = { Container, Group };
+const Select = { Group, List, SelectedItem };
 
 export default Select;

@@ -1,62 +1,63 @@
 import { css } from '@emotion/react';
+import { useState } from 'react';
+import Select from './index';
+import Button from '../button';
+import { useLocalNewProductEntity } from '../../../infrastructure/zustand';
 
-interface IProps {
-  isExpanded: boolean;
-}
-function Group(props: IProps) {
-  const { isExpanded } = props;
+function Group() {
+  const [isExpanded, setIsExpanded] = useState(false);
+  const productEntity = useLocalNewProductEntity();
+  const [selectedEntity, setSelectedEntity] = useState([]);
 
   return (
-    <ul
+    <div
       css={css`
-        display: ${isExpanded ? 'block' : 'none'};
-        position: absolute;
-        width: 100%;
-        background-color: #fff;
-        cursor: pointer;
+        position: relative;
       `}
     >
-      <li
-        css={css`
+      <Button.Base
+        onClick={() => setIsExpanded(!isExpanded)}
+        styles={css`
           display: inline-flex;
-          justify-content: space-between;
+          align-items: center;
           width: 100%;
-          padding: 11.5px 16px;
-          border-left: 1px solid rgb(221, 221, 221);
-          border-right: 1px solid rgb(221, 221, 221);
-
-          &:hover {
-            background-color: #fafafa;
-          }
-
-          &:first-of-type {
-            border-top: 0;
-          }
-
-          &:last-of-type {
-            border-bottom: 1px solid rgb(221, 221, 221);
-          }
+          height: 40px;
+          padding: 0 14px;
+          border: 1px solid rgb(221, 221, 221);
+          font-size: 12px;
+          line-height: 1.4375em;
+          letter-spacing: 0.00938em;
+          cursor: pointer;
+          user-select: none;
         `}
-        data-value={1}
       >
-        <span
+        <p>상품을 선택해주세요</p>
+        <i
           css={css`
-            font-size: 12px;
+            position: absolute;
+            right: 10px;
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMjQgMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTcgMTBsNSA1IDUtNXoiIC8+PC9zdmc+Cg==');
+            transform: ${isExpanded && 'rotate(180deg)'};
           `}
-        >
-          [멘베이] 명란 센베이 플레인
-        </span>
+        />
+      </Button.Base>
 
-        <span
-          css={css`
-            font-size: 12px;
-            font-weight: 600;
-          `}
-        >
-          12,500원
-        </span>
-      </li>
-    </ul>
+      <Select.List
+        isExpanded={isExpanded}
+        productEntity={productEntity}
+        onClick={subProduct => {
+          setSelectedEntity([]);
+
+          console.log(selectedEntity);
+        }}
+      />
+
+      {/* 선택 된 리스트 아이템을 보여주는 컴포넌트 */}
+      <Select.SelectedItem selectedEntity={selectedEntity} />
+    </div>
   );
 }
 
