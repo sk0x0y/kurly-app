@@ -22,6 +22,19 @@ export interface IContent {
   description?: string;
 }
 export type IntroType = { image?: { src: string } } & Omit<IContent, 'image'>;
+export type Price = {
+  original: number;
+  discount?: {
+    rate: number;
+    price: number;
+  };
+};
+export interface ISubProduct {
+  id: number;
+  productId?: number;
+  name: string;
+  price: Price;
+}
 
 export interface IProduct {
   id: number;
@@ -37,13 +50,8 @@ export interface IProduct {
   };
   name: string;
   description?: string;
-  price: {
-    original: number;
-    discount?: {
-      rate: number;
-      price: number;
-    };
-  };
+  price: Price;
+  subProduct?: ISubProduct[];
   notice?: { id: number; label: string; title: string; description?: string }[];
   content?: {
     intro?: IntroType;
