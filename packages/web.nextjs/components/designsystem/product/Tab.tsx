@@ -26,6 +26,10 @@ function Tab(props: IProps) {
             border-style: solid;
             border-color: #eee;
             background-color: #fafafa;
+
+            &:last-of-type {
+              border-right: 1px solid #eee;
+            }
           `}
         >
           <Button.Base
