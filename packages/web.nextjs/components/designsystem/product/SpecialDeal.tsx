@@ -1,15 +1,16 @@
 import { css } from '@emotion/react';
+import { useSelector } from 'react-redux';
 import Typography from '../typography';
 import Product from './index';
 import { ICollectionOptions } from '../../../infrastructure/interface/collectionOptions.interface';
-import { useLocalSpecialDealEntity } from '../../../infrastructure/zustand';
+import { RootState } from '../../../infrastructure/redux';
 
 interface IProps {
   options?: ICollectionOptions;
 }
 function SpecialDeal(props: IProps) {
   const { options } = props;
-  const products = useLocalSpecialDealEntity();
+  const products = useSelector((state: RootState) => state.specialDealAdaptor.entity);
 
   return (
     <section

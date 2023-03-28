@@ -1,17 +1,17 @@
 import { css } from '@emotion/react';
+import { useSelector } from 'react-redux';
 import Content from '../../components/designsystem/content';
 import Typography from '../../components/designsystem/typography';
 import Product from '../../components/designsystem/product';
 import Kernel from '../../components/designsystem/kernel';
 import Pagination from '../../components/designsystem/pagination/Pagination';
 import ItemSortTab from '../../components/designsystem/tab/ItemSortTab';
-// eslint-disable-next-line no-unused-vars
-import { useLocalCategoryEntity, useLocalNewProductEntity, useLocalProductEntity } from '../../infrastructure/zustand';
+import { RootState } from '../../infrastructure/redux';
 
 function Best() {
-  const categoryEntity = useLocalCategoryEntity();
+  const categoryEntity = useSelector((state: RootState) => state.categoryAdaptor.entity);
   // const productEntity = useLocalProductEntity();
-  const productEntity = useLocalNewProductEntity();
+  const productEntity = useSelector((state: RootState) => state.newProductAdaptor.entity);
 
   // TODO: 추후 react-query 로 API Fetch 해서 Entity 에 Dispatch 해 줄 예정
 

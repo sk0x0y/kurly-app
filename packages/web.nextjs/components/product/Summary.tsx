@@ -3,7 +3,7 @@ import Typography from '../designsystem/typography';
 import { DeliverType, IProduct } from '../../infrastructure/interface/product.interface';
 
 interface IProps {
-  record: IProduct;
+  record?: IProduct;
 }
 function Summary(props: IProps) {
   const { record } = props;

@@ -1,12 +1,13 @@
 import { css } from '@emotion/react';
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import Select from './index';
 import Button from '../button';
-import { useLocalNewProductEntity } from '../../../infrastructure/zustand';
+import { RootState } from '../../../infrastructure/redux';
 
 function Group() {
   const [isExpanded, setIsExpanded] = useState(false);
-  const productEntity = useLocalNewProductEntity();
+  const productEntity = useSelector((state: RootState) => state.newProductAdaptor.entity);
   const [selectedEntity, setSelectedEntity] = useState([]);
 
   return (

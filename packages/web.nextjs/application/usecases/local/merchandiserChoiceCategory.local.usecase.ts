@@ -1,14 +1,14 @@
-import { MerchandiserChoiceCategoryDTO } from '../../dto/merchandiserChoiceCategory.dto';
+import { createSlice } from '@reduxjs/toolkit';
 import { MerchandiserChoiceCategoryLocalEntity } from '../../entities/local/merchandiserChoiceCategory.local.entity';
 
-export class MerchandiserChoiceCategoryLocalUsecase {
-  getEntity() {
-    return new MerchandiserChoiceCategoryLocalEntity();
-  }
+const initialState: MerchandiserChoiceCategoryLocalEntity = {
+  ...new MerchandiserChoiceCategoryLocalEntity(),
+};
 
-  hello(category?: MerchandiserChoiceCategoryDTO) {
-    const entity = new MerchandiserChoiceCategoryLocalEntity();
+const merchandiserChoiceCategorySlice = createSlice({
+  initialState,
+  name: 'merchandiserChoiceCategory',
+  reducers: {},
+});
 
-    console.log('ProductLocalUsecase: ', entity);
-  }
-}
+export const { actions, reducer } = merchandiserChoiceCategorySlice;

@@ -2,12 +2,13 @@ import { css } from '@emotion/react';
 import { Swiper as SwiperClass } from 'swiper/types';
 import { Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { useSelector } from 'react-redux';
 import Typography from '../typography';
 import Button from '../button';
 import Product from './index';
 import ArrowRight from '../icon/ArrowRight';
 import { ICollectionOptions } from '../../../infrastructure/interface/collectionOptions.interface';
-import { useLocalProductEntity } from '../../../infrastructure/zustand';
+import { RootState } from '../../../infrastructure/redux';
 
 interface IProps {
   title: string;
@@ -17,7 +18,7 @@ interface IProps {
 }
 function Section(props: IProps) {
   const { title, subTitle, href, options } = props;
-  const products = useLocalProductEntity();
+  const products = useSelector((state: RootState) => state.productAdaptor.entity);
 
   return (
     <section

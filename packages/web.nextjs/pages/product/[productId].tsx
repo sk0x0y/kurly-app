@@ -1,14 +1,15 @@
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { css } from '@emotion/react';
 import Content from '../../components/designsystem/content';
 import Product from '../../components/designsystem/product';
 import Kernel from '../../components/designsystem/kernel';
 import Summary from '../../components/product/Summary';
 import InformationNoticeItem from '../../components/product/InformationNoticeItem';
-import { useLocalProductDispatch } from '../../infrastructure/zustand';
 import SelectAndPutInCart from '../../components/product/SelectAndPutInCart';
+import { RootState } from '../../infrastructure/redux';
 
 function ProductId() {
   const router = useRouter();
@@ -20,8 +21,8 @@ function ProductId() {
     { id: 3, name: '후기' },
     { id: 4, name: '문의' },
   ]);
-  const dispatch = useLocalProductDispatch();
-  const record = dispatch.find(Number(productId));
+  const productEntity = useSelector((state: RootState) => state.newProductAdaptor.entity);
+  const record = productEntity.find(entity => entity.id === Number(productId));
 
   useEffect(() => {
     window.console.log(record);

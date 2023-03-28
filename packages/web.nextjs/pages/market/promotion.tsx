@@ -1,9 +1,10 @@
 import { css } from '@emotion/react';
+import { useSelector } from 'react-redux';
 import Content from '../../components/designsystem/content';
-import { useLocalBannerEntity } from '../../infrastructure/zustand';
+import { RootState } from '../../infrastructure/redux';
 
 function Promotion() {
-  const banners = useLocalBannerEntity();
+  const banners = useSelector((state: RootState) => state.bannerAdaptor.entity);
 
   return (
     <Content.Section
@@ -13,6 +14,7 @@ function Promotion() {
     >
       {banners.map(banner => (
         <Content.Banner
+          key={banner.id}
           url={banner.url}
           image={banner.image}
           styles={css`
