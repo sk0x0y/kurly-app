@@ -23,25 +23,25 @@ import { BannerLocalSlice, store as bannerLocalSlice } from './local/banner.loca
 import { SpecialDealLocalSlice, store as specialDealLocalSlice } from './local/specialDeal.local';
 import { NewProductLocalSlice, store as newProductLocalSlice } from './local/newProduct.local';
 
-export const useGlobalStore = create<{
-  categoryLocal: CategoryLocalSlice;
-  category: CategorySlice;
-  productLocal: ProductLocalSlice;
-  merchandiserChoiceCategoryLocal: MerchandiserChoiceCategoryLocalSlice;
-  bannerLocal: BannerLocalSlice;
-  specialDealLocal: SpecialDealLocalSlice;
-  newProductLocal: NewProductLocalSlice;
-}>()(
-  devtools(() => ({
-    ...categoryLocalSlice(),
-    ...categorySlice(),
-    ...productLocalSlice(),
-    ...merchandiserChoiceCategoryLocalSlice(),
-    ...bannerLocalSlice(),
-    ...specialDealLocalSlice(),
-    ...newProductLocalSlice(),
-  }))
-);
+// export const useGlobalStore = create<{
+//   categoryLocal: CategoryLocalSlice;
+//   category: CategorySlice;
+//   productLocal: ProductLocalSlice;
+//   merchandiserChoiceCategoryLocal: MerchandiserChoiceCategoryLocalSlice;
+//   bannerLocal: BannerLocalSlice;
+//   specialDealLocal: SpecialDealLocalSlice;
+//   newProductLocal: NewProductLocalSlice;
+// }>()(
+//   devtools(() => ({
+//     ...categoryLocalSlice(),
+//     ...categorySlice(),
+//     ...productLocalSlice(),
+//     ...merchandiserChoiceCategoryLocalSlice(),
+//     ...bannerLocalSlice(),
+//     ...specialDealLocalSlice(),
+//     ...newProductLocalSlice(),
+//   }))
+// );
 
 export { useLocalCategoryEntity, useLocalCategoryDispatch } from './local/category.local';
 export { useCategoryEntity, useCategoryDispatch } from './category';
