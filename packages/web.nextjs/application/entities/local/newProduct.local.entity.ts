@@ -13,6 +13,12 @@ export class NewProductLocalEntity {
         name: '[멘베이] 명란 센베이 3종 (택1)',
         description: '명란과 감자로 만든 특별한 센베이',
         price: { original: 12500 },
+        subProduct: [
+          { id: 1, name: '[멘베이] 명란 센베이 플레인', price: { original: 12500 } },
+          { id: 2, name: '[멘베이] 명란 센베이 어니언', price: { original: 12500 } },
+          { id: 3, name: '[멘베이] 명란 센베이 보니토 (가쓰오부시)', price: { original: 12500 } },
+          { id: 4, name: '[멘베이] 명란 센베이 핫 앤 스파이시', price: { original: 12500 } },
+        ],
         notice: [
           {
             id: 1,

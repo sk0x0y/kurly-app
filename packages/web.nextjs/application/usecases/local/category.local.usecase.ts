@@ -1,14 +1,18 @@
-import { CategoryDTO } from '../../dto/category.dto';
+import { createSlice } from '@reduxjs/toolkit';
 import { CategoryLocalEntity } from '../../entities/local/category.local.entity';
 
-export class CategoryLocalUsecase {
-  getEntity() {
-    return new CategoryLocalEntity();
-  }
+const initialState: CategoryLocalEntity = {
+  ...new CategoryLocalEntity(),
+};
 
-  hello(category?: CategoryDTO) {
-    const entity = new CategoryLocalEntity();
+const categorySlice = createSlice({
+  initialState,
+  name: 'category',
+  reducers: {
+    increase: state => {
+      state.entity[0].id = 20;
+    },
+  },
+});
 
-    console.log('CategoryLocalUsecase: ', entity);
-  }
-}
+export const { actions, reducer } = categorySlice;

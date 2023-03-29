@@ -2,19 +2,20 @@ import { css } from '@emotion/react';
 import { Swiper as SwiperClass } from 'swiper/types';
 import { Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { useSelector } from 'react-redux';
 import Product from './index';
 import Typography from '../typography';
 import Button from '../button';
 import { ICollectionOptions } from '../../../infrastructure/interface/collectionOptions.interface';
-import { useLocalMerchandiserChoiceCategoryEntity, useLocalProductEntity } from '../../../infrastructure/zustand';
+import { RootState } from '../../../infrastructure/redux';
 
 interface IProps {
   options?: ICollectionOptions;
 }
 function MerchandiserChoice(props: IProps) {
   const { options } = props;
-  const categories = useLocalMerchandiserChoiceCategoryEntity();
-  const products = useLocalProductEntity();
+  const categories = useSelector((state: RootState) => state.categoryAdaptor.entity);
+  const products = useSelector((state: RootState) => state.productAdaptor.entity);
 
   return (
     <section

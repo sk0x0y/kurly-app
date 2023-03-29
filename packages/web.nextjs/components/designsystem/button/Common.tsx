@@ -1,4 +1,4 @@
-import React, { MouseEvent } from 'react';
+import React, { MouseEventHandler } from 'react';
 import { css, SerializedStyles } from '@emotion/react';
 
 interface ButtonOptions {
@@ -17,8 +17,7 @@ interface ButtonOptions {
   cursor?: 'pointer' | 'default';
 }
 interface IProps {
-  // eslint-disable-next-line no-unused-vars
-  onClick?: (e: MouseEvent) => void;
+  onClick?: MouseEventHandler<HTMLButtonElement>;
   styles?: SerializedStyles;
   options?: ButtonOptions;
   children: React.ReactNode;

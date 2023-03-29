@@ -7,6 +7,7 @@ import 'swiper/scss/navigation';
 // eslint-disable-next-line import/no-unresolved
 import 'swiper/scss/pagination';
 import type { AppProps } from 'next/app';
+import wrapper from '../infrastructure/redux/store';
 import Layout from '../components/layout';
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -17,4 +18,4 @@ function MyApp({ Component, pageProps }: AppProps) {
   );
 }
 
-export default MyApp;
+export default wrapper.withRedux(MyApp);

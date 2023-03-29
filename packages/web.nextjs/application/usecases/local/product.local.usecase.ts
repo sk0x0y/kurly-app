@@ -1,12 +1,18 @@
-// import { ProductDTO } from '../../dto/product.dto';
-// import { ProductLocalEntity } from '../../entities/local/product.local.entity';
-import { NewProductLocalEntity } from '../../entities/local/newProduct.local.entity';
+import { createSlice } from '@reduxjs/toolkit';
+import { ProductLocalEntity } from '../../entities/local/product.local.entity';
 
-export class ProductLocalUsecase {
-  find(productId: number) {
-    const { entity: entities } = new NewProductLocalEntity();
-    const record = entities.filter(entity => entity.id === productId)[0];
+const initialState: ProductLocalEntity = {
+  ...new ProductLocalEntity(),
+};
 
-    return record;
-  }
-}
+const productSlice = createSlice({
+  initialState,
+  name: 'product',
+  reducers: {
+    increase: state => {
+      state.entity[0].id = 20;
+    },
+  },
+});
+
+export const { actions, reducer } = productSlice;
