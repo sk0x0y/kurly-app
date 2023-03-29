@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { SelectedProductLocalEntity } from '../../entities/local/selectedProduct.local.entity';
+import { ISubProduct } from '../../../infrastructure/interface/product.interface';
 import { ISelectedProduct } from '../../../infrastructure/interface/selectedProduct.interface';
 
 const initialState: SelectedProductLocalEntity = {
@@ -10,7 +11,7 @@ const selectedProductSlice = createSlice({
   initialState,
   name: 'selectedProduct',
   reducers: {
-    select: (state, action: PayloadAction<ISelectedProduct>) => {
+    select: (state, action: PayloadAction<ISubProduct>) => {
       const isDuplicated = state.entity.filter(entity => entity.id === action.payload.id).length;
 
       if (!isDuplicated) {
