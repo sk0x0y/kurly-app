@@ -1,13 +1,13 @@
 import Image from 'next/image';
-import { MouseEventHandler } from 'react';
 import { css } from '@emotion/react';
+import { useDispatch, useSelector } from 'react-redux';
 import Button from '../designsystem/button';
+import { RootState } from '../../infrastructure/redux';
+import { actions } from '../../application/usecases/local/cart.local.usecase';
 
-interface IProps {
-  onClick?: MouseEventHandler<HTMLButtonElement>;
-}
-function ShoppingButton(props: IProps) {
-  const { onClick } = props;
+function ShoppingButton() {
+  const dispatch = useDispatch();
+  const selectedProductEntity = useSelector((state: RootState) => state.selectedProductAdaptor.entity);
 
   return (
     <div
@@ -87,7 +87,9 @@ function ShoppingButton(props: IProps) {
         `}
       >
         <Button.Common
-          onClick={onClick}
+          onClick={() => {
+            dispatch(actions.put(selectedProductEntity));
+          }}
           styles={css`
             height: 100%;
             background-color: #5f0080;
