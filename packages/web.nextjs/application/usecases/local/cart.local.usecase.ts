@@ -11,15 +11,7 @@ const cartSlice = createSlice({
   name: 'cart',
   reducers: {
     put: (state, action: PayloadAction<ICart[]>) => {
-      const isEmpty = action.payload.length;
-
-      // if (isEmpty) {
-      //   window.alert('선택한 상품이 없습니다.');
-      // }
-
-      // if (!isEmpty) {
       state.entity = [...state.entity, ...action.payload];
-      // }
     },
   },
 });
