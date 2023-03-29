@@ -1,8 +1,14 @@
 import Image from 'next/image';
+import { MouseEventHandler } from 'react';
 import { css } from '@emotion/react';
 import Button from '../designsystem/button';
 
-function ShoppingButton() {
+interface IProps {
+  onClick?: MouseEventHandler<HTMLButtonElement>;
+}
+function ShoppingButton(props: IProps) {
+  const { onClick } = props;
+
   return (
     <div
       css={css`
@@ -81,6 +87,7 @@ function ShoppingButton() {
         `}
       >
         <Button.Common
+          onClick={onClick}
           styles={css`
             height: 100%;
             background-color: #5f0080;
