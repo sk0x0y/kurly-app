@@ -4,6 +4,6 @@ export class SelectedProductLocalEntity {
   entity: ISelectedProduct[];
 
   constructor() {
-    this.entity = [{ id: 1 }];
+    this.entity = [];
   }
 }
