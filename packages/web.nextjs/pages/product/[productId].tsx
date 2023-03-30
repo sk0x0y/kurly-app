@@ -74,7 +74,7 @@ function ProductId() {
               ))}
 
             {/* 상품 선택 및 장바구니 담기 - 구매 프로세스 */}
-            <SelectAndPutInCart />
+            <SelectAndPutInCart record={record} />
           </div>
         </div>
       </div>
