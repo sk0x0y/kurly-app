@@ -1,11 +1,13 @@
 import Image from 'next/image';
 import { css } from '@emotion/react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useRouter } from 'next/router';
 import Button from '../designsystem/button';
 import { RootState } from '../../infrastructure/redux';
 import { actions } from '../../application/usecases/local/cart.local.usecase';
 
 function ShoppingButton() {
+  const router = useRouter();
   const dispatch = useDispatch();
   const selectedProductEntity = useSelector((state: RootState) => state.selectedProductAdaptor.entity);
 
@@ -89,6 +91,11 @@ function ShoppingButton() {
         <Button.Common
           onClick={() => {
             dispatch(actions.put(selectedProductEntity));
+
+            const answer = selectedProductEntity.length && window.confirm('장바기누로 이동하시겠습니까?');
+            if (answer) {
+              router.push('/cart');
+            }
           }}
           styles={css`
             height: 100%;
