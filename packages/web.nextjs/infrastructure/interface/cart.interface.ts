@@ -1,3 +1,8 @@
 import { ISelectedProduct } from './selectedProduct.interface';
 
-export interface ICart extends ISelectedProduct {}
+export interface ICart {
+  selectedProduct: ISelectedProduct[];
+  productPrice: number;
+  salePrice: number;
+  deliverFee: number;
+}
