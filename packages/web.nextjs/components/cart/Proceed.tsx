@@ -20,6 +20,7 @@ function Proceed(props: IProps) {
           border: 0;
           background-color: ${cartEntity.selectedProduct.length ? 'rgb(95, 0, 128)' : 'rgb(221, 221, 221)'};
           color: #fff;
+          cursor: ${cartEntity.selectedProduct.length && 'pointer'};
         `}
       >
         {cartEntity.selectedProduct.length ? '주문하기' : '상품을 담아주세요'}
