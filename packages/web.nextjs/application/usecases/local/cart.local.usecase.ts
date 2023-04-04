@@ -17,7 +17,18 @@ const cartSlice = createSlice({
         window.alert('선택한 상품이 없습니다.');
       }
 
-      state.entity = [...state.entity, ...action.payload];
+      action.payload.map(selectedProduct => {
+        state.entity.productPrice += selectedProduct.price.original * selectedProduct.count;
+        state.entity.deliverFee = 3000;
+
+        if (selectedProduct.price.discount) {
+          state.entity.salePrice += selectedProduct.price.discount.price * selectedProduct.count;
+        }
+
+        return [];
+      });
+
+      state.entity = { ...state.entity, selectedProduct: [...action.payload] };
     },
   },
 });

@@ -5,8 +5,13 @@ import Select from './index';
 import Button from '../button';
 import { RootState } from '../../../infrastructure/redux';
 import { actions } from '../../../application/usecases/local/selectedProduct.local.usecase';
+import { IProduct } from '../../../infrastructure/interface/product.interface';
 
-function Group() {
+interface IProps {
+  record?: IProduct;
+}
+function Group(props: IProps) {
+  const { record } = props;
   const dispatch = useDispatch();
   const productEntity = useSelector((state: RootState) => state.newProductAdaptor.entity);
   const selectedProductEntity = useSelector((state: RootState) => state.selectedProductAdaptor.entity);
@@ -64,8 +69,8 @@ function Group() {
         </Button.Base>
 
         <Select.List
+          record={record}
           isExpanded={isExpanded}
-          productEntity={productEntity}
           onClick={subProduct => {
             setIsExpanded(false);
             dispatch(actions.select(subProduct));

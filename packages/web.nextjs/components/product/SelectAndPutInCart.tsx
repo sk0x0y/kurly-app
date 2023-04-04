@@ -3,8 +3,14 @@ import Select from '../designsystem/select';
 import InformationNoticeItem from './InformationNoticeItem';
 import Amount from './Amount';
 import ShoppingButton from './ShoppingButton';
+import { IProduct } from '../../infrastructure/interface/product.interface';
 
-function SelectAndPutInCart() {
+interface IProps {
+  record?: IProduct;
+}
+function SelectAndPutInCart(props: IProps) {
+  const { record } = props;
+
   return (
     <div>
       <div
@@ -23,7 +29,7 @@ function SelectAndPutInCart() {
             `,
           }}
         >
-          <Select.Group />
+          <Select.Group record={record} />
         </InformationNoticeItem>
       </div>
 

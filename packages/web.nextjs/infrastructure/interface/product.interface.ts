@@ -1,3 +1,7 @@
+export const StoreType = {
+  ROOM_TEMPERATURE: 0, // NOTE: 상온
+  FROZEN: 1, // NOTE: 냉동
+} as const;
 export const DeliverType = {
   FAST: 0, // NOTE: 샛별배송
   SLOW: 1, // NOTE: 택배배송
@@ -32,6 +36,7 @@ export type Price = {
 export interface ISubProduct {
   id: number;
   productId?: number;
+  storeType?: typeof StoreType[keyof typeof StoreType];
   name: string;
   price: Price;
 }
@@ -45,12 +50,14 @@ export interface IProduct {
     // NOTE: 새로운 이미지 구조
     src: string;
   };
+  storeType?: typeof StoreType[keyof typeof StoreType];
   deliver?: {
     type: typeof DeliverType[keyof typeof DeliverType];
   };
   name: string;
   description?: string;
   price: Price;
+  count?: number;
   subProduct?: ISubProduct[];
   notice?: { id: number; label: string; title: string; description?: string }[];
   content?: {

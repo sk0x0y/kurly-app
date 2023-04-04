@@ -1,6 +1,7 @@
 import { css } from '@emotion/react';
 import Link from 'next/link';
 import Image from 'next/image';
+import Button from '../designsystem/button';
 import Divider from '../header/Divider';
 import HamburgerMenuWrapper from '../header/HamburgerMenuWrapper';
 import CommonCenterMenu from '../header/CommonCenterMenu';
@@ -225,38 +226,39 @@ function Header() {
 
           {/* 사용자 개인화 메뉴 */}
           <div css={css``}>
-            <button
-              type="button"
-              css={css`
-                margin-right: 20px;
-                padding: 0;
-                border: 0;
+            {/* 주소지 설정 */}
+            <Button.Base
+              styles={css`
+                margin-left: 20px;
                 background-color: transparent;
               `}
             >
               <Image src="/address.svg" width={36} height={36} />
-            </button>
-            <button
-              type="button"
-              css={css`
-                padding: 0;
-                border: 0;
+            </Button.Base>
+
+            {/* 찜하기 */}
+            <Button.Base
+              styles={css`
+                margin-left: 20px;
                 background-color: transparent;
               `}
             >
               <Image src="/dibs_on.svg" width={36} height={36} />
-            </button>
-            <button
-              type="button"
-              css={css`
-                margin-left: 20px;
-                padding: 0;
-                border: 0;
-                background-color: transparent;
-              `}
-            >
-              <Image src="/cart.svg" width={36} height={36} />
-            </button>
+            </Button.Base>
+
+            {/* 장바구니 */}
+            <Link href="/cart" passHref>
+              <a>
+                <Button.Base
+                  styles={css`
+                    margin-left: 20px;
+                    background-color: transparent;
+                  `}
+                >
+                  <Image src="/cart.svg" width={36} height={36} />
+                </Button.Base>
+              </a>
+            </Link>
           </div>
         </div>
 
