@@ -24,6 +24,8 @@ function ProductId() {
   const productEntity = useSelector((state: RootState) => state.newProductAdaptor.entity);
   const record = productEntity.find(entity => entity.id === Number(productId));
 
+  // TODO: 첫 로딩 시 선택한 상품 엔티티 초기화
+
   useEffect(() => {
     window.console.log(record);
   }, [record]);
