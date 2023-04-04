@@ -6,6 +6,7 @@ import SelectedProduct from '../components/cart/SelectedProduct';
 import CheckAddress from '../components/cart/CheckAddress';
 import CheckPrice from '../components/cart/CheckPrice';
 import Proceed from '../components/cart/Proceed';
+import SelectedProductContainer from '../components/cart/SelectedProductContainer';
 
 function Cart() {
   const cartEntity = useSelector((state: RootState) => state.cartAdaptor.entity);
@@ -32,11 +33,12 @@ function Cart() {
         `}
       >
         {/* 페이지 좌측 선택된 상품 리스트 */}
-        <SelectedProduct cartEntity={cartEntity} />
+        <SelectedProductContainer cartEntity={cartEntity} />
 
         <div
           css={css`
             width: 284px;
+            min-height: 942px;
             padding-top: 60px;
           `}
         >
