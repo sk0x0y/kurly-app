@@ -1,3 +1,6 @@
+import { useState } from 'react';
+import { Hydrate, QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import type { DehydratedState } from '@tanstack/react-query';
 import 'normalize.css';
 import '../styles/globals.css';
 // eslint-disable-next-line import/no-unresolved
@@ -10,11 +13,17 @@ import type { AppProps } from 'next/app';
 import wrapper from '../infrastructure/redux/store';
 import Layout from '../components/layout';
 
-function MyApp({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps }: AppProps<{ dehydratedState: DehydratedState }>) {
+  const [queryClient] = useState(() => new QueryClient());
+
   return (
-    <Layout>
-      <Component {...pageProps} />
-    </Layout>
+    <QueryClientProvider client={queryClient}>
+      <Layout>
+        <Hydrate state={pageProps?.dehydratedState}>
+          <Component {...pageProps} />
+        </Hydrate>
+      </Layout>
+    </QueryClientProvider>
   );
 }
 
