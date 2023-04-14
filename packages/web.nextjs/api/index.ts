@@ -7,3 +7,4 @@ export const axiosInstance = axios.create({
 });
 
 export { getToken } from './token';
+export { getMainBanner } from './main-banner';
