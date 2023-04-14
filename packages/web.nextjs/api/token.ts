@@ -1,5 +1,5 @@
-import { axiosInstance } from './index';
+import axios from 'axios';
 
 export function getToken() {
-  return axiosInstance.get<{ accessToken: string }>('/nx/api/session');
+  return axios.get(process.env.NODE_ENV === 'production' ? 'https://www.kurly.com/nx/api/session' : '/nx/api/session');
 }
