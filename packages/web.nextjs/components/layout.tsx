@@ -1,5 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
+import { useToken } from '../hooks';
 import Header from './common/Header';
 import Footer from './common/Footer';
 
@@ -7,6 +8,8 @@ interface IProps {
   children: React.ReactNode;
 }
 function Layout({ children }: IProps) {
+  useToken();
+
   return (
     <>
       <Head>
