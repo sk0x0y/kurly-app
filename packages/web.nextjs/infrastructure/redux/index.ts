@@ -1,5 +1,6 @@
 import { HYDRATE } from 'next-redux-wrapper';
 import { AnyAction, CombinedState, combineReducers } from '@reduxjs/toolkit';
+import { reducer as tokenReducer } from '../../application/usecases/token.usecase';
 import { reducer as cartReducer } from '../../application/usecases/local/cart.local.usecase';
 import { reducer as categoryReducer } from '../../application/usecases/local/category.local.usecase';
 import { reducer as productReducer } from '../../application/usecases/local/product.local.usecase';
@@ -7,6 +8,7 @@ import { reducer as selectedProductReducer } from '../../application/usecases/lo
 import { reducer as newProductReducer } from '../../application/usecases/local/newProduct.local.usecase';
 import { reducer as specialDealReducer } from '../../application/usecases/local/specialDeal.local.usecase';
 import { reducer as bannerReducer } from '../../application/usecases/local/banner.local.usecase';
+import { TokenEntity } from '../../application/entities/token.entity';
 import { CartLocalEntity } from '../../application/entities/local/cart.local.entity';
 import { CategoryLocalEntity } from '../../application/entities/local/category.local.entity';
 import { ProductLocalEntity } from '../../application/entities/local/product.local.entity';
@@ -16,6 +18,7 @@ import { SelectedProductLocalEntity } from '../../application/entities/local/sel
 import { BannerLocalEntity } from '../../application/entities/local/banner.local.entity';
 
 interface ReducerState {
+  tokenAdaptor: TokenEntity;
   cartAdaptor: CartLocalEntity;
   categoryAdaptor: CategoryLocalEntity;
   productAdaptor: ProductLocalEntity;
@@ -36,6 +39,7 @@ export const rootReducer = (state: any, action: AnyAction): CombinedState<Reduce
 
     default:
       return combineReducers({
+        tokenAdaptor: tokenReducer,
         cartAdaptor: cartReducer,
         categoryAdaptor: categoryReducer,
         productAdaptor: productReducer,
