@@ -3,20 +3,21 @@ import Image from 'next/image';
 import { css } from '@emotion/react';
 import Typography from '../typography';
 import CartIcon from '../icon/CartIcon';
-import { DeliverType, IProduct } from '../../../infrastructure/interface/product.interface';
+import { DeliverType, IKurlyProductData, IProduct } from '../../../infrastructure/interface/product.interface';
 import { ICollectionOptions } from '../../../infrastructure/interface/collectionOptions.interface';
 import CommentIcon from '../icon/CommentIcon';
 
 interface IProps {
   // product: Omit<IProduct, 'id'>;
-  product: IProduct;
+  // product: IProduct;
   options?: ICollectionOptions;
+  product: IKurlyProductData;
 }
 function Collection(props: IProps) {
   const { product, options } = props;
 
   return (
-    <Link href={`/product/${product.id}`} passHref>
+    <Link href={`/product/${product.no}`} passHref>
       <a
         css={css`
           appearance: none;
@@ -31,19 +32,30 @@ function Collection(props: IProps) {
             position: relative;
           `}
         >
-          {options && options.imageSize ? (
-            <Image src={product.image.src} width={options.imageSize.width} height={options.imageSize.height} />
-          ) : (
-            <div
-              css={css`
-                font-weight: 600;
-                font-size: 18px;
-                color: #0070f3;
-              `}
-            >
-              이미지 사이즈를 설정해주세요
-            </div>
-          )}
+          <img
+            css={css`
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+            `}
+            src={product.list_image_url}
+            alt={`오늘의 추천 ${product.no}번 이미지`}
+          />
+
+          {/* {options && options.imageSize ? ( */}
+          {/*  <Image src={product.list_image_url} width={options.imageSize.width} height={options.imageSize.height} /> */}
+          {/* ) : ( */}
+          {/*  <div */}
+          {/*    css={css` */}
+          {/*      font-weight: 600; */}
+          {/*      font-size: 18px; */}
+          {/*      color: #0070f3; */}
+          {/*    `} */}
+          {/*  > */}
+          {/*    이미지 사이즈를 설정해주세요 */}
+          {/*  </div> */}
+          {/* )} */}
+
           <div
             css={css`
               position: absolute;
@@ -61,7 +73,7 @@ function Collection(props: IProps) {
           `}
         >
           {/* 배송 타입 */}
-          {product.deliver && (
+          {product.delivery_type_names && (
             <p
               css={css`
                 padding-bottom: 2px;
@@ -70,7 +82,8 @@ function Collection(props: IProps) {
                 letter-spacing: -0.5px;
               `}
             >
-              {product.deliver.type === DeliverType.FAST ? '샛별배송' : '택배'}
+              {/* {product.deliver.type === DeliverType.FAST ? '샛별배송' : '택배'} */}
+              {product.delivery_type_names[0]}
             </p>
           )}
 
@@ -80,7 +93,7 @@ function Collection(props: IProps) {
             options={{
               additionalStyle: [
                 css`
-                  margin-bottom: ${!product.description && '8px'};
+                  margin-bottom: ${!product.short_description && '8px'};
                   font-weight: 400;
                   font-size: 16px;
                   line-height: 1.45;
@@ -92,7 +105,7 @@ function Collection(props: IProps) {
           </Typography.Title>
 
           {/* 상품 설명 */}
-          {product.description && (
+          {product.short_description && (
             <p
               css={css`
                 padding-top: 4px;
@@ -102,14 +115,14 @@ function Collection(props: IProps) {
                 line-height: 18px;
               `}
             >
-              {product.description}
+              {product.short_description}
             </p>
           )}
 
           {/* 상품 가격 및 할인율 */}
           <div>
             <div>
-              {product.price.discount && (
+              {product.discounted_price && (
                 <Typography.Text
                   type="span"
                   options={{
@@ -125,7 +138,7 @@ function Collection(props: IProps) {
                     ],
                   }}
                 >
-                  {product.price.discount.rate}%
+                  {product.discount_rate}%
                 </Typography.Text>
               )}
 
@@ -142,12 +155,12 @@ function Collection(props: IProps) {
                   ],
                 }}
               >
-                {product.price.discount ? product.price.discount.price : product.price.original}
+                {product.discounted_price ? product.discounted_price : product.sales_price}
                 <span> 원</span>
               </Typography.Text>
             </div>
 
-            {product.price.discount && (
+            {product.discounted_price && (
               <Typography.Text
                 type="span"
                 options={{
@@ -163,13 +176,13 @@ function Collection(props: IProps) {
                   ],
                 }}
               >
-                {product.price.original}
+                {product.sales_price}
                 <span> 원</span>
               </Typography.Text>
             )}
 
             {/* 리뷰 */}
-            {product.review && (
+            {product.review_count && (
               <div
                 css={css`
                   display: flex;
@@ -195,7 +208,7 @@ function Collection(props: IProps) {
                     font-weight: 400;
                   `}
                 >
-                  {product.review?.count}
+                  {product.review_count}
                 </span>
               </div>
             )}
