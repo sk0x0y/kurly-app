@@ -1,5 +1,5 @@
 import { css } from '@emotion/react';
-import { Swiper as SwiperClass } from 'swiper/types';
+import { AxiosResponse } from 'axios';
 import { Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { useSelector } from 'react-redux';
@@ -7,18 +7,24 @@ import Typography from '../typography';
 import Button from '../button';
 import Product from './index';
 import ArrowRight from '../icon/ArrowRight';
-import { ICollectionOptions } from '../../../infrastructure/interface/collectionOptions.interface';
-import { RootState } from '../../../infrastructure/redux';
+// import { ICollectionOptions } from '../../../infrastructure/interface/collectionOptions.interface';
+// import { RootState } from '../../../infrastructure/redux';
+import { IKurlyProduct } from '../../../infrastructure/interface/product.interface';
 
+// interface IProps {
+//   title: string;
+//   subTitle?: string;
+//   href?: string;
+//   options?: ICollectionOptions;
+// }
 interface IProps {
-  title: string;
-  subTitle?: string;
-  href?: string;
-  options?: ICollectionOptions;
+  products: AxiosResponse<IKurlyProduct>;
 }
 function Section(props: IProps) {
-  const { title, subTitle, href, options } = props;
-  const products = useSelector((state: RootState) => state.productAdaptor.entity);
+  // const { title, subTitle, href, options } = props;
+  // const products = useSelector((state: RootState) => state.productAdaptor.entity);
+  // const products =
+  const { products } = props;
 
   return (
     <section
@@ -45,59 +51,78 @@ function Section(props: IProps) {
           ]}
         >
           {/* 상품 컬렉션 제목 */}
-          {href ? (
-            <Button.Anchor href={href}>
-              <Typography.Title
-                level="h2"
-                options={{
-                  additionalStyle: [
-                    css`
-                      position: relative;
-                      padding: 8px 0;
-                      font-weight: 500;
-                      font-size: 28px;
-                      color: rgb(51, 51, 51);
-                      line-height: 1.15;
-                      letter-spacing: -0.26px;
-                    `,
-                  ],
-                }}
-              >
-                {title}
+          <Typography.Title
+            level="h2"
+            options={{
+              additionalStyle: [
+                css`
+                  position: relative;
+                  padding: 8px 0;
+                  font-weight: 500;
+                  font-size: 28px;
+                  color: rgb(51, 51, 51);
+                  line-height: 1.15;
+                  letter-spacing: -0.26px;
+                `,
+              ],
+            }}
+          >
+            {products?.data.data.title}
+          </Typography.Title>
 
-                {/* 제목 링크 있을 때 화살표 아이콘 */}
-                <span
-                  css={css`
-                    position: absolute;
-                    top: 7px;
-                    width: 32px;
-                    height: 32px;
-                  `}
-                >
-                  <ArrowRight />
-                </span>
-              </Typography.Title>
-            </Button.Anchor>
-          ) : (
-            <Typography.Title
-              level="h2"
-              options={{
-                additionalStyle: [
-                  css`
-                    position: relative;
-                    padding: 8px 0;
-                    font-weight: 500;
-                    font-size: 28px;
-                    color: rgb(51, 51, 51);
-                    line-height: 1.15;
-                    letter-spacing: -0.26px;
-                  `,
-                ],
-              }}
-            >
-              {title}
-            </Typography.Title>
-          )}
+          {/* {products && products?.data.data.title ? ( */}
+          {/*  <Button.Anchor href="/"> */}
+          {/*    <Typography.Title */}
+          {/*      level="h2" */}
+          {/*      options={{ */}
+          {/*        additionalStyle: [ */}
+          {/*          css` */}
+          {/*            position: relative; */}
+          {/*            padding: 8px 0; */}
+          {/*            font-weight: 500; */}
+          {/*            font-size: 28px; */}
+          {/*            color: rgb(51, 51, 51); */}
+          {/*            line-height: 1.15; */}
+          {/*            letter-spacing: -0.26px; */}
+          {/*          `, */}
+          {/*        ], */}
+          {/*      }} */}
+          {/*    > */}
+          {/*      {products.data.data.title} */}
+
+          {/*      /!* 제목 링크 있을 때 화살표 아이콘 *!/ */}
+          {/*      <span */}
+          {/*        css={css` */}
+          {/*          position: absolute; */}
+          {/*          top: 7px; */}
+          {/*          width: 32px; */}
+          {/*          height: 32px; */}
+          {/*        `} */}
+          {/*      > */}
+          {/*        <ArrowRight /> */}
+          {/*      </span> */}
+          {/*    </Typography.Title> */}
+          {/*  </Button.Anchor> */}
+          {/* ) : ( */}
+          {/*  <Typography.Title */}
+          {/*    level="h2" */}
+          {/*    options={{ */}
+          {/*      additionalStyle: [ */}
+          {/*        css` */}
+          {/*          position: relative; */}
+          {/*          padding: 8px 0; */}
+          {/*          font-weight: 500; */}
+          {/*          font-size: 28px; */}
+          {/*          color: rgb(51, 51, 51); */}
+          {/*          line-height: 1.15; */}
+          {/*          letter-spacing: -0.26px; */}
+          {/*        `, */}
+          {/*      ], */}
+          {/*    }} */}
+          {/*  > */}
+          {/*    {products?.data.data.title} */}
+          {/*  </Typography.Title> */}
+          {/* )} */}
 
           {/* 상품 컬렉션 부제목 */}
           <Typography.Text
@@ -116,24 +141,18 @@ function Section(props: IProps) {
               ],
             }}
           >
-            {subTitle}
+            {products?.data.data.subtitle}
           </Typography.Text>
         </div>
 
         {/* 상품 컬렉션 아이템 */}
-        <Swiper
-          slidesPerView="auto"
-          spaceBetween={18}
-          navigation
-          modules={[Navigation]}
-          onSlideChange={() => window.console.log('slide change')}
-          onSwiper={(swiper: SwiperClass) => window.console.log(swiper)}
-        >
-          {products.map(product => (
-            <SwiperSlide key={product.id} style={{ width: 249 }}>
-              <Product.Collection product={product} options={options} />
-            </SwiperSlide>
-          ))}
+        <Swiper slidesPerView="auto" spaceBetween={18} navigation modules={[Navigation]}>
+          {products &&
+            products.data.data.data.map(product => (
+              <SwiperSlide key={product.no} style={{ width: 249 }}>
+                <Product.Collection product={product} />
+              </SwiperSlide>
+            ))}
         </Swiper>
       </div>
     </section>
