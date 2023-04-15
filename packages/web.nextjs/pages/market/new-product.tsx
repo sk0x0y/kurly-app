@@ -71,13 +71,14 @@ function NewProduct() {
               gap: 31px 18px;
             `}
           >
-            {productEntity.map(product => (
-              <Product.Collection
-                key={product.id}
-                product={product}
-                options={{ imageSize: { width: 249, height: 320 } }}
-              />
-            ))}
+            {/* TODO: 새로운 코드에 맞는 리팩터링 필요 */}
+            {/* {productEntity.map(product => ( */}
+            {/*  <Product.Collection */}
+            {/*    key={product.id} */}
+            {/*    product={product} */}
+            {/*    options={{ imageSize: { width: 249, height: 320 } }} */}
+            {/*  /> */}
+            {/* ))} */}
           </div>
           <Pagination />
         </div>
