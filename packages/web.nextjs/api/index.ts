@@ -8,3 +8,5 @@ export const axiosInstance = axios.create({
 export { getToken } from './token';
 export { getMainBanner } from './main-banner';
 export { getTodayRecommendation } from './today-recommendation';
+export { getRandomCollection } from './random-collection';
+export { getMdChoice } from './md-choice';

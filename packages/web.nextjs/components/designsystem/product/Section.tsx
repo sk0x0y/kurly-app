@@ -1,15 +1,17 @@
+import { useSelector } from 'react-redux';
 import { css } from '@emotion/react';
 import { AxiosResponse } from 'axios';
 import { Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { useSelector } from 'react-redux';
+import { ISection } from '../../../infrastructure/interface/section.interface';
+import { IKurlyProductData } from '../../../infrastructure/interface/product.interface';
 import Typography from '../typography';
 import Button from '../button';
 import Product from './index';
 import ArrowRight from '../icon/ArrowRight';
+import { IRandomCollection } from '../../../infrastructure/interface/randomCollection.interface';
 // import { ICollectionOptions } from '../../../infrastructure/interface/collectionOptions.interface';
 // import { RootState } from '../../../infrastructure/redux';
-import { IKurlyProduct } from '../../../infrastructure/interface/product.interface';
 
 // interface IProps {
 //   title: string;
@@ -18,7 +20,7 @@ import { IKurlyProduct } from '../../../infrastructure/interface/product.interfa
 //   options?: ICollectionOptions;
 // }
 interface IProps {
-  products: AxiosResponse<IKurlyProduct>;
+  products: AxiosResponse<ISection<IKurlyProductData[]>> | AxiosResponse<ISection<IRandomCollection>>;
 }
 function Section(props: IProps) {
   // const { title, subTitle, href, options } = props;
@@ -148,11 +150,17 @@ function Section(props: IProps) {
         {/* 상품 컬렉션 아이템 */}
         <Swiper slidesPerView="auto" spaceBetween={18} navigation modules={[Navigation]}>
           {products &&
-            products.data.data.data.map(product => (
-              <SwiperSlide key={product.no} style={{ width: 249 }}>
-                <Product.Collection product={product} />
-              </SwiperSlide>
-            ))}
+            ((products.data.data.data as []).length
+              ? (products.data.data.data as IKurlyProductData[]).map(product => (
+                  <SwiperSlide key={product.no} style={{ width: 249 }}>
+                    <Product.Collection product={product} />
+                  </SwiperSlide>
+                ))
+              : (products.data.data.data as IRandomCollection).products.map(product => (
+                  <SwiperSlide key={product.no} style={{ width: 249 }}>
+                    <Product.Collection product={product} />
+                  </SwiperSlide>
+                )))}
         </Swiper>
       </div>
     </section>

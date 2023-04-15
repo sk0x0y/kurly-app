@@ -1,21 +1,22 @@
+import { useSelector } from 'react-redux';
+import { AxiosResponse } from 'axios';
 import { css } from '@emotion/react';
-import { Swiper as SwiperClass } from 'swiper/types';
 import { Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { useSelector } from 'react-redux';
 import Product from './index';
 import Typography from '../typography';
 import Button from '../button';
 import { ICollectionOptions } from '../../../infrastructure/interface/collectionOptions.interface';
 import { RootState } from '../../../infrastructure/redux';
+import { IKurlyProductData } from '../../../infrastructure/interface/product.interface';
 
 interface IProps {
+  products: AxiosResponse<{ data: IKurlyProductData[] }>;
   options?: ICollectionOptions;
 }
 function MerchandiserChoice(props: IProps) {
-  const { options } = props;
+  const { products, options } = props;
   const categories = useSelector((state: RootState) => state.categoryAdaptor.entity);
-  const products = useSelector((state: RootState) => state.productAdaptor.entity);
 
   return (
     <section
@@ -90,19 +91,13 @@ function MerchandiserChoice(props: IProps) {
         `}
       >
         {/* 상품 컬렉션 아이템 */}
-        <Swiper
-          slidesPerView="auto"
-          spaceBetween={18}
-          navigation
-          modules={[Navigation]}
-          onSlideChange={() => window.console.log('slide change')}
-          onSwiper={(swiper: SwiperClass) => window.console.log(swiper)}
-        >
-          {products.map(product => (
-            <SwiperSlide key={product.id} style={{ width: 249 }}>
-              <Product.Collection product={product} options={options} />
-            </SwiperSlide>
-          ))}
+        <Swiper slidesPerView="auto" spaceBetween={18} navigation modules={[Navigation]}>
+          {products &&
+            products.data.data.map(product => (
+              <SwiperSlide key={product.no} style={{ width: 249 }}>
+                <Product.Collection product={product} options={options} />
+              </SwiperSlide>
+            ))}
         </Swiper>
       </div>
 

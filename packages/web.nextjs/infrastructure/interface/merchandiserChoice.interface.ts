@@ -1,7 +1,7 @@
 export interface IMerchandiserChoiceData {
-  default_code: '722';
+  default_code: string; // '722';
   md_choices: {
-    code: '907';
+    code: string; // '907';
     name: string;
     link: string;
   }[];
