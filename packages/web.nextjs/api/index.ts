@@ -1,5 +1,4 @@
 import axios from 'axios';
-import * as process from 'process';
 
 export const axiosInstance = axios.create({
   baseURL: process.env.NODE_ENV === 'production' ? 'https://api.kurly.com' : '/api',
@@ -9,3 +8,5 @@ export const axiosInstance = axios.create({
 export { getToken } from './token';
 export { getMainBanner } from './main-banner';
 export { getTodayRecommendation } from './today-recommendation';
+export { getRandomCollection } from './random-collection';
+export { getMdChoice } from './md-choice';

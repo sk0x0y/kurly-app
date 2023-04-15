@@ -10,8 +10,8 @@ import CommentIcon from '../icon/CommentIcon';
 interface IProps {
   // product: Omit<IProduct, 'id'>;
   // product: IProduct;
-  options?: ICollectionOptions;
   product: IKurlyProductData;
+  options?: ICollectionOptions;
 }
 function Collection(props: IProps) {
   const { product, options } = props;

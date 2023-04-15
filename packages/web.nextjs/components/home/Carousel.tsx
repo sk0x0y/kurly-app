@@ -1,10 +1,16 @@
+import { AxiosResponse } from 'axios';
 import { css } from '@emotion/react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Autoplay } from 'swiper';
-import { useMainBanner } from '../../hooks';
+import { IKurlyBannerData } from '../../infrastructure/interface/banner.interface';
+import { ISection } from '../../infrastructure/interface/section.interface';
 
-function Carousel() {
-  const { data: slides, isLoading } = useMainBanner();
+interface IProps {
+  slides: AxiosResponse<ISection<IKurlyBannerData[]>>;
+  isLoading: boolean;
+}
+function Carousel(props: IProps) {
+  const { slides, isLoading } = props;
 
   return (
     <Swiper

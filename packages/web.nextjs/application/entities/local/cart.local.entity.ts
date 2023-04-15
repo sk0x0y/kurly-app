@@ -9,6 +9,7 @@ export class CartLocalEntity {
       selectedProduct: [
         {
           id: 1,
+          productId: 1,
           name: '[멘베이] 명란 센베이 플레인',
           price: { original: 12500 },
           count: 1,

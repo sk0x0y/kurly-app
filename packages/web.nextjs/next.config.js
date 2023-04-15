@@ -8,7 +8,7 @@ const nextConfig = {
   async rewrites() {
     return [
       {
-        source: '/api/nx/api/session',
+        source: '/nx/api/session',
         destination: 'https://www.kurly.com/nx/api/session',
       },
       {
