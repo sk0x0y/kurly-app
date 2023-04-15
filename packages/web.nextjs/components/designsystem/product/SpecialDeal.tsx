@@ -95,9 +95,7 @@ function SpecialDeal(props: IProps) {
           `}
         >
           {products.map(product => (
-            <div key={product.id}>
-              <Product.Collection product={product} options={options} />
-            </div>
+            <div key={product.id}>{/* <Product.Collection product={product} options={options} /> */}</div>
           ))}
         </div>
       </div>
