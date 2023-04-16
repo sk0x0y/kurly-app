@@ -1,3 +1,21 @@
+export interface IKurlyPromotionBannerData {
+  id: number;
+  title: string;
+  contents: string;
+  image: string;
+  mobileImage: string;
+  link: string;
+  mobileLink: string;
+  sort: number;
+  startDate: string;
+  endDate: string;
+  createdAt: string;
+  updatedAt: string;
+  createdBy: string;
+  updatedBy: string;
+  giveawayId: any;
+}
+
 export interface IKurlyBannerData {
   id: number;
   title: string;
