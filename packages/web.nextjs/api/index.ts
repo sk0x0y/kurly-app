@@ -10,5 +10,7 @@ export { getMainBanner } from './main-banner';
 export { getTodayRecommendation } from './today-recommendation';
 export { getRandomCollection } from './random-collection';
 export { getMdChoice } from './md-choice';
+
 export { getNewProduct } from './market/new-product';
 export { getBestProduct } from './market/best-product';
+export { getBudgetProduct } from './market/budget-product';
