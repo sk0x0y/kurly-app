@@ -12,7 +12,8 @@ function Banner(props: IProps) {
     <section
       css={[
         css`
-          height: 200px;
+          min-height: 140px;
+          max-height: 200px;
           margin: 0 auto;
           padding: 40px 0;
         `,

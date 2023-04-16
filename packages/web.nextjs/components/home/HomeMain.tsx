@@ -24,13 +24,13 @@ function HomeMain() {
       {/* <Product.Section title="이 상품 어때요?" options={{ imageSize: { width: 249, height: 320 } }} /> */}
       <Product.Section products={todayRecommendation as AxiosResponse<ISection<IKurlyProductData[]>>} />
 
-      <Content.Banner image={{ src: '/banner/7209c0f1-d06b-4c2c-921d-2edba1290fc2.jpg' }} />
+      {/* <Content.Banner image={{ src: '/banner/7209c0f1-d06b-4c2c-921d-2edba1290fc2.jpg' }} /> */}
 
-      <Content.Banner
-        image={{
-          src: 'https://product-image.kurly.com/banner/random-band/pc/img/7c298e33-7ece-4a2c-b654-32e9658522bd.jpg',
-        }}
-      />
+      {/* <Content.Banner */}
+      {/*  image={{ */}
+      {/*    src: 'https://product-image.kurly.com/banner/random-band/pc/img/7c298e33-7ece-4a2c-b654-32e9658522bd.jpg', */}
+      {/*  }} */}
+      {/* /> */}
 
       {/* <Product.SpecialDeal options={{ imageSize: { width: 338, height: 434 } }} /> */}
 
