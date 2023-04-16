@@ -65,7 +65,6 @@ function Best() {
               gap: 31px 18px;
             `}
           >
-            {/* TODO: 새로운 코드에 맞는 리팩터링 필요 */}
             {products &&
               products.data.data.map(product => (
                 <Product.Collection
