@@ -7,11 +7,14 @@ import Kernel from '../../components/designsystem/kernel';
 import Pagination from '../../components/designsystem/pagination/Pagination';
 import ItemSortTab from '../../components/designsystem/tab/ItemSortTab';
 import { RootState } from '../../infrastructure/redux';
+import { useBestProduct } from '../../hooks';
+import { IKurlyProductData } from '../../infrastructure/interface/product.interface';
 
 function Best() {
   const categoryEntity = useSelector((state: RootState) => state.categoryAdaptor.entity);
   // const productEntity = useLocalProductEntity();
-  const productEntity = useSelector((state: RootState) => state.newProductAdaptor.entity);
+  // const productEntity = useSelector((state: RootState) => state.newProductAdaptor.entity);
+  const { data: products } = useBestProduct();
 
   // TODO: 추후 react-query 로 API Fetch 해서 Entity 에 Dispatch 해 줄 예정
 
@@ -63,13 +66,14 @@ function Best() {
             `}
           >
             {/* TODO: 새로운 코드에 맞는 리팩터링 필요 */}
-            {/* {productEntity.map(product => ( */}
-            {/*  <Product.Collection */}
-            {/*    key={product.id} */}
-            {/*    product={product} */}
-            {/*    options={{ imageSize: { width: 249, height: 320 } }} */}
-            {/*  /> */}
-            {/* ))} */}
+            {products &&
+              products.data.data.map(product => (
+                <Product.Collection
+                  key={product.no}
+                  product={product}
+                  options={{ imageSize: { width: 249, height: 320 } }}
+                />
+              ))}
           </div>
           <Pagination />
         </div>

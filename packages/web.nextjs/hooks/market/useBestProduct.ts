@@ -6,15 +6,15 @@ import { RootState } from '../../infrastructure/redux';
 import { ISection, ISectionMeta } from '../../infrastructure/interface/section.interface';
 import { IKurlyProductData } from '../../infrastructure/interface/product.interface';
 
-export function useNewProduct() {
+export function useBestProduct() {
   const token = useSelector((state: RootState) => state.tokenAdaptor.token);
 
   const result = useQuery<AxiosResponse<{ data: IKurlyProductData[]; meta: ISectionMeta }>>(
-    ['market/new-product'],
-    () => api.getNewProduct(token),
+    ['market/best-product'],
+    () => api.getBestProduct(token),
     {
       onSuccess: res => {
-        console.log('market/new-product', res.data);
+        console.log('market/best-product', res.data);
       },
       enabled: !!token,
     }
