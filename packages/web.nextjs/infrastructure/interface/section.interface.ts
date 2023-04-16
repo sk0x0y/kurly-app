@@ -26,6 +26,6 @@ export interface ISectionData<T> {
   data: T;
 }
 export interface ISection<T> {
-  data: ISectionData<T> | T;
+  data: ISectionData<T>;
   meta?: ISectionMeta;
 }
