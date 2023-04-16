@@ -14,3 +14,4 @@ export { getMdChoice } from './md-choice';
 export { getNewProduct } from './market/new-product';
 export { getBestProduct } from './market/best-product';
 export { getBudgetProduct } from './market/budget-product';
+export { getPromotion } from './market/promotion';
