@@ -10,3 +10,4 @@ export { useBudgetProduct } from './market/useBudgetProduct';
 export { usePromotion } from './market/usePromotion';
 
 export { useCategoryGroup } from './category/useCategoryGroup';
+export { useCategoryProduct } from './category/useCategoryProduct';

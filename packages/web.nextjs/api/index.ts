@@ -18,3 +18,4 @@ export { getBudgetProduct } from './market/budget-product';
 export { getPromotion } from './market/promotion';
 
 export { getCategoryGroup } from './category/category-group';
+export { getCategoryProduct } from './category/category-product';
