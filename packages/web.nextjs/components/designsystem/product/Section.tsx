@@ -3,7 +3,7 @@ import { css } from '@emotion/react';
 import { AxiosResponse } from 'axios';
 import { Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { ISection } from '../../../infrastructure/interface/section.interface';
+import { ISection, ISectionData } from '../../../infrastructure/interface/section.interface';
 import { IKurlyProductData } from '../../../infrastructure/interface/product.interface';
 import Typography from '../typography';
 import Button from '../button';
@@ -20,7 +20,9 @@ import { IRandomCollection } from '../../../infrastructure/interface/randomColle
 //   options?: ICollectionOptions;
 // }
 interface IProps {
-  products: AxiosResponse<ISection<IKurlyProductData[]>> | AxiosResponse<ISection<IRandomCollection>>;
+  products:
+    | AxiosResponse<ISection<ISectionData<IKurlyProductData[]>>>
+    | AxiosResponse<ISection<ISectionData<IRandomCollection>>>;
 }
 function Section(props: IProps) {
   // const { title, subTitle, href, options } = props;

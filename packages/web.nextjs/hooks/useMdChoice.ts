@@ -10,7 +10,7 @@ export function useMdChoice() {
 
   const result = useQuery<AxiosResponse<{ data: IKurlyProductData[] }>>(['md-choice'], () => api.getMdChoice(token), {
     onSuccess: res => {
-      // console.log('md-choice', res.data.data);
+      console.log('md-choice', res.data);
     },
     enabled: !!token,
   });

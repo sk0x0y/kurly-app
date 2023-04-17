@@ -1,5 +1,5 @@
 import { AxiosResponse } from 'axios';
-import { ISection } from '../../infrastructure/interface/section.interface';
+import { ISection, ISectionData } from '../../infrastructure/interface/section.interface';
 import { IKurlyProductData } from '../../infrastructure/interface/product.interface';
 import { IKurlyBannerData } from '../../infrastructure/interface/banner.interface';
 import { useMainBanner, useMdChoice, useRandomCollection, useTodayRecommendation } from '../../hooks';
@@ -18,11 +18,14 @@ function HomeMain() {
     <>
       {/* Swiper Container - 메인 슬라이더 */}
       <div>
-        <Carousel slides={slides as AxiosResponse<ISection<IKurlyBannerData[]>>} isLoading={isSlideLoading} />
+        <Carousel
+          slides={slides as AxiosResponse<ISection<ISectionData<IKurlyBannerData[]>>>}
+          isLoading={isSlideLoading}
+        />
       </div>
 
       {/* <Product.Section title="이 상품 어때요?" options={{ imageSize: { width: 249, height: 320 } }} /> */}
-      <Product.Section products={todayRecommendation as AxiosResponse<ISection<IKurlyProductData[]>>} />
+      <Product.Section products={todayRecommendation as AxiosResponse<ISection<ISectionData<IKurlyProductData[]>>>} />
 
       {/* <Content.Banner image={{ src: '/banner/7209c0f1-d06b-4c2c-921d-2edba1290fc2.jpg' }} /> */}
 
@@ -40,7 +43,7 @@ function HomeMain() {
       {/*  options={{ imageSize: { width: 249, height: 320 } }} */}
       {/* /> */}
 
-      <Product.Section products={randomCollection as AxiosResponse<ISection<IRandomCollection>>} />
+      <Product.Section products={randomCollection as AxiosResponse<ISection<ISectionData<IRandomCollection>>>} />
 
       {/* <Content.Banner image={{ src: '/banner/7209c0f1-d06b-4c2c-921d-2edba1290fc2.jpg' }} /> */}
 

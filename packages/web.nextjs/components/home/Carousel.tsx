@@ -3,10 +3,10 @@ import { css } from '@emotion/react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Autoplay } from 'swiper';
 import { IKurlyBannerData } from '../../infrastructure/interface/banner.interface';
-import { ISection } from '../../infrastructure/interface/section.interface';
+import { ISection, ISectionData } from '../../infrastructure/interface/section.interface';
 
 interface IProps {
-  slides: AxiosResponse<ISection<IKurlyBannerData[]>>;
+  slides: AxiosResponse<ISection<ISectionData<IKurlyBannerData[]>>>;
   isLoading: boolean;
 }
 function Carousel(props: IProps) {
