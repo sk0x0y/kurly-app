@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  images: { domains: ['product-image.kurly.com', 'collection-image.kurly.com'] },
   reactStrictMode: true,
   swcMinify: true,
   compiler: {
