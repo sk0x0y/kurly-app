@@ -3,6 +3,12 @@ export interface ISectionMeta {
   campaign_policy_key: 'default';
   cluster_center_code: 'CC02';
   delivery_type: 'direct';
+  default_sort_type?: string;
+  sort_type?: string;
+  available_sort?: {
+    type: string;
+    name: string;
+  }[];
   pagination?: {
     total: number;
     count: number;
@@ -13,7 +19,6 @@ export interface ISectionMeta {
       next: string;
     };
   };
-  sort_type?: string;
   is_new?: {
     pc_icon_url: string;
     mobile_icon_url: string;
@@ -34,6 +39,6 @@ export interface ISectionData<T> {
   data: T;
 }
 export interface ISection<T> {
-  data: ISectionData<T>;
+  data: T; // ISectionData<T>;
   meta?: ISectionMeta;
 }
