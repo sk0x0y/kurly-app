@@ -19,6 +19,7 @@ function DeliveryInformation() {
             font-size: 13px;
             letter-spacing: -0.32px;
             color: rgb(102, 102, 102);
+            cursor: pointer;
           `}
         >
           <span
