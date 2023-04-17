@@ -6,6 +6,7 @@ export const axiosInstance = axios.create({
 });
 
 export { getToken } from './token';
+
 export { getMainBanner } from './main-banner';
 export { getTodayRecommendation } from './today-recommendation';
 export { getRandomCollection } from './random-collection';
@@ -15,3 +16,5 @@ export { getNewProduct } from './market/new-product';
 export { getBestProduct } from './market/best-product';
 export { getBudgetProduct } from './market/budget-product';
 export { getPromotion } from './market/promotion';
+
+export { getCategoryGroup } from './category/category-group';

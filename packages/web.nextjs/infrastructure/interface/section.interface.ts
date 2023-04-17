@@ -14,6 +14,14 @@ export interface ISectionMeta {
     };
   };
   sort_type?: string;
+  is_new?: {
+    pc_icon_url: string;
+    mobile_icon_url: string;
+  };
+  recommend?: {
+    pc_icon_url: string;
+    pc_icon_active_url: string;
+  };
 }
 export interface ISectionData<T> {
   id: number;
