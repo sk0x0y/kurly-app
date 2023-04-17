@@ -33,7 +33,7 @@ function HamburgerMenu() {
       >
         {categories &&
           categories.data.data.main.map(item => (
-            <Link key={item.code} href={item.code}>
+            <Link key={item.code} href={`/categories/${item.code}`}>
               <li
                 onMouseEnter={() => {
                   setCurrentCursor(Number(item.code));
@@ -91,7 +91,10 @@ function HamburgerMenu() {
                     `}
                   >
                     {item.sub_category_groups.map(child => (
-                      <Link key={child.code} href={child.code}>
+                      <Link
+                        key={child.code}
+                        href={`/categories/${item.code}/${child.code.slice(3, child.code.length)}`}
+                      >
                         <li
                           css={css`
                             display: flex;
