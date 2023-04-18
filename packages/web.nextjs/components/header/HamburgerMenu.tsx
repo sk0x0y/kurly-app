@@ -52,15 +52,14 @@ function HamburgerMenu(props: IProps) {
 
                   &:hover {
                     background-color: rgb(247, 247, 247);
+
+                    > button {
+                      color: rgb(95, 0, 128);
+                    }
                   }
                 `}
               >
-                <Button.Base
-                  onClick={() => setIsHamburgerMenuOpen(false)}
-                  styles={css`
-                    color: rgb(95, 0, 128);
-                  `}
-                >
+                <Button.Base onClick={() => setIsHamburgerMenuOpen(false)}>
                   <div
                     css={css`
                       position: relative;
