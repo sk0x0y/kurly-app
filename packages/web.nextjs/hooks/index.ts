@@ -12,3 +12,5 @@ export { usePromotion } from './market/usePromotion';
 export { useCategoryGroup } from './category/useCategoryGroup';
 export { useCategory } from './category/useCategory';
 export { useCategoryProduct } from './category/useCategoryProduct';
+
+export { useCollectionFilter } from './useCollectionFilter';
