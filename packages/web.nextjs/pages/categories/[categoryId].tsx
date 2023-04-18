@@ -1,6 +1,6 @@
-import { css } from '@emotion/react';
-import { useRouter } from 'next/router';
+import { GetServerSideProps } from 'next';
 import Link from 'next/link';
+import { css } from '@emotion/react';
 import { useSelector } from 'react-redux';
 import Content from '../../components/designsystem/content';
 import Typography from '../../components/designsystem/typography';
@@ -9,13 +9,17 @@ import Kernel from '../../components/designsystem/kernel';
 import Pagination from '../../components/designsystem/pagination/Pagination';
 import ItemSortTab from '../../components/designsystem/tab/ItemSortTab';
 import { RootState } from '../../infrastructure/redux';
+import { useCategory, useCategoryProduct } from '../../hooks';
 
-function CategoryId() {
-  const router = useRouter();
-  const categoryId = router.query.categoryId as string;
+interface IProps {
+  categoryId: string;
+}
+function CategoryId(props: IProps) {
+  const { categoryId } = props;
   const categoryEntity = useSelector((state: RootState) => state.categoryAdaptor.entity);
-  // const productEntity = useLocalProductEntity();
-  const productEntity = useSelector((state: RootState) => state.newProductAdaptor.entity);
+
+  const { data: categories } = useCategory(categoryId);
+  const { data: products } = useCategoryProduct(categoryId);
 
   // TODO: 추후 react-query 로 API Fetch 해서 Entity 에 Dispatch 해 줄 예정
 
@@ -29,7 +33,7 @@ function CategoryId() {
           letter-spacing: -1px;
         `}
       >
-        채소
+        카테고리 이름
       </Typography.Title>
 
       <div>
@@ -64,31 +68,35 @@ function CategoryId() {
           </Link>
         </li>
 
-        {categoryEntity.map(category =>
-          category.categoryId === Number(categoryId)
-            ? category.children?.map(child => (
-                <li>
-                  <Link href={child.url ?? '/'} passHref>
-                    <a
-                      css={css`
-                        color: inherit;
-                        letter-spacing: -1px;
-                        text-decoration: none;
-                        cursor: pointer;
+        {categories &&
+          categories.data.data.map(category => (
+            <li key={category.code}>
+              <Link
+                href={
+                  category.code.length >= 4
+                    ? `${category.code.slice(0, 3)}/${category.code.slice(3, category.code.length)}`
+                    : category.code
+                }
+                passHref
+              >
+                <a
+                  css={css`
+                    color: inherit;
+                    letter-spacing: -1px;
+                    text-decoration: none;
+                    cursor: pointer;
 
-                        &:hover {
-                          font-weight: 700;
-                          color: rgb(95, 0, 128);
-                        }
-                      `}
-                    >
-                      {child.name}
-                    </a>
-                  </Link>
-                </li>
-              ))
-            : null
-        )}
+                    &:hover {
+                      font-weight: 700;
+                      color: rgb(95, 0, 128);
+                    }
+                  `}
+                >
+                  {category.name}
+                </a>
+              </Link>
+            </li>
+          ))}
       </ul>
 
       <div
@@ -126,13 +134,14 @@ function CategoryId() {
             `}
           >
             {/* TODO: 새로운 코드에 맞는 리팩터링 필요 */}
-            {/* {productEntity.map(product => ( */}
-            {/*  <Product.Collection */}
-            {/*    key={product.id} */}
-            {/*    product={product} */}
-            {/*    options={{ imageSize: { width: 249, height: 320 } }} */}
-            {/*  /> */}
-            {/* ))} */}
+            {products &&
+              products.data.data.map(product => (
+                <Product.Collection
+                  key={product.no}
+                  product={product}
+                  options={{ imageSize: { width: 249, height: 320 } }}
+                />
+              ))}
           </div>
           <Pagination />
         </div>
@@ -140,5 +149,13 @@ function CategoryId() {
     </Content.Section>
   );
 }
-
+export const getServerSideProps: GetServerSideProps = async context => {
+  const { query } = context;
+  const { categoryId } = query;
+  return {
+    props: {
+      categoryId,
+    },
+  };
+};
 export default CategoryId;

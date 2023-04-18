@@ -3,6 +3,7 @@ import { css } from '@emotion/react';
 import Button from '../../button';
 import Kernel from '../index';
 import ArrowUp from '../../icon/ArrowUp';
+import { IFilterData } from '../../../../infrastructure/interface/filter.interface';
 
 const UserInterfaceEnum = {
   CHECKBOX: 0, // NOTE: Input CheckBox
@@ -13,7 +14,7 @@ interface IProps {
   name?: string;
   type?: typeof UserInterfaceEnum[keyof typeof UserInterfaceEnum];
   expand?: boolean;
-  entities?: any[];
+  entities?: IFilterData[];
 }
 function FilterGroup(props: IProps) {
   const { name, expand, entities } = props;

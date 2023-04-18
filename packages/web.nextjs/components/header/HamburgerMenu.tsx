@@ -2,9 +2,14 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
 import { css } from '@emotion/react';
+import Button from '../designsystem/button';
 import { useCategoryGroup } from '../../hooks';
 
-function HamburgerMenu() {
+interface IProps {
+  setIsHamburgerMenuOpen: (arg: boolean) => void;
+}
+function HamburgerMenu(props: IProps) {
+  const { setIsHamburgerMenuOpen } = props;
   const { data: categories } = useCategoryGroup();
   const [currentCursor, setCurrentCursor] = useState<number>(0);
   // Presenter(Controller) -> DTO -> Entity
@@ -47,34 +52,40 @@ function HamburgerMenu() {
 
                   &:hover {
                     background-color: rgb(247, 247, 247);
-                    color: rgb(95, 0, 128);
+
+                    > button {
+                      color: rgb(95, 0, 128);
+                    }
                   }
                 `}
               >
-                <div
-                  css={css`
-                    position: relative;
-                    display: flex;
-                    flex-wrap: wrap;
-                    align-items: flex-start;
-                  `}
-                >
-                  <Image
-                    src={currentCursor === Number(item.code) ? item.pc_icon_active_url : item.pc_icon_url}
-                    alt={item.name}
-                    width={24}
-                    height={24}
-                  />
-                  <span
+                <Button.Base onClick={() => setIsHamburgerMenuOpen(false)}>
+                  <div
                     css={css`
-                      font-weight: ${currentCursor === Number(item.code) && 500};
-                      padding: 1px 20px 0 10px;
-                      line-height: 22px;
+                      position: relative;
+                      display: flex;
+                      flex-wrap: wrap;
+                      align-items: flex-start;
                     `}
                   >
-                    {item.name}
-                  </span>
-                </div>
+                    <Image
+                      src={currentCursor === Number(item.code) ? item.pc_icon_active_url : item.pc_icon_url}
+                      alt={item.name}
+                      width={24}
+                      height={24}
+                    />
+                    <span
+                      css={css`
+                        font-weight: ${currentCursor === Number(item.code) && 500};
+                        padding: 1px 20px 0 10px;
+                        line-height: 22px;
+                      `}
+                    >
+                      {item.name}
+                    </span>
+                  </div>
+                </Button.Base>
+
                 {currentCursor === Number(item.code) && (
                   <ul
                     css={css`

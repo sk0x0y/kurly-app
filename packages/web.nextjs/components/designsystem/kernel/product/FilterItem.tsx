@@ -1,16 +1,13 @@
-import { useEffect } from 'react';
 import { css } from '@emotion/react';
+import { IFilterData } from '../../../../infrastructure/interface/filter.interface';
 import CheckBox from '../../input/checkbox';
-import { ICategory } from '../../../../infrastructure/interface/category.interface';
 
 export interface IProps {
   isExpanded: boolean;
-  entities: ICategory[];
+  entities: IFilterData[];
 }
 function FilterItem(props: IProps) {
   const { isExpanded, entities } = props;
-
-  useEffect(() => {});
 
   return (
     <ul
@@ -23,7 +20,7 @@ function FilterItem(props: IProps) {
     >
       {entities.map(entity => (
         <li
-          key={entity.id}
+          key={entity.key}
           css={css`
             display: flex;
             align-items: center;
@@ -73,7 +70,7 @@ function FilterItem(props: IProps) {
               color: rgb(204, 204, 204);
             `}
           >
-            {entity.count?.available || 9999}
+            {entity.product_counts}
           </span>
         </li>
       ))}
