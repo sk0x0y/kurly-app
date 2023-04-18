@@ -1,3 +1,8 @@
+export interface IKurlyCategoryDetail {
+  code: string;
+  name: string;
+  parent_names: [];
+}
 export interface IKurlyCategoryGroupData {
   kind: string;
   code: string;
