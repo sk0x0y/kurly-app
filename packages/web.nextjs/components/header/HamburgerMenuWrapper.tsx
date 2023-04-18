@@ -44,7 +44,7 @@ function HamburgerMenuWrapper() {
           카테고리
         </span>
 
-        {isHamburgerMenuOpen && <HamburgerMenu />}
+        {isHamburgerMenuOpen && <HamburgerMenu setIsHamburgerMenuOpen={setIsHamburgerMenuOpen} />}
       </div>
     </div>
   );
