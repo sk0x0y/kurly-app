@@ -1,7 +1,6 @@
 import { GetServerSideProps } from 'next';
-import { css } from '@emotion/react';
-
 import Link from 'next/link';
+import { css } from '@emotion/react';
 import { useSelector } from 'react-redux';
 import Content from '../../components/designsystem/content';
 import Typography from '../../components/designsystem/typography';
