@@ -15,3 +15,4 @@ export { useCategoryProduct } from './category/useCategoryProduct';
 
 export { useCollectionFilter } from './useCollectionFilter';
 export { useCategoryProductFilter } from './category/useCategoryProductFilter';
+export { useCategoryPageMeta } from './category/useCategoryPageMeta';
