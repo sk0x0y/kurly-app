@@ -7,7 +7,7 @@ import Product from '../../components/designsystem/product';
 import Kernel from '../../components/designsystem/kernel';
 import Pagination from '../../components/designsystem/pagination/Pagination';
 import ItemSortTab from '../../components/designsystem/tab/ItemSortTab';
-import { useCategory, useCategoryProduct, useCategoryProductFilter } from '../../hooks';
+import { useCategory, useCategoryProduct, useCategoryProductFilter, useCategoryPageMeta } from '../../hooks';
 
 interface IProps {
   categoryId: string;
@@ -18,6 +18,7 @@ function CategoryId(props: IProps) {
   const { data: categories } = useCategory(categoryId);
   const { data: filters } = useCategoryProductFilter(categoryId);
   const { data: products } = useCategoryProduct(categoryId);
+  const { data: metadata } = useCategoryPageMeta(categoryId);
 
   // TODO: 추후 react-query 로 API Fetch 해서 Entity 에 Dispatch 해 줄 예정
 
@@ -118,7 +119,8 @@ function CategoryId(props: IProps) {
             width: 100%;
           `}
         >
-          <ItemSortTab />
+          <ItemSortTab total={products && products.data.meta.pagination?.total} />
+
           <div
             css={css`
               display: grid;

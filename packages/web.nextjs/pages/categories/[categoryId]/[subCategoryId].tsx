@@ -112,7 +112,8 @@ function SubCategoryId(props: IProps) {
             width: 100%;
           `}
         >
-          <ItemSortTab />
+          <ItemSortTab total={products && products.data.meta.pagination?.total} />
+
           <div
             css={css`
               display: grid;

@@ -4,7 +4,11 @@ import { css } from '@emotion/react';
 import { ItemSortTabEntityInterface } from './ItemSortTabEntity.interface';
 import ItemSortTabLocalEntity from './ItemSortTab.local.entity';
 
-function ItemSortTab() {
+interface IProps {
+  total?: number;
+}
+function ItemSortTab(props: IProps) {
+  const { total } = props;
   const [itemSortTabEntity] = useState<ItemSortTabEntityInterface[]>(new ItemSortTabLocalEntity().entity);
 
   return (
@@ -21,7 +25,7 @@ function ItemSortTab() {
           font-weight: 500;
         `}
       >
-        총 118건
+        총 {total}건
       </div>
       <ul
         css={css`
