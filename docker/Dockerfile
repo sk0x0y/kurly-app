@@ -8,6 +8,7 @@ WORKDIR /app
 COPY .. .
 
 RUN yarn install
+RUN yarn add sharp
 RUN yarn nextjs:build
 
 EXPOSE 3000
