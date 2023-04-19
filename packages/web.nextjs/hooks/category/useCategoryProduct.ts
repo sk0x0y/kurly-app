@@ -15,7 +15,7 @@ export function useCategoryProduct(categoryId: string, subCategoryId?: string) {
       meta: ISectionMeta;
     }>
   >(
-    ['category/product', categoryId],
+    ['category/product', categoryId, subCategoryId],
     () => api.getCategoryProduct(token, !subCategoryId ? categoryId : categoryId + subCategoryId),
     {
       onSuccess: res => {
