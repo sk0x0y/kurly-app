@@ -22,5 +22,6 @@ export { getCategory } from './category/get-category';
 export { getCategoryProduct } from './category/category-product';
 
 export { getCollectionFilter } from './get-collection-filter';
+
 export { getCategoryProductFilter } from './category/category-product-filter';
 export { getCategoryPageMeta } from './category/category-page-meta';
