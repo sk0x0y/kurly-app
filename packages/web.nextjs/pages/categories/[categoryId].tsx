@@ -32,7 +32,7 @@ function CategoryId(props: IProps) {
           letter-spacing: -1px;
         `}
       >
-        카테고리 이름
+        {metadata?.data.data.name}
       </Typography.Title>
 
       <div>
@@ -119,7 +119,7 @@ function CategoryId(props: IProps) {
             width: 100%;
           `}
         >
-          <ItemSortTab total={products && products.data.meta.pagination?.total} />
+          <ItemSortTab categoryId={categoryId} productMeta={products?.data.meta} pageMeta={metadata?.data} />
 
           <div
             css={css`
@@ -147,6 +147,7 @@ function CategoryId(props: IProps) {
 export const getServerSideProps: GetServerSideProps = async context => {
   const { query } = context;
   const { categoryId } = query;
+
   return {
     props: {
       categoryId,
