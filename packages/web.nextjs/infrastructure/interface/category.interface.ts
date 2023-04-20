@@ -1,3 +1,21 @@
+export interface IKurlyCategoryPageMetaData {
+  code: string;
+  is_show_all: boolean;
+  name: string;
+  parent_codes: [];
+  parent_names: string[];
+  root_category: {
+    code: string;
+    name: string;
+    banners: {
+      pc_image: string;
+      pc_link: string;
+      mobile_image: string;
+      mobile_link: string;
+    }[];
+  };
+  subcategory_display_policy: 'show_child_category';
+}
 export interface IKurlyCategoryDetail {
   code: string;
   name: string;
