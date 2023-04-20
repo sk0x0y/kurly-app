@@ -59,7 +59,12 @@ function HamburgerMenu(props: IProps) {
                   }
                 `}
               >
-                <Button.Base onClick={() => setIsHamburgerMenuOpen(false)}>
+                <Button.Base
+                  styles={css`
+                    width: 100%;
+                  `}
+                  onClick={() => setIsHamburgerMenuOpen(false)}
+                >
                   <div
                     css={css`
                       position: relative;
@@ -113,21 +118,29 @@ function HamburgerMenu(props: IProps) {
                             padding: 11px 20px 11px 18px;
                             line-height: 22px;
 
-                            &:hover > span {
+                            &:hover span {
                               font-weight: 500;
                               color: rgb(95, 0, 128);
                               text-decoration: underline;
                             }
                           `}
                         >
-                          <span
-                            css={css`
-                              line-height: 18px;
-                              color: rgb(51, 51, 51);
+                          <Button.Base
+                            styles={css`
+                              width: 100%;
+                              text-align: left;
                             `}
+                            onClick={() => setIsHamburgerMenuOpen(false)}
                           >
-                            {child.name}
-                          </span>
+                            <span
+                              css={css`
+                                line-height: 18px;
+                                color: rgb(51, 51, 51);
+                              `}
+                            >
+                              {child.name}
+                            </span>
+                          </Button.Base>
                         </li>
                       </Link>
                     ))}
