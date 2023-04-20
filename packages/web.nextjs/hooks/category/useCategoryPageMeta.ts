@@ -14,12 +14,16 @@ export function useCategoryPageMeta(categoryId: string, subCategoryId?: string) 
       data: IKurlyCategoryPageMetaData;
       meta: ISectionMeta;
     }>
-  >(['category/page-meta', categoryId], () => api.getCategoryPageMeta(token, categoryId, subCategoryId), {
-    onSuccess: res => {
-      console.log('category/page-meta', res.data);
-    },
-    enabled: !!token,
-  });
+  >(
+    ['category/page-meta', categoryId, subCategoryId],
+    () => api.getCategoryPageMeta(token, categoryId, subCategoryId),
+    {
+      onSuccess: res => {
+        console.log('category/page-meta', res.data);
+      },
+      enabled: !!token,
+    }
+  );
 
   return { ...result };
 }
