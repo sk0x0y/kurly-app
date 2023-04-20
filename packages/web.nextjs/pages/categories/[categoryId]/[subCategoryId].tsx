@@ -7,7 +7,7 @@ import Product from '../../../components/designsystem/product';
 import Kernel from '../../../components/designsystem/kernel';
 import Pagination from '../../../components/designsystem/pagination/Pagination';
 import ItemSortTab from '../../../components/designsystem/tab/ItemSortTab';
-import { useCategory, useCategoryPageMeta, useCategoryProduct } from '../../../hooks';
+import { useCategory, useCategoryPageMeta, useCategoryProduct, useCategoryProductFilter } from '../../../hooks';
 
 interface IProps {
   categoryId: string;
@@ -17,6 +17,7 @@ function SubCategoryId(props: IProps) {
   const { categoryId, subCategoryId } = props;
 
   const { data: categories } = useCategory(categoryId);
+  const { data: filters } = useCategoryProductFilter(categoryId, subCategoryId);
   const { data: products } = useCategoryProduct(categoryId, subCategoryId);
   const { data: metadata } = useCategoryPageMeta(categoryId, subCategoryId);
 
@@ -101,10 +102,10 @@ function SubCategoryId(props: IProps) {
         {/* 필터 및 초기화 */}
         <Kernel.Product.FilterContainer>
           {/* 필터 아이템(항목) */}
-          {/* {filters && */}
-          {/*  filters.data.data.map(filter => ( */}
-          {/*    <Kernel.Product.FilterGroup key={filter.key} name={filter.name} entities={filter.values} expand /> */}
-          {/*  ))} */}
+          {filters &&
+            filters.data.data.map(filter => (
+              <Kernel.Product.FilterGroup key={filter.key} name={filter.name} entities={filter.values} expand />
+            ))}
         </Kernel.Product.FilterContainer>
 
         {/* 정렬탭, 아이템(상품) 리스트, 페이지네이션 */}
