@@ -30,17 +30,11 @@ function Collection(props: IProps) {
         <div
           css={css`
             position: relative;
+            width: 249px;
+            height: 320px;
           `}
         >
-          <img
-            css={css`
-              width: 100%;
-              height: 100%;
-              object-fit: cover;
-            `}
-            src={product.list_image_url}
-            alt={`오늘의 추천 ${product.no}번 이미지`}
-          />
+          <Image src={product.list_image_url} alt={`상품 ${product.no}번 이미지`} layout="fill" />
 
           {/* {options && options.imageSize ? ( */}
           {/*  <Image src={product.list_image_url} width={options.imageSize.width} height={options.imageSize.height} /> */}
