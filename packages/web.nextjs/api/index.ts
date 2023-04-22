@@ -16,6 +16,7 @@ export { getNewProduct } from './market/new-product';
 export { getBestProduct } from './market/best-product';
 export { getBudgetProduct } from './market/budget-product';
 export { getPromotion } from './market/promotion';
+export { getMarketProductMeta } from './market/market-product-meta';
 
 export { getCategoryGroup } from './category/category-group';
 export { getCategory } from './category/get-category';

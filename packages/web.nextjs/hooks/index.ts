@@ -8,6 +8,7 @@ export { useNewProduct } from './market/useNewProduct';
 export { useBestProduct } from './market/useBestProduct';
 export { useBudgetProduct } from './market/useBudgetProduct';
 export { usePromotion } from './market/usePromotion';
+export { useMarketProductMeta } from './market/useMarketProductMeta';
 
 export { useCategoryGroup } from './category/useCategoryGroup';
 export { useCategory } from './category/useCategory';
