@@ -16,7 +16,7 @@ export function useSearch(q: SearchQuery) {
       data: IKurlyProductData[];
       meta: ISectionMeta;
     }>
-  >(['search'], () => api.getSearch(token, q), {
+  >(['search', q], () => api.getSearch(token, q), {
     onSuccess: res => {
       console.log('search', res.data);
     },
