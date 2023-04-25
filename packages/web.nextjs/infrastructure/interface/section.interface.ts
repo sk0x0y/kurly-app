@@ -9,6 +9,23 @@ export interface ISectionMeta {
     type: string;
     name: string;
   }[];
+  query_id: string;
+  actual_site: string;
+  target_site: string;
+  filters: [
+    {
+      name: string;
+      key: string;
+      template: string;
+      values: {
+        key: string;
+        name: string;
+        value: string;
+        product_counts: number;
+      }[];
+      is_quick: boolean;
+    }
+  ];
   pagination?: {
     total: number;
     count: number;
