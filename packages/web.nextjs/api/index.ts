@@ -26,3 +26,5 @@ export { getCollectionFilter } from './get-collection-filter';
 
 export { getCategoryProductFilter } from './category/category-product-filter';
 export { getCategoryPageMeta } from './category/category-page-meta';
+
+export { getSearch } from './search';
