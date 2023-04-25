@@ -7,10 +7,12 @@ interface IProps {
   categoryId?: string;
   subCategoryId?: string;
   productMeta?: ISectionMeta;
-  pageMeta?: {
-    data: IKurlyCategoryPageMetaData;
-    meta: ISectionMeta;
-  };
+  pageMeta?:
+    | {
+        data: IKurlyCategoryPageMetaData;
+        meta: ISectionMeta;
+      }
+    | { meta: ISectionMeta };
 }
 function ItemSortTab(props: IProps) {
   const { categoryId, subCategoryId, productMeta, pageMeta } = props;
