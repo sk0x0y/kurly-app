@@ -114,7 +114,12 @@ function SubCategoryId(props: IProps) {
             width: 100%;
           `}
         >
-          <ItemSortTab productMeta={products?.data.meta} pageMeta={metadata?.data} />
+          <ItemSortTab
+            categoryId={categoryId}
+            subCategoryId={subCategoryId}
+            productMeta={products?.data.meta}
+            pageMeta={metadata?.data}
+          />
 
           <div
             css={css`
@@ -142,6 +147,7 @@ function SubCategoryId(props: IProps) {
 export const getServerSideProps: GetServerSideProps = async context => {
   const { query } = context;
   const { categoryId, subCategoryId } = query;
+
   return {
     props: {
       categoryId,

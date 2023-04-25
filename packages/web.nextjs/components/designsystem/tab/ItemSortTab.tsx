@@ -63,7 +63,15 @@ function ItemSortTab(props: IProps) {
           if (item.type === '4') {
             return (
               <li key={item.type}>
-                <Link href={`${categoryId}?sort_type=${item.type}`}>추천순</Link>
+                <Link
+                  href={
+                    !subCategoryId
+                      ? `/categories/${categoryId}?sort_type=${item.type}`
+                      : `/categories/${categoryId}/${subCategoryId}?sort_type=${item.type}`
+                  }
+                >
+                  추천순
+                </Link>
                 <div
                   css={css`
                     height: 20px;
@@ -99,7 +107,15 @@ function ItemSortTab(props: IProps) {
 
           return (
             <li key={item.type}>
-              <Link href={`${categoryId}?sort_type=${item.type}`}>{item.name}</Link>
+              <Link
+                href={
+                  !subCategoryId
+                    ? `/categories/${categoryId}?sort_type=${item.type}`
+                    : `/categories/${categoryId}/${subCategoryId}?sort_type=${item.type}`
+                }
+              >
+                {item.name}
+              </Link>
             </li>
           );
         })}
