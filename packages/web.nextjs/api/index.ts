@@ -28,3 +28,5 @@ export { getCategoryProductFilter } from './category/category-product-filter';
 export { getCategoryPageMeta } from './category/category-page-meta';
 
 export { getSearch } from './search';
+
+export { getProductDetailContent } from './product/product-detail-content';
