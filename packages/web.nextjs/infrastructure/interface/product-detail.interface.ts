@@ -61,7 +61,7 @@ export interface IProductDetail {
       description: string; // '상품설명 및 상품이미지 참조';
     }[];
   }[];
-  productOrigin: '국산';
+  productOrigin: string | null; // 국산;
   reviewCount: number; // 4971;
   shortDescription: string; // '달콤하고 상큼한 매력';
   todayBrix: null;
