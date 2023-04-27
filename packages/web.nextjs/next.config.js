@@ -18,6 +18,10 @@ const nextConfig = {
         source: '/api/:path*',
         destination: 'https://api.kurly.com/:path*',
       },
+      {
+        source: '/ssr/:path*',
+        destination: 'https://www.kurly.com/:path*',
+      },
     ];
   },
 };

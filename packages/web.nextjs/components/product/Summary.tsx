@@ -1,12 +1,12 @@
 import { css } from '@emotion/react';
 import Typography from '../designsystem/typography';
-import { DeliverType, IProduct } from '../../infrastructure/interface/product.interface';
+import { IProductDetail } from '../../infrastructure/interface/product-detail.interface';
 
 interface IProps {
-  record?: IProduct;
+  product: IProductDetail;
 }
 function Summary(props: IProps) {
-  const { record } = props;
+  const { product } = props;
 
   return (
     <div>
@@ -20,8 +20,7 @@ function Summary(props: IProps) {
           margin-bottom: 6px;
         `}
       >
-        {record && record.deliver?.type === DeliverType.FAST && '샛별배송'}
-        {record && record.deliver?.type === DeliverType.SLOW && '택배'}
+        {product?.deliveryTypeNames[0]}
       </Typography.Text>
       <Typography.Title
         level="h2"
@@ -31,7 +30,7 @@ function Summary(props: IProps) {
           letter-spacing: -0.5px;
         `}
       >
-        {record?.name}
+        {product.name}
       </Typography.Title>
       <Typography.Title
         level="h3"
@@ -44,7 +43,7 @@ function Summary(props: IProps) {
           letter-spacing: -0.5px;
         `}
       >
-        {record?.description}
+        {product.shortDescription}
       </Typography.Title>
       <Typography.Title
         level="h4"
@@ -61,7 +60,7 @@ function Summary(props: IProps) {
             font-size: 28px;
           `}
         >
-          {record?.price.discount?.price ?? record?.price.original}
+          {product.basePrice}
         </Typography.Text>
         <Typography.Text
           type="span"
