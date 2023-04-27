@@ -36,5 +36,8 @@
     "nextjs:build": "yarn workspace web.nextjs build",
     "nextjs:lint": "yarn workspace web.nextjs lint",
     "postinstall": "husky install"
+  },
+  "dependencies": {
+    "sharp": "^0.32.1"
   }
 }
