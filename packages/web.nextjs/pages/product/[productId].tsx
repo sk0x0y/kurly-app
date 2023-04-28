@@ -10,6 +10,9 @@ import InformationNoticeItem from '../../components/product/InformationNoticeIte
 import SelectAndPutInCart from '../../components/product/SelectAndPutInCart';
 import { getProductDetailContent } from '../../api';
 import { IProductDetail } from '../../infrastructure/interface/product-detail.interface';
+import SellerInformation from '../../components/product/detail/SellerInformation';
+import ProductNoticeInformation from '../../components/product/detail/ProductNoticeInformation';
+import WhyKurly from '../../components/product/detail/WhyKurly';
 
 interface IProps {
   product: IProductDetail;
@@ -139,6 +142,16 @@ function ProductId(props: IProps) {
 
       {/* 상품 설명 */}
       <div dangerouslySetInnerHTML={{ __html: product.productDetail.legacyContent }} />
+
+      {/* 상품고시정보 */}
+      <ProductNoticeInformation product={product} />
+
+      {/* 판매자 정보 */}
+      <SellerInformation product={product} />
+
+      {/* Why Kurly */}
+      <WhyKurly />
+
       {/* <div> */}
       {/*  /!* 인트로 이미지 & 설명 *!/ */}
       {/*  {record?.content?.intro && <Kernel.Product.Detail.Intro intro={record.content.intro} />} */}
@@ -196,7 +209,9 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   // console.log('ssr', data.pageProps.product);
 
   return {
-    props: { product: data.pageProps.product },
+    props: {
+      product: data.pageProps.product,
+    },
   };
 }
 
