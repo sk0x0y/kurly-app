@@ -12,6 +12,7 @@ import 'swiper/scss/pagination';
 import type { AppProps } from 'next/app';
 import wrapper from '../infrastructure/redux/store';
 import Layout from '../components/layout';
+import './style.scss';
 
 function MyApp({ Component, pageProps }: AppProps<{ dehydratedState: DehydratedState }>) {
   const [queryClient] = useState(() => new QueryClient());
