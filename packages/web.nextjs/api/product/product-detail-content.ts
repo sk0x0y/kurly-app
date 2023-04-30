@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export function getProductDetailContent(token: string, productId: string) {
+export function getProductDetailContent(productId: string) {
   return axios.get(
     process.env.NODE_ENV === 'production'
       ? `https://www.kurly.com/_next/data/U-R-P-EFAMUfVrHOfIQZ4/goods/${productId}.json`
