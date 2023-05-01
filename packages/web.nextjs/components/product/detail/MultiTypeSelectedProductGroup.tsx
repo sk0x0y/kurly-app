@@ -4,16 +4,15 @@ import { css } from '@emotion/react';
 import Button from '../../designsystem/button';
 import { RootState } from '../../../infrastructure/redux';
 import { actions } from '../../../application/usecases/selectedProduct.usecase';
-import { IDealProductData, ProductContentType } from '../../../infrastructure/interface/product-detail.interface';
+import { IProductDetail } from '../../../infrastructure/interface/product-detail.interface';
 import SelectedItem from './SelectedItem';
 import MultiTypeSelectedProductList from './MultiTypeSelectedProductList';
 
 interface IProps {
-  dealProducts?: IDealProductData[];
-  contentType: ProductContentType;
+  productDetail: IProductDetail;
 }
 function MultiTypeSelectedProductGroup(props: IProps) {
-  const { dealProducts, contentType } = props;
+  const { productDetail } = props;
 
   const dispatch = useDispatch();
   const selectedProductEntity = useSelector((state: RootState) => state.selectedProductAdaptor.entity);
@@ -76,16 +75,18 @@ function MultiTypeSelectedProductGroup(props: IProps) {
         </Button.Base>
 
         <MultiTypeSelectedProductList
-          dealProduct={dealProducts}
+          dealProduct={productDetail.dealProducts}
           isExpanded={isExpanded}
           onClick={deal => {
             setIsExpanded(false);
-            dispatch(actions.select(deal));
+            dispatch(
+              actions.select({ entity: deal, masterName: productDetail.name, mainImageUrl: productDetail.mainImageUrl })
+            );
           }}
         />
 
         {/* 선택 된 리스트 아이템을 보여주는 컴포넌트 */}
-        <SelectedItem selectedProduct={selectedProductEntity} contentType={contentType} />
+        <SelectedItem selectedProduct={selectedProductEntity} contentType={productDetail.contentType} />
       </div>
     </>
   );
