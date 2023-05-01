@@ -2,7 +2,6 @@ import { css } from '@emotion/react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../infrastructure/redux';
 import Content from '../components/designsystem/content';
-import SelectedProduct from '../components/cart/SelectedProduct';
 import CheckAddress from '../components/cart/CheckAddress';
 import CheckPrice from '../components/cart/CheckPrice';
 import Proceed from '../components/cart/Proceed';
