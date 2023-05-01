@@ -28,7 +28,7 @@ const cartSlice = createSlice({
         return [];
       });
 
-      state.entity = { ...state.entity, selectedProduct: [...action.payload] };
+      state.entity = { ...state.entity, selectedProduct: [...state.entity.selectedProduct, ...action.payload] };
     },
   },
 });

@@ -11,11 +11,19 @@ const selectedProductSlice = createSlice({
   initialState,
   name: 'selectedProduct',
   reducers: {
-    select: (state, action: PayloadAction<IDealProductData>) => {
-      const isDuplicated = state.entity.filter(entity => entity.no === action.payload.no).length;
+    select: (state, action: PayloadAction<{ entity: IDealProductData; masterName: string; mainImageUrl: string }>) => {
+      const isDuplicated = state.entity.filter(entity => entity.no === action.payload.entity.no).length;
 
       if (!isDuplicated) {
-        state.entity = [...state.entity, { ...action.payload, count: 1 }];
+        state.entity = [
+          ...state.entity,
+          {
+            ...action.payload.entity,
+            masterName: action.payload.masterName,
+            mainImageUrl: action.payload.mainImageUrl,
+            count: 1,
+          },
+        ];
       }
     },
     remove: (state, action: PayloadAction<ISelectedProduct>) => {

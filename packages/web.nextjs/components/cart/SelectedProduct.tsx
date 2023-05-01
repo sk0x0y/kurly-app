@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { css } from '@emotion/react';
 import { ICart } from '../../infrastructure/interface/cart.interface';
 import Button from '../designsystem/button';
@@ -61,16 +62,7 @@ function SelectedProduct(props: IProps) {
                     center center no-repeat rgb(245, 245, 245);
                 `}
               >
-                <span
-                  css={css`
-                    display: block;
-                    height: 100%;
-                    background-image: url(https://product-image.kurly.com/product/image/6a6d9f40-c145-4892-a142-5cc2854f5bfa.jpg);
-                    background-size: cover;
-                    background-position: center center;
-                    background-repeat: no-repeat;
-                  `}
-                />
+                <Image src={entity.mainImageUrl} width={60} height={78} />
               </a>
             </Link>
 
@@ -105,7 +97,7 @@ function SelectedProduct(props: IProps) {
                       white-space: normal;
                     `}
                   >
-                    [몬] 라이스누들 1mm
+                    {entity.name}
                   </p>
 
                   <p
@@ -122,7 +114,7 @@ function SelectedProduct(props: IProps) {
                       white-space: normal;
                     `}
                   >
-                    {entity.name}
+                    {entity.masterName}
                   </p>
                 </a>
               </Link>
