@@ -2,9 +2,9 @@ import Image from 'next/image';
 import { css } from '@emotion/react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
-import Button from '../designsystem/button';
-import { RootState } from '../../infrastructure/redux';
-import { actions } from '../../application/usecases/local/cart.local.usecase';
+import Button from '../../designsystem/button';
+import { RootState } from '../../../infrastructure/redux';
+import { actions } from '../../../application/usecases/cart.usecase';
 
 function ShoppingButton() {
   const router = useRouter();

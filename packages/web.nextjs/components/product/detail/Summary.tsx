@@ -1,6 +1,6 @@
 import { css } from '@emotion/react';
-import Typography from '../designsystem/typography';
-import { IProductDetail } from '../../infrastructure/interface/product-detail.interface';
+import Typography from '../../designsystem/typography';
+import { IProductDetail } from '../../../infrastructure/interface/product-detail.interface';
 
 interface IProps {
   product: IProductDetail;

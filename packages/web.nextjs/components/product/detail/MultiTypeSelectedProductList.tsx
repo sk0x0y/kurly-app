@@ -1,5 +1,4 @@
 import { css } from '@emotion/react';
-import { ISubProduct } from '../../../infrastructure/interface/product.interface';
 import { IDealProductData } from '../../../infrastructure/interface/product-detail.interface';
 
 interface IProps {
@@ -7,7 +6,7 @@ interface IProps {
   isExpanded: boolean;
   onClick: (dealProduct: IDealProductData) => void;
 }
-function List(props: IProps) {
+function MultiTypeSelectedProductList(props: IProps) {
   const { dealProduct, isExpanded, onClick } = props;
 
   return (
@@ -75,4 +74,4 @@ function List(props: IProps) {
   );
 }
 
-export default List;
+export default MultiTypeSelectedProductList;

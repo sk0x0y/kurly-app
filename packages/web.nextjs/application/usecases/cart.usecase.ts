@@ -1,9 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { CartLocalEntity } from '../../entities/local/cart.local.entity';
-import { ISelectedProduct } from '../../../infrastructure/interface/selectedProduct.interface';
+import { CartEntity } from '../entities/cart.entity';
+import { ISelectedProduct } from '../../infrastructure/interface/selectedProduct.interface';
 
-const initialState: CartLocalEntity = {
-  ...new CartLocalEntity(),
+const initialState: CartEntity = {
+  ...new CartEntity(),
 };
 
 const cartSlice = createSlice({
@@ -18,11 +18,11 @@ const cartSlice = createSlice({
       }
 
       action.payload.map(selectedProduct => {
-        state.entity.productPrice += selectedProduct.price.original * selectedProduct.count;
+        state.entity.productPrice += selectedProduct.basePrice * selectedProduct.count;
         state.entity.deliverFee = 3000;
 
-        if (selectedProduct.price.discount) {
-          state.entity.salePrice += selectedProduct.price.discount.price * selectedProduct.count;
+        if (selectedProduct.discountedPrice) {
+          state.entity.salePrice += selectedProduct.discountedPrice * selectedProduct.count;
         }
 
         return [];

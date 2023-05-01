@@ -1,20 +1,26 @@
-import { css } from '@emotion/react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Select from './index';
-import Button from '../button';
+import { css } from '@emotion/react';
+import Button from '../../designsystem/button';
 import { RootState } from '../../../infrastructure/redux';
-import { actions } from '../../../application/usecases/local/selectedProduct.local.usecase';
-import { IDealProductData } from '../../../infrastructure/interface/product-detail.interface';
+import { actions } from '../../../application/usecases/selectedProduct.usecase';
+import { IDealProductData, ProductContentType } from '../../../infrastructure/interface/product-detail.interface';
+import SelectedItem from './SelectedItem';
+import MultiTypeSelectedProductList from './MultiTypeSelectedProductList';
 
 interface IProps {
-  dealProduct?: IDealProductData[];
+  dealProducts?: IDealProductData[];
+  contentType: ProductContentType;
 }
-function Group(props: IProps) {
-  const { dealProduct } = props;
+function MultiTypeSelectedProductGroup(props: IProps) {
+  const { dealProducts, contentType } = props;
 
   const dispatch = useDispatch();
   const selectedProductEntity = useSelector((state: RootState) => state.selectedProductAdaptor.entity);
+
+  useEffect(() => {
+    dispatch(actions.removeAll());
+  }, [dispatch]);
 
   const [isExpanded, setIsExpanded] = useState(false);
 
@@ -69,20 +75,20 @@ function Group(props: IProps) {
           />
         </Button.Base>
 
-        <Select.List
-          dealProduct={dealProduct}
+        <MultiTypeSelectedProductList
+          dealProduct={dealProducts}
           isExpanded={isExpanded}
-          onClick={subProduct => {
+          onClick={deal => {
             setIsExpanded(false);
-            // dispatch(actions.select(subProduct));
+            dispatch(actions.select(deal));
           }}
         />
 
         {/* 선택 된 리스트 아이템을 보여주는 컴포넌트 */}
-        <Select.SelectedItem selectedProductEntity={selectedProductEntity} />
+        <SelectedItem selectedProduct={selectedProductEntity} contentType={contentType} />
       </div>
     </>
   );
 }
 
-export default Group;
+export default MultiTypeSelectedProductGroup;

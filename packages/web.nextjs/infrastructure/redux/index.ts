@@ -1,30 +1,30 @@
 import { HYDRATE } from 'next-redux-wrapper';
 import { AnyAction, CombinedState, combineReducers } from '@reduxjs/toolkit';
 import { reducer as tokenReducer } from '../../application/usecases/token.usecase';
-import { reducer as cartReducer } from '../../application/usecases/local/cart.local.usecase';
+import { reducer as cartReducer } from '../../application/usecases/cart.usecase';
 import { reducer as categoryReducer } from '../../application/usecases/local/category.local.usecase';
 import { reducer as productReducer } from '../../application/usecases/local/product.local.usecase';
-import { reducer as selectedProductReducer } from '../../application/usecases/local/selectedProduct.local.usecase';
+import { reducer as selectedProductReducer } from '../../application/usecases/selectedProduct.usecase';
 import { reducer as newProductReducer } from '../../application/usecases/local/newProduct.local.usecase';
 import { reducer as specialDealReducer } from '../../application/usecases/local/specialDeal.local.usecase';
 import { reducer as bannerReducer } from '../../application/usecases/local/banner.local.usecase';
 import { TokenEntity } from '../../application/entities/token.entity';
-import { CartLocalEntity } from '../../application/entities/local/cart.local.entity';
+import { CartEntity } from '../../application/entities/cart.entity';
 import { CategoryLocalEntity } from '../../application/entities/local/category.local.entity';
 import { ProductLocalEntity } from '../../application/entities/local/product.local.entity';
 import { NewProductLocalEntity } from '../../application/entities/local/newProduct.local.entity';
 import { SpecialDealLocalEntity } from '../../application/entities/local/specialDeal.local.entity';
-import { SelectedProductLocalEntity } from '../../application/entities/local/selectedProduct.local.entity';
+import { SelectedProductEntity } from '../../application/entities/selectedProduct.entity';
 import { BannerLocalEntity } from '../../application/entities/local/banner.local.entity';
 
 interface ReducerState {
   tokenAdaptor: TokenEntity;
-  cartAdaptor: CartLocalEntity;
+  cartAdaptor: CartEntity;
   categoryAdaptor: CategoryLocalEntity;
   productAdaptor: ProductLocalEntity;
   newProductAdaptor: NewProductLocalEntity;
   specialDealAdaptor: SpecialDealLocalEntity;
-  selectedProductAdaptor: SelectedProductLocalEntity;
+  selectedProductAdaptor: SelectedProductEntity;
   bannerAdaptor: BannerLocalEntity;
 }
 

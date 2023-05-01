@@ -1,15 +1,16 @@
 import { css } from '@emotion/react';
-import { IDealProductData } from '../../infrastructure/interface/product-detail.interface';
-import Select from '../designsystem/select';
+import { IProductDetail } from '../../../infrastructure/interface/product-detail.interface';
 import InformationNoticeItem from './InformationNoticeItem';
+import MultiTypeSelectedProductGroup from './MultiTypeSelectedProductGroup';
+import SingleTypeSelectedProduct from './SingleTypeSelectedProduct';
 import Amount from './Amount';
 import ShoppingButton from './ShoppingButton';
 
 interface IProps {
-  dealProduct?: IDealProductData[];
+  productDetail?: IProductDetail;
 }
 function SelectAndPutInCart(props: IProps) {
-  const { dealProduct } = props;
+  const { productDetail } = props;
 
   return (
     <div>
@@ -29,7 +30,16 @@ function SelectAndPutInCart(props: IProps) {
             `,
           }}
         >
-          <Select.Group dealProduct={dealProduct} />
+          {productDetail?.contentType === 'MULTI' && (
+            <MultiTypeSelectedProductGroup
+              dealProducts={productDetail.dealProducts}
+              contentType={productDetail.contentType}
+            />
+          )}
+
+          {productDetail?.contentType === 'SINGLE' && (
+            <SingleTypeSelectedProduct dealProducts={productDetail.dealProducts} />
+          )}
         </InformationNoticeItem>
       </div>
 

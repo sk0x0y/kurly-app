@@ -1,15 +1,17 @@
 import { css } from '@emotion/react';
 import { useDispatch } from 'react-redux';
-import Button from '../button';
+import Button from '../../designsystem/button';
 import { ISelectedProduct } from '../../../infrastructure/interface/selectedProduct.interface';
-import { actions } from '../../../application/usecases/local/selectedProduct.local.usecase';
+import { actions } from '../../../application/usecases/selectedProduct.usecase';
+import { ProductContentType } from '../../../infrastructure/interface/product-detail.interface';
 
 interface IProps {
-  selectedProductEntity: ISelectedProduct[];
+  selectedProduct: ISelectedProduct[];
+  contentType?: ProductContentType;
 }
 function SelectedItem(props: IProps) {
   const dispatch = useDispatch();
-  const { selectedProductEntity } = props;
+  const { selectedProduct, contentType } = props;
 
   return (
     <ul
@@ -17,9 +19,9 @@ function SelectedItem(props: IProps) {
         margin-top: 6px;
       `}
     >
-      {selectedProductEntity.map(selectedProduct => (
+      {selectedProduct.map(selected => (
         <li
-          key={selectedProduct.id}
+          key={selected.no}
           css={css`
             padding: 11px 10px 11px 15px;
             border: 1px solid #f4f4f4;
@@ -42,28 +44,30 @@ function SelectedItem(props: IProps) {
                 line-height: 16px;
               `}
             >
-              {selectedProduct.name}
+              {selected.name}
             </span>
 
             {/* 상품 선택 취소 */}
-            <Button.Base
-              onClick={() => {
-                dispatch(actions.remove(selectedProduct));
-              }}
-              styles={css`
-                width: 24px;
-                height: 24px;
-              `}
-            >
-              <i
-                css={css`
-                  display: inline-block;
-                  width: 100%;
-                  height: 100%;
-                  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8ZGVmcz4KICAgICAgICA8cGF0aCBkPSJNMTAuOTEgMTAuOTEgMCAwIiBpZD0iMDMxNHo5c3Z0YSIvPgogICAgICAgIDxwYXRoIGQ9Ik0wIDEwLjkxIDEwLjkxIDAiIGlkPSJ6cjgxbTJkYXZiIi8+CiAgICA8L2RlZnM+CiAgICA8ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCI+CiAgICAgICAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNi41NDUgNi41NDUpIj4KICAgICAgICAgICAgPHVzZSBzdHJva2U9IiM2NjYiIHN0cm9rZS13aWR0aD0iLjU0NSIgeGxpbms6aHJlZj0iIzAzMTR6OXN2dGEiLz4KICAgICAgICAgICAgPHVzZSBzdHJva2U9IiM5OTkiIHN0cm9rZS13aWR0aD0iMS4wOTEiIHhsaW5rOmhyZWY9IiMwMzE0ejlzdnRhIi8+CiAgICAgICAgPC9nPgogICAgICAgIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDYuNTQ1IDYuNTQ1KSI+CiAgICAgICAgICAgIDx1c2Ugc3Ryb2tlPSIjNjY2IiBzdHJva2Utd2lkdGg9Ii41NDUiIHhsaW5rOmhyZWY9IiN6cjgxbTJkYXZiIi8+CiAgICAgICAgICAgIDx1c2Ugc3Ryb2tlPSIjOTk5IiBzdHJva2Utd2lkdGg9IjEuMDkxIiB4bGluazpocmVmPSIjenI4MW0yZGF2YiIvPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+Cg==);
+            {contentType === 'MULTI' && (
+              <Button.Base
+                onClick={() => {
+                  dispatch(actions.remove(selected));
+                }}
+                styles={css`
+                  width: 24px;
+                  height: 24px;
                 `}
-              />
-            </Button.Base>
+              >
+                <i
+                  css={css`
+                    display: inline-block;
+                    width: 100%;
+                    height: 100%;
+                    background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8ZGVmcz4KICAgICAgICA8cGF0aCBkPSJNMTAuOTEgMTAuOTEgMCAwIiBpZD0iMDMxNHo5c3Z0YSIvPgogICAgICAgIDxwYXRoIGQ9Ik0wIDEwLjkxIDEwLjkxIDAiIGlkPSJ6cjgxbTJkYXZiIi8+CiAgICA8L2RlZnM+CiAgICA8ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCI+CiAgICAgICAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNi41NDUgNi41NDUpIj4KICAgICAgICAgICAgPHVzZSBzdHJva2U9IiM2NjYiIHN0cm9rZS13aWR0aD0iLjU0NSIgeGxpbms6aHJlZj0iIzAzMTR6OXN2dGEiLz4KICAgICAgICAgICAgPHVzZSBzdHJva2U9IiM5OTkiIHN0cm9rZS13aWR0aD0iMS4wOTEiIHhsaW5rOmhyZWY9IiMwMzE0ejlzdnRhIi8+CiAgICAgICAgPC9nPgogICAgICAgIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDYuNTQ1IDYuNTQ1KSI+CiAgICAgICAgICAgIDx1c2Ugc3Ryb2tlPSIjNjY2IiBzdHJva2Utd2lkdGg9Ii41NDUiIHhsaW5rOmhyZWY9IiN6cjgxbTJkYXZiIi8+CiAgICAgICAgICAgIDx1c2Ugc3Ryb2tlPSIjOTk5IiBzdHJva2Utd2lkdGg9IjEuMDkxIiB4bGluazpocmVmPSIjenI4MW0yZGF2YiIvPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+Cg==);
+                  `}
+                />
+              </Button.Base>
+            )}
           </div>
 
           <div
@@ -85,7 +89,7 @@ function SelectedItem(props: IProps) {
               {/* 선택한 상품 감소 */}
               <Button.Base
                 onClick={() => {
-                  dispatch(actions.decrease(selectedProduct));
+                  dispatch(actions.decrease(selected));
                 }}
                 styles={css`
                   width: 28px;
@@ -106,13 +110,13 @@ function SelectedItem(props: IProps) {
                   line-height: 28px;
                 `}
               >
-                {selectedProduct.count}
+                {selected.count}
               </span>
 
               {/* 선택한 상품 증가 */}
               <Button.Base
                 onClick={() => {
-                  dispatch(actions.increase(selectedProduct));
+                  dispatch(actions.increase(selected));
                 }}
                 styles={css`
                   width: 28px;
@@ -130,7 +134,7 @@ function SelectedItem(props: IProps) {
                 font-weight: 600;
               `}
             >
-              12,500원
+              {selected.discountedPrice ? selected.discountedPrice : selected.basePrice} 원
             </span>
           </div>
         </li>

@@ -47,7 +47,7 @@ function ProductNoticeInformation(props: IProps) {
       >
         {product.productNotice.map(notice =>
           notice.notices.map(item => (
-            <Fragment key={notice.dealProductNo + item.title.length}>
+            <Fragment key={item.title}>
               <li
                 css={css`
                   width: 180px;
