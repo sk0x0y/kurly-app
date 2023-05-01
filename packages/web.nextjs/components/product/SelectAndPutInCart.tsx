@@ -1,15 +1,15 @@
 import { css } from '@emotion/react';
+import { IDealProductData } from '../../infrastructure/interface/product-detail.interface';
 import Select from '../designsystem/select';
 import InformationNoticeItem from './InformationNoticeItem';
 import Amount from './Amount';
 import ShoppingButton from './ShoppingButton';
-import { IProduct } from '../../infrastructure/interface/product.interface';
 
 interface IProps {
-  record?: IProduct;
+  dealProduct?: IDealProductData[];
 }
 function SelectAndPutInCart(props: IProps) {
-  const { record } = props;
+  const { dealProduct } = props;
 
   return (
     <div>
@@ -29,7 +29,7 @@ function SelectAndPutInCart(props: IProps) {
             `,
           }}
         >
-          <Select.Group record={record} />
+          <Select.Group dealProduct={dealProduct} />
         </InformationNoticeItem>
       </div>
 

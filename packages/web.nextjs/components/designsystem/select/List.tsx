@@ -1,13 +1,14 @@
 import { css } from '@emotion/react';
-import { IProduct, ISubProduct } from '../../../infrastructure/interface/product.interface';
+import { ISubProduct } from '../../../infrastructure/interface/product.interface';
+import { IDealProductData } from '../../../infrastructure/interface/product-detail.interface';
 
 interface IProps {
-  record?: IProduct;
+  dealProduct?: IDealProductData[];
   isExpanded: boolean;
-  onClick: (subProduct: ISubProduct) => void;
+  onClick: (dealProduct: IDealProductData) => void;
 }
 function List(props: IProps) {
-  const { record, isExpanded, onClick } = props;
+  const { dealProduct, isExpanded, onClick } = props;
 
   return (
     <ul
@@ -21,16 +22,16 @@ function List(props: IProps) {
         cursor: pointer;
       `}
     >
-      {record?.subProduct?.map(subProduct => (
+      {dealProduct?.map(deal => (
         <li
-          key={subProduct.id}
+          key={deal.no}
           onClick={() => {
-            return onClick(subProduct);
+            return onClick(deal);
           }}
           tabIndex={0}
           role="option"
           aria-selected={false}
-          data-value={subProduct.id}
+          data-value={deal.no}
           css={css`
             display: inline-flex;
             justify-content: space-between;
@@ -57,7 +58,7 @@ function List(props: IProps) {
               font-size: 12px;
             `}
           >
-            {subProduct.name}
+            {deal.name}
           </span>
 
           <span
@@ -66,7 +67,7 @@ function List(props: IProps) {
               font-weight: 600;
             `}
           >
-            {subProduct.price.original}원
+            {deal.basePrice}원
           </span>
         </li>
       ))}

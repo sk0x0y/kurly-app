@@ -15,10 +15,10 @@ import ProductNoticeInformation from '../../components/product/detail/ProductNot
 import WhyKurly from '../../components/product/detail/WhyKurly';
 
 interface IProps {
-  product: IProductDetail;
+  productDetail: IProductDetail;
 }
 function ProductId(props: IProps) {
-  const { product } = props;
+  const { productDetail } = props;
 
   const [tabs] = useState([
     { id: 1, name: '상품설명' },
@@ -44,7 +44,7 @@ function ProductId(props: IProps) {
       >
         {/* Product Cover ImageContent */}
         <div>
-          <Image src={product.mainImageUrl || '/dummy/430x552.png'} width={430} height={552} />
+          <Image src={productDetail.mainImageUrl || '/dummy/430x552.png'} width={430} height={552} />
         </div>
         <div
           css={css`
@@ -52,7 +52,7 @@ function ProductId(props: IProps) {
           `}
         >
           {/* Summary Component */}
-          <Summary product={product} />
+          <Summary product={productDetail} />
 
           {/* Product Information Notification Component */}
           <div
@@ -63,17 +63,17 @@ function ProductId(props: IProps) {
             {/* 배송 */}
             <InformationNoticeItem
               label="배송"
-              title={product.deliveryTypeNames[0]}
+              title={productDetail.deliveryTypeNames[0]}
               description={`23시 전 주문 시 내일 아침 7시 전 도착
 (대구·부산·울산 샛별배송 운영시간 별도 확인)`}
             />
 
             {/* 판매자 */}
-            <InformationNoticeItem label="판매자" title={product.sellerName} />
+            <InformationNoticeItem label="판매자" title={productDetail.sellerName} />
 
             {/* 포장타입 */}
             {/* 냉장 */}
-            {product.storageTypes[0] === 'COLD' && (
+            {productDetail.storageTypes[0] === 'COLD' && (
               <InformationNoticeItem
                 label="포장타입"
                 title="냉장 (종이포장)"
@@ -82,7 +82,7 @@ function ProductId(props: IProps) {
             )}
 
             {/* 냉동 */}
-            {product.storageTypes[0] === 'FROZEN' && (
+            {productDetail.storageTypes[0] === 'FROZEN' && (
               <InformationNoticeItem
                 label="포장타입"
                 title="냉동"
@@ -91,7 +91,7 @@ function ProductId(props: IProps) {
             )}
 
             {/* 상온 */}
-            {product.storageTypes[0] === 'AMBIENT_TEMPERATURE' && (
+            {productDetail.storageTypes[0] === 'AMBIENT_TEMPERATURE' && (
               <InformationNoticeItem
                 label="포장타입"
                 title="상온 (종이포장)"
@@ -100,32 +100,34 @@ function ProductId(props: IProps) {
             )}
 
             {/* 판매단위 */}
-            {product.salesUnit && <InformationNoticeItem label="판매단위" title={product.salesUnit} />}
+            {productDetail.salesUnit && <InformationNoticeItem label="판매단위" title={productDetail.salesUnit} />}
 
             {/* 중량/용량 */}
-            {product.volume && <InformationNoticeItem label="중량/용량" title={product.volume} />}
+            {productDetail.volume && <InformationNoticeItem label="중량/용량" title={productDetail.volume} />}
 
             {/* 원산지 */}
-            {product.productOrigin && <InformationNoticeItem label="원산지" title={product.productOrigin} />}
+            {productDetail.productOrigin && (
+              <InformationNoticeItem label="원산지" title={productDetail.productOrigin} />
+            )}
 
             {/* A/S 안내 */}
-            {product.afterSaleServiceInfo && (
-              <InformationNoticeItem label="A/S 안내" title={product.afterSaleServiceInfo} />
+            {productDetail.afterSaleServiceInfo && (
+              <InformationNoticeItem label="A/S 안내" title={productDetail.afterSaleServiceInfo} />
             )}
 
             {/* 알레르기정보 */}
-            {product.allergy && <InformationNoticeItem label="알레르기정보" title={product.allergy} />}
+            {productDetail.allergy && <InformationNoticeItem label="알레르기정보" title={productDetail.allergy} />}
 
             {/* 유통기한(또는 소비기한)정보 */}
-            {product.expirationDate && (
-              <InformationNoticeItem label="유통기한(또는 소비기한)정보" title={product.expirationDate} />
+            {productDetail.expirationDate && (
+              <InformationNoticeItem label="유통기한(또는 소비기한)정보" title={productDetail.expirationDate} />
             )}
 
             {/* 안내사항 */}
-            {product.guide && <InformationNoticeItem label="안내사항" title={product.guide} />}
+            {productDetail.guide && <InformationNoticeItem label="안내사항" title={productDetail.guide} />}
 
             {/* 상품 선택 및 장바구니 담기 - 구매 프로세스 */}
-            {/* <SelectAndPutInCart record={record} /> */}
+            {productDetail && <SelectAndPutInCart dealProduct={productDetail.dealProducts} />}
           </div>
         </div>
       </div>
@@ -141,13 +143,13 @@ function ProductId(props: IProps) {
       </div>
 
       {/* 상품 설명 */}
-      <div dangerouslySetInnerHTML={{ __html: product.productDetail.legacyContent }} />
+      <div dangerouslySetInnerHTML={{ __html: productDetail.productDetail.legacyContent }} />
 
       {/* 상품고시정보 */}
-      <ProductNoticeInformation product={product} />
+      <ProductNoticeInformation product={productDetail} />
 
       {/* 판매자 정보 */}
-      <SellerInformation product={product} />
+      <SellerInformation product={productDetail} />
 
       {/* Why Kurly */}
       <WhyKurly />
@@ -210,7 +212,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 
   return {
     props: {
-      product: data.pageProps.product,
+      productDetail: data.pageProps.product,
     },
   };
 }
