@@ -1,5 +1,5 @@
-import { ISubProduct } from './product.interface';
+import { IDealProductData } from './product-detail.interface';
 
-export interface ISelectedProduct extends ISubProduct {
+export interface ISelectedProduct extends IDealProductData {
   count: number;
 }

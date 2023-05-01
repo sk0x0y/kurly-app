@@ -20,6 +20,7 @@ export interface IDealProductData {
   masterProductName: string; // '애플민트 10g';
   quantity: number; // 0;
 }
+export type ProductContentType = 'SINGLE' | 'MULTI';
 export interface IProductDetail {
   allergy: string | null;
   isExpectedPoint: boolean; // true;
@@ -50,7 +51,7 @@ export interface IProductDetail {
   no: number; // 5001067;
   notSalesText: string; // '';
   soldOutText: string; // '';
-  contentType: 'SINGLE';
+  contentType: ProductContentType;
   isGroupProduct: boolean; // false;
   groupProduct: { groupKeys: []; groupMembers: [] };
   storageTypes: ('COLD' | 'FROZEN' | 'AMBIENT_TEMPERATURE')[];
