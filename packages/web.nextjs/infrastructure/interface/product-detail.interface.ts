@@ -1,31 +1,32 @@
+export interface IDealProductData {
+  no: number; // 10001067;
+  name: string; // '애플민트 10g';
+  isExpectedPoint: boolean; // true;
+  expectedPoint: number; // 0;
+  expectedPointRatio: number; // 0;
+  basePrice: number; // 1990;
+  retailPrice: number | null;
+  discountedPrice: number | null;
+  discountRate: number; // 0;
+  buyUnit: number; // 1;
+  isSoldOut: boolean; // false;
+  minEa: number; // 1;
+  maxEa: number; // 9999;
+  canRestockNotify: boolean; // false;
+  isPurchaseStatus: boolean; // true;
+  isGiftable: boolean; // false;
+  isOnlyAdult: boolean; // false;
+  masterProductCode: string; // 'P00000RW000U';
+  masterProductName: string; // '애플민트 10g';
+  quantity: number; // 0;
+}
 export interface IProductDetail {
   allergy: string | null;
   isExpectedPoint: boolean; // true;
   expectedPoint: number; // 0;
   expectedPointRatio: number; // 0;
   isMultiplePrice: boolean; // false;
-  dealProducts: {
-    no: number; // 10001067;
-    name: string; // '애플민트 10g';
-    isExpectedPoint: boolean; // true;
-    expectedPoint: number; // 0;
-    expectedPointRatio: number; // 0;
-    basePrice: number; // 1990;
-    retailPrice: null;
-    discountedPrice: null;
-    discountRate: number; // 0;
-    buyUnit: number; // 1;
-    isSoldOut: boolean; // false;
-    minEa: number; // 1;
-    maxEa: number; // 9999;
-    canRestockNotify: boolean; // false;
-    isPurchaseStatus: boolean; // true;
-    isGiftable: boolean; // false;
-    isOnlyAdult: boolean; // false;
-    masterProductCode: string; // 'P00000RW000U';
-    masterProductName: string; // '애플민트 10g';
-    quantity: number; // 0;
-  }[];
+  dealProducts: IDealProductData[];
   deliveryTypeNames: ['샛별배송'];
   basePrice: number; // 1990;
   retailPrice: null;
