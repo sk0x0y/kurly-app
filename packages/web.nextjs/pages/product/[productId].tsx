@@ -5,9 +5,9 @@ import { css } from '@emotion/react';
 import Content from '../../components/designsystem/content';
 import Product from '../../components/designsystem/product';
 import Kernel from '../../components/designsystem/kernel';
-import Summary from '../../components/product/Summary';
-import InformationNoticeItem from '../../components/product/InformationNoticeItem';
-import SelectAndPutInCart from '../../components/product/SelectAndPutInCart';
+import Summary from '../../components/product/detail/Summary';
+import InformationNoticeItem from '../../components/product/detail/InformationNoticeItem';
+import SelectAndPutInCart from '../../components/product/detail/SelectAndPutInCart';
 import { getProductDetailContent } from '../../api';
 import { IProductDetail } from '../../infrastructure/interface/product-detail.interface';
 import SellerInformation from '../../components/product/detail/SellerInformation';
@@ -127,7 +127,7 @@ function ProductId(props: IProps) {
             {productDetail.guide && <InformationNoticeItem label="안내사항" title={productDetail.guide} />}
 
             {/* 상품 선택 및 장바구니 담기 - 구매 프로세스 */}
-            {productDetail && <SelectAndPutInCart dealProduct={productDetail.dealProducts} />}
+            {productDetail && <SelectAndPutInCart productDetail={productDetail} />}
           </div>
         </div>
       </div>
