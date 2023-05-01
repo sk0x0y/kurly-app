@@ -23,7 +23,7 @@ function SingleTypeSelectedProduct(props: IProps) {
         mainImageUrl: productDetail.mainImageUrl,
       })
     );
-  }, [dispatch, productDetail.dealProducts]);
+  }, [dispatch, productDetail.dealProducts, productDetail.mainImageUrl, productDetail.name]);
 
   return <SelectedItem selectedProduct={selectedProductEntity} />;
 }
