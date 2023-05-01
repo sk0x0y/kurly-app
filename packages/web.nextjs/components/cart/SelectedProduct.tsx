@@ -24,7 +24,7 @@ function SelectedProduct(props: IProps) {
       <ul>
         {cartEntity.selectedProduct.map(entity => (
           <li
-            key={entity.id}
+            key={entity.no}
             css={css`
               display: flex;
               align-items: center;
@@ -203,8 +203,7 @@ function SelectedProduct(props: IProps) {
                 aria-label="판매 가격"
                 data-testid="product-price"
               >
-                {!entity.price.discount && entity.price.original}
-                {entity.price.discount && entity.price.original - entity.price.discount.price}원
+                {entity.discountedPrice ? entity.discountedPrice : entity.basePrice}원
               </span>
             </div>
 
