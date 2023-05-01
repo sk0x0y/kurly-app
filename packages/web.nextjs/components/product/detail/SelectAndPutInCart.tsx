@@ -30,16 +30,9 @@ function SelectAndPutInCart(props: IProps) {
             `,
           }}
         >
-          {productDetail?.contentType === 'MULTI' && (
-            <MultiTypeSelectedProductGroup
-              dealProducts={productDetail.dealProducts}
-              contentType={productDetail.contentType}
-            />
-          )}
+          {productDetail?.contentType === 'MULTI' && <MultiTypeSelectedProductGroup productDetail={productDetail} />}
 
-          {productDetail?.contentType === 'SINGLE' && (
-            <SingleTypeSelectedProduct dealProducts={productDetail.dealProducts} />
-          )}
+          {productDetail?.contentType === 'SINGLE' && <SingleTypeSelectedProduct productDetail={productDetail} />}
         </InformationNoticeItem>
       </div>
 
