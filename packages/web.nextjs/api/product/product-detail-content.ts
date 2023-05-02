@@ -1,10 +1,12 @@
 import axios from 'axios';
 
 export function getProductDetailContent(productId: string) {
+  const buildId = 'MnwifophqZw_aW1XmUz9v';
+
   return axios.get(
     process.env.NODE_ENV === 'production'
-      ? `https://www.kurly.com/_next/data/U-R-P-EFAMUfVrHOfIQZ4/goods/${productId}.json`
-      : `http://localhost:3000/ssr/_next/data/U-R-P-EFAMUfVrHOfIQZ4/goods/${productId}.json`,
+      ? `https://www.kurly.com/_next/data/${buildId}/goods/${productId}.json`
+      : `http://localhost:3000/ssr/_next/data/${buildId}/goods/${productId}.json`,
     {
       headers: {
         accept:
