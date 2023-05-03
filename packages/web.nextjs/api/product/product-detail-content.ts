@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export function getProductDetailContent(productId: string) {
-  const buildId = 'MnwifophqZw_aW1XmUz9v';
+  const buildId = 'ZODkxodJisdE3j16Q7jQ6';
 
   return axios.get(
     process.env.NODE_ENV === 'production'
