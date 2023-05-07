@@ -8,6 +8,7 @@ import Divider from '../header/Divider';
 import HamburgerMenuWrapper from '../header/HamburgerMenuWrapper';
 import CommonCenterMenu from '../header/CommonCenterMenu';
 import DeliveryInformation from '../header/DeliveryInformation';
+import Cart from '../header/Cart';
 
 function Header() {
   const router = useRouter();
@@ -215,6 +216,9 @@ function Header() {
                     router.push(`/search?q=${searchInput}`);
                   }
                 }}
+                onClick={() => {
+                  router.push(`/search?q=${searchInput}`);
+                }}
                 value={searchInput}
                 placeholder="검색어를 입력해주세요"
                 css={css`
@@ -267,6 +271,9 @@ function Header() {
 
             {/* 찜하기 */}
             <Button.Base
+              onClick={() => {
+                window.alert('로그인 전용 Feature 라서 구현 고민중');
+              }}
               styles={css`
                 margin-left: 20px;
                 background-color: transparent;
@@ -280,22 +287,7 @@ function Header() {
             </Button.Base>
 
             {/* 장바구니 */}
-            <Link href="/cart" passHref>
-              <a>
-                <Button.Base
-                  styles={css`
-                    margin-left: 20px;
-                    background-color: transparent;
-                  `}
-                >
-                  <Image
-                    src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzYiIGhlaWdodD0iMzYiIHZpZXdCb3g9IjAgMCAzNiAzNiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHBhdGggZD0iTTM2IDM2SDBWMGgzNnoiLz4KICAgICAgICA8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSg1LjE2NCA2LjU0NykiIHN0cm9rZT0iIzVmMDA4MCIgc3Ryb2tlLWxpbmVjYXA9InNxdWFyZSIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIxLjciPgogICAgICAgICAgICA8cGF0aCBkPSJtMjUuNjggMy42Ni0yLjcyIDExLjU3SDcuMzdMNC42NiAzLjY2eiIvPgogICAgICAgICAgICA8Y2lyY2xlIGN4PSIyMC41MiIgY3k9IjIwLjc4IiByPSIyLjE0Ii8+CiAgICAgICAgICAgIDxjaXJjbGUgY3g9IjkuODEiIGN5PSIyMC43OCIgcj0iMi4xNCIvPgogICAgICAgICAgICA8cGF0aCBkPSJNMCAwaDMuOGwxLjc2IDcuNSIvPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+Cg=="
-                    width={36}
-                    height={36}
-                  />
-                </Button.Base>
-              </a>
-            </Link>
+            <Cart />
           </div>
         </div>
 
