@@ -30,3 +30,4 @@ export { getCategoryPageMeta } from './category/category-page-meta';
 export { getSearch } from './search';
 
 export { getProductDetailContent } from './product/product-detail-content';
+export { getCartDetail } from './cart/getCartDetail';
