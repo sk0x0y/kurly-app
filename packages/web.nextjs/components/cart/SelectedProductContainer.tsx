@@ -37,7 +37,7 @@ function SelectedProductContainer(props: IProps) {
           </p>
         )}
 
-        {cartEntity.selectedProduct.length && <SelectedProduct cartEntity={cartEntity} />}
+        {!!cartEntity.selectedProduct.length && <SelectedProduct cartEntity={cartEntity} />}
       </div>
 
       <SelectedAndRemoveTab />
