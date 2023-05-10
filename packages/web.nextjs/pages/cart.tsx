@@ -1,6 +1,7 @@
 import { css } from '@emotion/react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../infrastructure/redux';
+import { useCartDetail } from '../hooks';
 import Content from '../components/designsystem/content';
 import CheckAddress from '../components/cart/CheckAddress';
 import CheckPrice from '../components/cart/CheckPrice';
@@ -9,6 +10,8 @@ import SelectedProductContainer from '../components/cart/SelectedProductContaine
 
 function Cart() {
   const cartEntity = useSelector((state: RootState) => state.cartAdaptor.entity);
+
+  const { data: cartDetail } = useCartDetail();
 
   return (
     <Content.Section>
@@ -32,7 +35,7 @@ function Cart() {
         `}
       >
         {/* 페이지 좌측 선택된 상품 리스트 */}
-        <SelectedProductContainer cartEntity={cartEntity} />
+        <SelectedProductContainer cartEntity={cartEntity} cartDetail={cartDetail} />
 
         <div
           css={css`
