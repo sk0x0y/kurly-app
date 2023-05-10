@@ -1,4 +1,4 @@
-export const StoreType = { COLD: 0, FROZEN: 1, AMBIENT_TEMPERATURE: 2 } as const;
+export const StoreType = { COLD: 'COLD', FROZEN: 'FROZEN', AMBIENT_TEMPERATURE: 'AMBIENT_TEMPERATURE' } as const;
 export interface IDealProductData {
   no: number; // 10001067;
   name: string; // '애플민트 10g';
