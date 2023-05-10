@@ -20,3 +20,5 @@ export { useCategoryProductFilter } from './category/useCategoryProductFilter';
 export { useCategoryPageMeta } from './category/useCategoryPageMeta';
 
 export { useSearch } from './useSearch';
+
+export { useCartDetail } from './cart/useCartDetail';

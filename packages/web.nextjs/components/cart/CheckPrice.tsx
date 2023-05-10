@@ -18,7 +18,10 @@ function CheckPrice(props: IProps) {
     >
       <CheckPriceItem name="상품금액" value={cartEntity.productPrice} />
 
-      <CheckPriceItem name="상품할인금액" value={cartEntity.productPrice - cartEntity.salePrice} />
+      <CheckPriceItem
+        name="상품할인금액"
+        value={!cartEntity.salePrice ? 0 : cartEntity.productPrice - cartEntity.salePrice}
+      />
 
       <CheckPriceItem name="배송비" value={cartEntity.deliverFee} />
 
@@ -53,7 +56,9 @@ function CheckPrice(props: IProps) {
               line-height: 28px;
             `}
           >
-            {cartEntity.productPrice - (cartEntity.productPrice - cartEntity.salePrice) + cartEntity.deliverFee}
+            {cartEntity.productPrice -
+              (!cartEntity.salePrice ? 0 : cartEntity.productPrice - cartEntity.salePrice) +
+              cartEntity.deliverFee}
           </strong>
 
           <span

@@ -1,13 +1,15 @@
+import { AxiosResponse } from 'axios';
 import { css } from '@emotion/react';
-import { ICart } from '../../infrastructure/interface/cart.interface';
+import { ICart, ICartDetail } from '../../infrastructure/interface/cart.interface';
 import SelectedAndRemoveTab from './SelectedAndRemoveTab';
 import SelectedProduct from './SelectedProduct';
 
 interface IProps {
   cartEntity: ICart;
+  cartDetail?: AxiosResponse<ICartDetail>;
 }
 function SelectedProductContainer(props: IProps) {
-  const { cartEntity } = props;
+  const { cartEntity, cartDetail } = props;
 
   return (
     <div
@@ -23,7 +25,7 @@ function SelectedProductContainer(props: IProps) {
           border-bottom: 1px solid #f4f4f4;
         `}
       >
-        {!cartEntity.selectedProduct.length && (
+        {!cartDetail?.data.data.totalCount && (
           <p
             css={css`
               padding: 115px 0;
@@ -37,7 +39,9 @@ function SelectedProductContainer(props: IProps) {
           </p>
         )}
 
-        {cartEntity.selectedProduct.length && <SelectedProduct cartEntity={cartEntity} />}
+        {!!cartDetail?.data.data.dealProducts.length && (
+          <SelectedProduct cartEntity={cartEntity} cartDetail={cartDetail} />
+        )}
       </div>
 
       <SelectedAndRemoveTab />

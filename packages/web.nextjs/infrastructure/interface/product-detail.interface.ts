@@ -1,3 +1,4 @@
+export const StoreType = { COLD: 'COLD', FROZEN: 'FROZEN', AMBIENT_TEMPERATURE: 'AMBIENT_TEMPERATURE' } as const;
 export interface IDealProductData {
   no: number; // 10001067;
   name: string; // '애플민트 10g';
@@ -54,7 +55,7 @@ export interface IProductDetail {
   contentType: ProductContentType;
   isGroupProduct: boolean; // false;
   groupProduct: { groupKeys: []; groupMembers: [] };
-  storageTypes: ('COLD' | 'FROZEN' | 'AMBIENT_TEMPERATURE')[];
+  storageTypes: typeof StoreType[keyof typeof StoreType];
   productNotice: {
     dealProductNo: number; // 10001067;
     dealProductName: string; //  '애플민트 10g';
