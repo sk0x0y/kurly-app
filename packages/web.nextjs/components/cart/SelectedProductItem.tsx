@@ -7,9 +7,10 @@ import { ICartProductDetailData } from '../../infrastructure/interface/cart.inte
 
 interface IProps {
   data: ICartProductDetailData;
+  handleRemove: () => void;
 }
 function SelectedProductItem(props: IProps) {
-  const { data } = props;
+  const { data, handleRemove } = props;
 
   return (
     <li
@@ -188,9 +189,7 @@ function SelectedProductItem(props: IProps) {
       </div>
 
       <Button.Base
-        onClick={() => {
-          window.alert('삭제하지마');
-        }}
+        onClick={handleRemove}
         styles={css`
           width: 30px;
           height: 30px;
