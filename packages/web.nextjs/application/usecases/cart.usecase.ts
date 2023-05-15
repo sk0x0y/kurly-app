@@ -34,6 +34,17 @@ const cartSlice = createSlice({
     putDetail(state, action: PayloadAction<ICartDetail>) {
       state.detail = action.payload;
     },
+    select(state, action: PayloadAction<{ entity: ICartProductDetailData; checked: boolean }>) {
+      const selectedProduct = state.entity.selectedProduct.filter(
+        selected => selected.no === action.payload.entity.dealProductNo
+      );
+
+      selectedProduct.map(entity => {
+        entity.checked = action.payload.checked;
+
+        return [];
+      });
+    },
     remove(state, action: PayloadAction<number>) {
       state.entity.selectedProduct = state.entity.selectedProduct.filter(selected => selected.no !== action.payload);
     },

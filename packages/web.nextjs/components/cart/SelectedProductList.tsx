@@ -1,4 +1,4 @@
-import { Fragment, useCallback } from 'react';
+import { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { StoreType } from '../../infrastructure/interface/product-detail.interface';
 import { ICartDetail, ICartProductDetailData } from '../../infrastructure/interface/cart.interface';
@@ -49,6 +49,9 @@ function SelectedProductList(props: IProps) {
         {reducedCartDetail()?.[type].map(data => (
           <SelectedProductItem
             key={data.dealProductNo}
+            handleChange={checked => {
+              dispatch(actions.select({ entity: data, checked: !checked }));
+            }}
             handleRemove={() => {
               dispatch(actions.remove(data.dealProductNo));
             }}
