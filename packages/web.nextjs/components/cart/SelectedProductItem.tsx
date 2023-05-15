@@ -9,10 +9,11 @@ import NotCheckedIcon from '../designsystem/icon/NotCheckedIcon';
 
 interface IProps {
   data: ICartProductDetailData;
+  handleChange: (checked: boolean) => void;
   handleRemove: () => void;
 }
 function SelectedProductItem(props: IProps) {
-  const { data, handleRemove } = props;
+  const { data, handleChange, handleRemove } = props;
 
   const [checked, setChecked] = useState(true);
 
@@ -36,6 +37,8 @@ function SelectedProductItem(props: IProps) {
           `}
           onChange={() => {
             setChecked(!checked);
+
+            handleChange(checked);
           }}
           type="checkbox"
           checked={checked}
