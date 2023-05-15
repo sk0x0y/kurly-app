@@ -208,17 +208,19 @@ function SelectedProductItem(props: IProps) {
         </span>
 
         {/* 할인 전 가격 */}
-        <span
-          css={css`
-            padding-top: 4px;
-            font-size: 14px;
-            line-height: 24px;
-            color: rgb(181, 181, 181);
-            text-decoration: line-through;
-          `}
-        >
-          {data.retailPrice * data.quantity}원
-        </span>
+        {!!data.discountPrice && (
+          <span
+            css={css`
+              padding-top: 4px;
+              font-size: 14px;
+              line-height: 24px;
+              color: rgb(181, 181, 181);
+              text-decoration: line-through;
+            `}
+          >
+            {data.retailPrice * data.quantity}원
+          </span>
+        )}
       </div>
 
       <Button.Base
