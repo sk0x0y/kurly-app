@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { CartEntity } from '../entities/cart.entity';
 import { ISelectedProduct } from '../../infrastructure/interface/selectedProduct.interface';
+import { ICartDetail, ICartProductDetailData } from '../../infrastructure/interface/cart.interface';
 
 const initialState: CartEntity = {
   ...new CartEntity(),
@@ -29,6 +30,9 @@ const cartSlice = createSlice({
       });
 
       state.entity = { ...state.entity, selectedProduct: [...state.entity.selectedProduct, ...action.payload] };
+    },
+    putDetail(state, action: PayloadAction<ICartDetail>) {
+      state.detail = action.payload;
     },
     remove(state, action: PayloadAction<number>) {
       state.entity.selectedProduct = state.entity.selectedProduct.filter(selected => selected.no !== action.payload);
