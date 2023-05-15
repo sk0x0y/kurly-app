@@ -18,13 +18,13 @@ function SelectedProductItem(props: IProps) {
 
   return (
     <li
-      key={data.dealProductNo}
       css={css`
         display: flex;
         align-items: center;
         padding: 20px 0;
       `}
     >
+      {/* 체크박스 */}
       <label
         css={css`
           margin-right: 12px;
@@ -122,6 +122,7 @@ function SelectedProductItem(props: IProps) {
         <div />
       </div>
 
+      {/* 상품 증가 및 감소 */}
       <div
         css={css`
           display: inline-flex;
@@ -185,6 +186,7 @@ function SelectedProductItem(props: IProps) {
           word-break: break-all;
         `}
       >
+        {/* 할인 후 가격 */}
         <span
           css={css`
             margin-top: 3px;
