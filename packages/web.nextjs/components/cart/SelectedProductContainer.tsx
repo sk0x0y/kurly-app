@@ -3,9 +3,10 @@ import { css } from '@emotion/react';
 import { ICart, ICartDetail } from '../../infrastructure/interface/cart.interface';
 import SelectedAndRemoveTab from './SelectedAndRemoveTab';
 import SelectedProduct from './SelectedProduct';
+import { CartEntity } from '../../application/entities/cart.entity';
 
 interface IProps {
-  cartEntity: ICart;
+  cartEntity: CartEntity;
   cartDetail?: AxiosResponse<ICartDetail>;
 }
 function SelectedProductContainer(props: IProps) {
@@ -25,7 +26,7 @@ function SelectedProductContainer(props: IProps) {
           border-bottom: 1px solid #f4f4f4;
         `}
       >
-        {!cartDetail?.data.data.totalCount && (
+        {!cartEntity?.detail.data.dealProducts.length && (
           <p
             css={css`
               padding: 115px 0;
@@ -39,8 +40,8 @@ function SelectedProductContainer(props: IProps) {
           </p>
         )}
 
-        {!!cartDetail?.data.data.dealProducts.length && (
-          <SelectedProduct cartEntity={cartEntity} cartDetail={cartDetail} />
+        {!!cartEntity?.detail.data.dealProducts.length && (
+          <SelectedProduct cartEntity={cartEntity.detail} cartDetail={cartDetail} />
         )}
       </div>
 
