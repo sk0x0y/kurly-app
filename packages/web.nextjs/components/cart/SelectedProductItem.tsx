@@ -196,7 +196,23 @@ function SelectedProductItem(props: IProps) {
           aria-label="판매 가격"
           data-testid="product-price"
         >
-          {data.discountPrice ? data.discountPrice : data.productPrice}원
+          {data.discountPrice
+            ? (data.productPrice - data.discountPrice) * data.quantity
+            : data.productPrice * data.quantity}
+          원
+        </span>
+
+        {/* 할인 전 가격 */}
+        <span
+          css={css`
+            padding-top: 4px;
+            font-size: 14px;
+            line-height: 24px;
+            color: rgb(181, 181, 181);
+            text-decoration: line-through;
+          `}
+        >
+          {data.retailPrice * data.quantity}원
         </span>
       </div>
 
