@@ -30,6 +30,9 @@ const cartSlice = createSlice({
 
       state.entity = { ...state.entity, selectedProduct: [...state.entity.selectedProduct, ...action.payload] };
     },
+    remove(state, action: PayloadAction<number>) {
+      state.entity.selectedProduct = state.entity.selectedProduct.filter(selected => selected.no !== action.payload);
+    },
   },
 });
 
