@@ -19,7 +19,7 @@ const cartSlice = createSlice({
 
       action.payload.map(selectedProduct => {
         state.entity.productPrice += selectedProduct.basePrice * selectedProduct.count;
-        state.entity.deliverFee = 3000;
+        state.entity.deliverFee = state.entity.productPrice >= 40000 ? 0 : 3000;
 
         if (selectedProduct.discountedPrice) {
           state.entity.salePrice += selectedProduct.discountedPrice * selectedProduct.count;
