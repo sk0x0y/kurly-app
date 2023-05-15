@@ -1,9 +1,11 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import { useState } from 'react';
 import { css } from '@emotion/react';
 import CheckedIcon from '../designsystem/icon/CheckedIcon';
 import Button from '../designsystem/button';
 import { ICartProductDetailData } from '../../infrastructure/interface/cart.interface';
+import NotCheckedIcon from '../designsystem/icon/NotCheckedIcon';
 
 interface IProps {
   data: ICartProductDetailData;
@@ -11,6 +13,8 @@ interface IProps {
 }
 function SelectedProductItem(props: IProps) {
   const { data, handleRemove } = props;
+
+  const [checked, setChecked] = useState(true);
 
   return (
     <li
@@ -30,11 +34,19 @@ function SelectedProductItem(props: IProps) {
           css={css`
             display: none;
           `}
+          onChange={() => {
+            setChecked(!checked);
+          }}
           type="checkbox"
+          checked={checked}
         />
 
         <div>
-          <CheckedIcon width={24} height={24} fill="#5f0080" />
+          {checked ? (
+            <CheckedIcon width={24} height={24} fill="#5f0080" />
+          ) : (
+            <NotCheckedIcon width={24} height={24} fill="none" />
+          )}
         </div>
 
         <span />
