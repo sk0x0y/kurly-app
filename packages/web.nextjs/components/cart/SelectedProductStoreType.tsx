@@ -5,9 +5,11 @@ import { StoreType } from '../../infrastructure/interface/product-detail.interfa
 
 interface IProps {
   type: typeof StoreType[keyof typeof StoreType];
+  isOpen: boolean;
+  handleClick: () => void;
 }
 function SelectedProductStoreType(props: IProps) {
-  const { type } = props;
+  const { type, isOpen, handleClick } = props;
 
   return (
     <h4
@@ -61,9 +63,11 @@ function SelectedProductStoreType(props: IProps) {
       </div>
 
       <Button.Base
+        onClick={handleClick}
         styles={css`
           height: 30px;
           padding-top: 1px;
+          transform: ${!isOpen && 'rotate(180deg)'};
         `}
       >
         <Image

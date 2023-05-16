@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import { useCallback, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { StoreType } from '../../infrastructure/interface/product-detail.interface';
 import { ICartDetail, ICartProductDetailData } from '../../infrastructure/interface/cart.interface';
@@ -12,6 +12,8 @@ interface IProps {
 }
 function SelectedProductList(props: IProps) {
   const { cartEntity, type } = props;
+
+  const [isOpen, setIsOpen] = useState(true);
 
   const dispatch = useDispatch();
 
@@ -44,20 +46,27 @@ function SelectedProductList(props: IProps) {
   if (reducedCartDetail()?.[type].length) {
     return (
       <>
-        <SelectedProductStoreType type={StoreType[type]} />
+        <SelectedProductStoreType
+          type={StoreType[type]}
+          isOpen={isOpen}
+          handleClick={() => {
+            setIsOpen(!isOpen);
+          }}
+        />
 
-        {reducedCartDetail()?.[type].map(data => (
-          <SelectedProductItem
-            key={data.dealProductNo}
-            handleChange={checked => {
-              dispatch(actions.select({ entity: data, checked: !checked }));
-            }}
-            handleRemove={() => {
-              dispatch(actions.remove(data.dealProductNo));
-            }}
-            data={data}
-          />
-        ))}
+        {isOpen &&
+          reducedCartDetail()?.[type].map(data => (
+            <SelectedProductItem
+              key={data.dealProductNo}
+              handleChange={checked => {
+                dispatch(actions.select({ entity: data, checked: !checked }));
+              }}
+              handleRemove={() => {
+                dispatch(actions.remove(data.dealProductNo));
+              }}
+              data={data}
+            />
+          ))}
       </>
     );
   }
