@@ -2,18 +2,20 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useState } from 'react';
 import { css } from '@emotion/react';
+import { ICartProductDetailData } from '../../infrastructure/interface/cart.interface';
+import { UseCartDetailMutation } from '../../hooks/cart/useCartDetailMutation';
 import CheckedIcon from '../designsystem/icon/CheckedIcon';
 import Button from '../designsystem/button';
-import { ICartProductDetailData } from '../../infrastructure/interface/cart.interface';
 import NotCheckedIcon from '../designsystem/icon/NotCheckedIcon';
 
 interface IProps {
-  data: ICartProductDetailData;
   handleChange: (checked: boolean) => void;
   handleRemove: () => void;
+  mutation: UseCartDetailMutation;
+  data: ICartProductDetailData;
 }
 function SelectedProductItem(props: IProps) {
-  const { data, handleChange, handleRemove } = props;
+  const { handleChange, handleRemove, mutation, data } = props;
 
   const [checked, setChecked] = useState(true);
 
@@ -224,7 +226,11 @@ function SelectedProductItem(props: IProps) {
       </div>
 
       <Button.Base
-        onClick={handleRemove}
+        onClick={() => {
+          handleRemove();
+
+          mutation.mutate();
+        }}
         styles={css`
           width: 30px;
           height: 30px;
