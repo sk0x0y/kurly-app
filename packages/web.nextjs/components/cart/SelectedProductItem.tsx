@@ -3,7 +3,6 @@ import Image from 'next/image';
 import { useState } from 'react';
 import { css } from '@emotion/react';
 import { ICartProductDetailData } from '../../infrastructure/interface/cart.interface';
-import { UseCartDetailMutation } from '../../hooks/cart/useCartDetailMutation';
 import CheckedIcon from '../designsystem/icon/CheckedIcon';
 import Button from '../designsystem/button';
 import NotCheckedIcon from '../designsystem/icon/NotCheckedIcon';
@@ -11,11 +10,10 @@ import NotCheckedIcon from '../designsystem/icon/NotCheckedIcon';
 interface IProps {
   handleChange: (checked: boolean) => void;
   handleRemove: () => void;
-  mutation: UseCartDetailMutation;
   data: ICartProductDetailData;
 }
 function SelectedProductItem(props: IProps) {
-  const { handleChange, handleRemove, mutation, data } = props;
+  const { handleChange, handleRemove, data } = props;
 
   const [checked, setChecked] = useState(true);
 
@@ -144,7 +142,6 @@ function SelectedProductItem(props: IProps) {
         >
           {/* 선택한 상품 감소 */}
           <Button.Base
-            onClick={() => {}}
             styles={css`
               width: 28px;
               height: 28px;
@@ -169,7 +166,6 @@ function SelectedProductItem(props: IProps) {
 
           {/* 선택한 상품 증가 */}
           <Button.Base
-            onClick={() => {}}
             styles={css`
               width: 28px;
               height: 28px;
@@ -229,7 +225,7 @@ function SelectedProductItem(props: IProps) {
         onClick={() => {
           handleRemove();
 
-          mutation.mutate();
+          // mutation.mutate();
         }}
         styles={css`
           width: 30px;
