@@ -25,3 +25,4 @@ export function useCartDetailMutation() {
 
   return { ...result };
 }
+export type UseCartDetailMutation = ReturnType<typeof useCartDetailMutation>;
