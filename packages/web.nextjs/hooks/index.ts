@@ -22,3 +22,4 @@ export { useCategoryPageMeta } from './category/useCategoryPageMeta';
 export { useSearch } from './useSearch';
 
 export { useCartDetail } from './cart/useCartDetail';
+export { useCartDetailMutation } from './cart/useCartDetailMutation';
