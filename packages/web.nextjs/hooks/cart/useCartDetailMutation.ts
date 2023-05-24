@@ -12,7 +12,7 @@ export function useCartDetailMutation() {
   const cart = useSelector((state: RootState) => state.cartAdaptor);
 
   const result = useMutation<AxiosResponse<ICartDetail>>(
-    ['cart/detail/mutation', cart.entity],
+    ['cart/detail/mutation'],
     () => api.getCartDetail(token, cart.entity.selectedProduct),
     {
       onSuccess: res => {
