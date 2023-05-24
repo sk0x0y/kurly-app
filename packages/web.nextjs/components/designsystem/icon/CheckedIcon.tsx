@@ -1,11 +1,15 @@
 import { SVGAttributes } from 'react';
+import { SerializedStyles } from '@emotion/react';
 
-interface IProps extends SVGAttributes<SVGElement> {}
+interface IProps extends SVGAttributes<SVGElement> {
+  styles?: SerializedStyles;
+}
 function CheckedIcon(props: IProps) {
-  const { ...rest } = props;
+  const { styles, ...rest } = props;
 
   return (
     <svg
+      css={styles}
       width={rest.width}
       height={rest.height}
       viewBox={`0 0 ${rest.width} ${rest.height}`}
