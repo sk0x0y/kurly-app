@@ -2,15 +2,14 @@ import { AxiosResponse } from 'axios';
 import { css } from '@emotion/react';
 import { ICartDetail } from '../../infrastructure/interface/cart.interface';
 import { StoreType } from '../../infrastructure/interface/product-detail.interface';
-
 import SelectedProductList from './SelectedProductList';
+import { CartEntity } from '../../application/entities/cart.entity';
 
 interface IProps {
-  cartEntity: ICartDetail;
-  cartDetail?: AxiosResponse<ICartDetail>;
+  cartEntity: CartEntity;
 }
 function SelectedProduct(props: IProps) {
-  const { cartEntity, cartDetail } = props;
+  const { cartEntity } = props;
 
   return (
     <div
