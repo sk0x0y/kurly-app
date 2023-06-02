@@ -5,10 +5,10 @@ import Product from '../../components/designsystem/product';
 import Kernel from '../../components/designsystem/kernel';
 import Pagination from '../../components/designsystem/pagination/Pagination';
 import ItemSortTab from '../../components/designsystem/tab/ItemSortTab';
-import { useCollectionFilter, useNewProduct } from '../../hooks';
+import { useBudgetProduct, useCollectionFilter } from '../../hooks';
 
 function Budget() {
-  const { data: products } = useNewProduct();
+  const { data: products } = useBudgetProduct();
   const { data: filters } = useCollectionFilter('market-time-sales');
 
   // TODO: 추후 react-query 로 API Fetch 해서 Entity 에 Dispatch 해 줄 예정

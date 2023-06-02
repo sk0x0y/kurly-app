@@ -4,4 +4,5 @@ export interface ISelectedProduct extends IDealProductData {
   masterName: string;
   mainImageUrl: string;
   count: number;
+  checked: boolean;
 }

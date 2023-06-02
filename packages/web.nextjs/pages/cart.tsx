@@ -1,7 +1,8 @@
+import { useEffect } from 'react';
 import { css } from '@emotion/react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../infrastructure/redux';
-import { useCartDetail } from '../hooks';
+import { useCartDetail, useCartDetailMutation } from '../hooks';
 import Content from '../components/designsystem/content';
 import CheckAddress from '../components/cart/CheckAddress';
 import CheckPrice from '../components/cart/CheckPrice';
@@ -9,7 +10,14 @@ import Proceed from '../components/cart/Proceed';
 import SelectedProductContainer from '../components/cart/SelectedProductContainer';
 
 function Cart() {
-  const cartEntity = useSelector((state: RootState) => state.cartAdaptor.entity);
+  const cartEntity = useSelector((state: RootState) => state.cartAdaptor);
+
+  const { data: cartDetail } = useCartDetail();
+  const mutation = useCartDetailMutation();
+
+  useEffect(() => {
+    mutation.mutate();
+  }, [cartEntity.entity.selectedProduct]);
 
   const { data: cartDetail } = useCartDetail();
 
@@ -46,9 +54,9 @@ function Cart() {
         >
           <CheckAddress />
 
-          <CheckPrice cartEntity={cartEntity} />
+          <CheckPrice cartEntity={cartEntity.entity} />
 
-          <Proceed cartEntity={cartEntity} />
+          <Proceed cartEntity={cartEntity.entity} />
         </div>
       </div>
     </Content.Section>

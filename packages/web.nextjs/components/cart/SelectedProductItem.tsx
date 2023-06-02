@@ -1,25 +1,29 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { css } from '@emotion/react';
+import { ICartProductDetailData } from '../../infrastructure/interface/cart.interface';
 import CheckedIcon from '../designsystem/icon/CheckedIcon';
 import Button from '../designsystem/button';
-import { ICartProductDetailData } from '../../infrastructure/interface/cart.interface';
+import NotCheckedIcon from '../designsystem/icon/NotCheckedIcon';
 
 interface IProps {
+  handleChange: (checked: boolean) => void;
+  handleRemove: () => void;
+  checked: boolean;
   data: ICartProductDetailData;
 }
 function SelectedProductItem(props: IProps) {
-  const { data } = props;
+  const { handleChange, handleRemove, checked, data } = props;
 
   return (
     <li
-      key={data.dealProductNo}
       css={css`
         display: flex;
         align-items: center;
         padding: 20px 0;
       `}
     >
+      {/* 체크박스 */}
       <label
         css={css`
           margin-right: 12px;
@@ -29,11 +33,19 @@ function SelectedProductItem(props: IProps) {
           css={css`
             display: none;
           `}
+          onChange={() => {
+            handleChange(checked);
+          }}
           type="checkbox"
+          checked={checked}
         />
 
         <div>
-          <CheckedIcon width={24} height={24} fill="#5f0080" />
+          {checked ? (
+            <CheckedIcon width={24} height={24} fill="#5f0080" />
+          ) : (
+            <NotCheckedIcon width={24} height={24} fill="none" />
+          )}
         </div>
 
         <span />
@@ -109,6 +121,7 @@ function SelectedProductItem(props: IProps) {
         <div />
       </div>
 
+      {/* 상품 증가 및 감소 */}
       <div
         css={css`
           display: inline-flex;
@@ -125,7 +138,6 @@ function SelectedProductItem(props: IProps) {
         >
           {/* 선택한 상품 감소 */}
           <Button.Base
-            onClick={() => {}}
             styles={css`
               width: 28px;
               height: 28px;
@@ -150,7 +162,6 @@ function SelectedProductItem(props: IProps) {
 
           {/* 선택한 상품 증가 */}
           <Button.Base
-            onClick={() => {}}
             styles={css`
               width: 28px;
               height: 28px;
@@ -172,6 +183,7 @@ function SelectedProductItem(props: IProps) {
           word-break: break-all;
         `}
       >
+        {/* 할인 후 가격 */}
         <span
           css={css`
             margin-top: 3px;
@@ -183,13 +195,31 @@ function SelectedProductItem(props: IProps) {
           aria-label="판매 가격"
           data-testid="product-price"
         >
-          {data.discountPrice ? data.discountPrice : data.productPrice}원
+          {data.discountPrice
+            ? (data.productPrice - data.discountPrice) * data.quantity
+            : data.productPrice * data.quantity}
+          원
         </span>
+
+        {/* 할인 전 가격 */}
+        {!!data.discountPrice && (
+          <span
+            css={css`
+              padding-top: 4px;
+              font-size: 14px;
+              line-height: 24px;
+              color: rgb(181, 181, 181);
+              text-decoration: line-through;
+            `}
+          >
+            {data.retailPrice * data.quantity}원
+          </span>
+        )}
       </div>
 
       <Button.Base
         onClick={() => {
-          window.alert('삭제하지마');
+          handleRemove();
         }}
         styles={css`
           width: 30px;

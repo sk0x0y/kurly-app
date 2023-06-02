@@ -22,6 +22,7 @@ const selectedProductSlice = createSlice({
             masterName: action.payload.masterName,
             mainImageUrl: action.payload.mainImageUrl,
             count: 1,
+            checked: true,
           },
         ];
       }

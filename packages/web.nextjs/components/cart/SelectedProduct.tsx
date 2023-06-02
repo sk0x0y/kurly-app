@@ -1,18 +1,12 @@
-import Link from 'next/link';
-import Image from 'next/image';
 import { AxiosResponse } from 'axios';
 import { css } from '@emotion/react';
-import { useCallback } from 'react';
-import { ICart, ICartDetail, ICartProductDetailData } from '../../infrastructure/interface/cart.interface';
-import Button from '../designsystem/button';
-import SelectedProductStoreType from './SelectedProductStoreType';
-import CheckedIcon from '../designsystem/icon/CheckedIcon';
+import { ICartDetail } from '../../infrastructure/interface/cart.interface';
 import { StoreType } from '../../infrastructure/interface/product-detail.interface';
-import SelectedProductItem from './SelectedProductItem';
+import SelectedProductList from './SelectedProductList';
+import { CartEntity } from '../../application/entities/cart.entity';
 
 interface IProps {
-  cartEntity: ICart;
-  cartDetail?: AxiosResponse<ICartDetail>;
+  cartEntity: CartEntity;
 }
 function SelectedProduct(props: IProps) {
   const { cartEntity, cartDetail } = props;
@@ -64,41 +58,14 @@ function SelectedProduct(props: IProps) {
         }
       `}
     >
-      {/* 상온 상품 */}
-      {!!reducedCartDetail()?.AMBIENT_TEMPERATURE.length && (
-        <>
-          <SelectedProductStoreType type={StoreType.AMBIENT_TEMPERATURE} />
-          <ul>
-            {reducedCartDetail()?.AMBIENT_TEMPERATURE.map(data => (
-              <SelectedProductItem data={data} />
-            ))}
-          </ul>
-        </>
-      )}
-
       {/* 냉장 상품 */}
-      {!!reducedCartDetail()?.COLD.length && (
-        <>
-          <SelectedProductStoreType type={StoreType.COLD} />
-          <ul>
-            {reducedCartDetail()?.COLD.map(data => (
-              <SelectedProductItem data={data} />
-            ))}
-          </ul>
-        </>
-      )}
+      <SelectedProductList cartEntity={cartEntity} type={StoreType.COLD} />
 
       {/* 냉동 상품 */}
-      {!!reducedCartDetail()?.FROZEN.length && (
-        <>
-          <SelectedProductStoreType type={StoreType.FROZEN} />
-          <ul>
-            {reducedCartDetail()?.FROZEN.map(data => (
-              <SelectedProductItem data={data} />
-            ))}
-          </ul>
-        </>
-      )}
+      <SelectedProductList cartEntity={cartEntity} type={StoreType.FROZEN} />
+
+      {/* 상온 상품 */}
+      <SelectedProductList cartEntity={cartEntity} type={StoreType.AMBIENT_TEMPERATURE} />
     </div>
   );
 }

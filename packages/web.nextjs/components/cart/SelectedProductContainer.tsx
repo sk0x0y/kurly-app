@@ -1,15 +1,38 @@
+import { useCallback, useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { AxiosResponse } from 'axios';
 import { css } from '@emotion/react';
-import { ICart, ICartDetail } from '../../infrastructure/interface/cart.interface';
-import SelectedAndRemoveTab from './SelectedAndRemoveTab';
+import { ICartDetail } from '../../infrastructure/interface/cart.interface';
+import { CartEntity } from '../../application/entities/cart.entity';
+import { actions } from '../../application/usecases/cart.usecase';
 import SelectedProduct from './SelectedProduct';
+import SelectedAndRemoveTab from './SelectedAndRemoveTab';
 
 interface IProps {
-  cartEntity: ICart;
+  cartEntity: CartEntity;
   cartDetail?: AxiosResponse<ICartDetail>;
 }
 function SelectedProductContainer(props: IProps) {
   const { cartEntity, cartDetail } = props;
+
+  const [checkedAll, setCheckedAll] = useState(false);
+
+  const dispatch = useDispatch();
+
+  const handleChange = useCallback(
+    (checked: typeof checkedAll) => {
+      setCheckedAll(!checkedAll);
+
+      dispatch(actions.selectAll(checked));
+    },
+    [checkedAll, dispatch]
+  );
+
+  useEffect(() => {
+    if (cartEntity.detail.data.dealProducts) {
+      setCheckedAll(true);
+    }
+  }, []);
 
   return (
     <div
@@ -17,7 +40,12 @@ function SelectedProductContainer(props: IProps) {
         width: 742px;
       `}
     >
-      <SelectedAndRemoveTab />
+      <SelectedAndRemoveTab
+        cartEntity={cartEntity}
+        cartDetail={cartDetail}
+        checkedAll={checkedAll}
+        handleChange={checked => handleChange(checked)}
+      />
 
       <div
         css={css`
@@ -25,7 +53,7 @@ function SelectedProductContainer(props: IProps) {
           border-bottom: 1px solid #f4f4f4;
         `}
       >
-        {!cartDetail?.data.data.totalCount && (
+        {!cartEntity?.detail.data.dealProducts.length && (
           <p
             css={css`
               padding: 115px 0;
@@ -39,12 +67,15 @@ function SelectedProductContainer(props: IProps) {
           </p>
         )}
 
-        {!!cartDetail?.data.data.dealProducts.length && (
-          <SelectedProduct cartEntity={cartEntity} cartDetail={cartDetail} />
-        )}
+        {!!cartEntity?.detail.data.dealProducts.length && <SelectedProduct cartEntity={cartEntity} />}
       </div>
 
-      <SelectedAndRemoveTab />
+      <SelectedAndRemoveTab
+        cartEntity={cartEntity}
+        cartDetail={cartDetail}
+        checkedAll={checkedAll}
+        handleChange={checked => handleChange(checked)}
+      />
     </div>
   );
 }

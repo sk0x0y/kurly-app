@@ -3,8 +3,10 @@
     // "next/core-web-vitals"
     "next",
     "airbnb",
-    "plugin:prettier/recommended"
+    "plugin:prettier/recommended",
+    "plugin:@typescript-eslint/recommended"
   ],
+  "plugins": ["@typescript-eslint"],
   "rules": {
     "react/react-in-jsx-scope": "off",
     "react/jsx-filename-extension": "off",
@@ -35,7 +37,8 @@
     // Adaptor <-> Interactor (Controller) <-> Usecase (Service) <-> DTO <-> Entity 구현을 위한 rules
     "class-methods-use-this": "off",
     "no-useless-constructor": "off",
-    "no-unused-vars":"warn",
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": "warn",
     "no-param-reassign": "off",
     "no-empty-function": "off",
     "import/prefer-default-export": "off",
