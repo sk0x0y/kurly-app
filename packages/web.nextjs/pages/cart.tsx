@@ -19,8 +19,6 @@ function Cart() {
     mutation.mutate();
   }, [cartEntity.entity.selectedProduct]);
 
-  const { data: cartDetail } = useCartDetail();
-
   return (
     <Content.Section>
       <h2
