@@ -45,6 +45,21 @@ const cartSlice = createSlice({
         return [];
       });
     },
+    selectAll(state, action: PayloadAction<boolean>) {
+      state.entity.selectedProduct.map(selected => {
+        // 전체 선택 체크
+        if (action.payload) {
+          selected.checked = action.payload;
+        }
+
+        // 전체 선택 해제
+        if (!action.payload) {
+          selected.checked = action.payload;
+        }
+
+        return [];
+      });
+    },
     remove(state, action: PayloadAction<number>) {
       state.entity.selectedProduct = state.entity.selectedProduct.filter(selected => selected.no !== action.payload);
     },
