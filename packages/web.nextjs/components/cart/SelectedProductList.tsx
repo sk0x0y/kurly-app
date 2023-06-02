@@ -1,13 +1,14 @@
 import { useCallback, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { StoreType } from '../../infrastructure/interface/product-detail.interface';
-import { ICartDetail, ICartProductDetailData } from '../../infrastructure/interface/cart.interface';
+import { ICartProductDetailData } from '../../infrastructure/interface/cart.interface';
 import { actions } from '../../application/usecases/cart.usecase';
 import SelectedProductStoreType from './SelectedProductStoreType';
 import SelectedProductItem from './SelectedProductItem';
+import { CartEntity } from '../../application/entities/cart.entity';
 
 interface IProps {
-  cartEntity: ICartDetail;
+  cartEntity: CartEntity;
   type: typeof StoreType[keyof typeof StoreType];
 }
 function SelectedProductList(props: IProps) {
@@ -19,7 +20,7 @@ function SelectedProductList(props: IProps) {
 
   const reducedCartDetail = useCallback(
     () =>
-      cartEntity?.data.dealProducts.reduce(
+      cartEntity.detail.data.dealProducts.reduce(
         (
           acc: {
             [StoreType.AMBIENT_TEMPERATURE]: ICartProductDetailData[];
@@ -40,7 +41,18 @@ function SelectedProductList(props: IProps) {
           [StoreType.FROZEN]: [],
         }
       ),
-    [cartEntity?.data.dealProducts, type]
+    [cartEntity.detail?.data?.dealProducts, type]
+  );
+  const calculateCheckStatus = useCallback(
+    (dealProductNo: number) =>
+      cartEntity.entity.selectedProduct.reduce((acc, cur) => {
+        if (cur.no === dealProductNo) {
+          acc = cur.checked;
+        }
+
+        return acc;
+      }, false),
+    [cartEntity.entity.selectedProduct]
   );
 
   if (reducedCartDetail()?.[type].length) {
@@ -64,6 +76,7 @@ function SelectedProductList(props: IProps) {
               handleRemove={() => {
                 dispatch(actions.remove(data.dealProductNo));
               }}
+              checked={calculateCheckStatus(data.dealProductNo)}
               data={data}
             />
           ))}

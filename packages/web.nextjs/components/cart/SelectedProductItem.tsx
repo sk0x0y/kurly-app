@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { useState } from 'react';
 import { css } from '@emotion/react';
 import { ICartProductDetailData } from '../../infrastructure/interface/cart.interface';
 import CheckedIcon from '../designsystem/icon/CheckedIcon';
@@ -10,12 +9,11 @@ import NotCheckedIcon from '../designsystem/icon/NotCheckedIcon';
 interface IProps {
   handleChange: (checked: boolean) => void;
   handleRemove: () => void;
+  checked: boolean;
   data: ICartProductDetailData;
 }
 function SelectedProductItem(props: IProps) {
-  const { handleChange, handleRemove, data } = props;
-
-  const [checked, setChecked] = useState(true);
+  const { handleChange, handleRemove, checked, data } = props;
 
   return (
     <li
@@ -36,8 +34,6 @@ function SelectedProductItem(props: IProps) {
             display: none;
           `}
           onChange={() => {
-            setChecked(!checked);
-
             handleChange(checked);
           }}
           type="checkbox"
@@ -224,8 +220,6 @@ function SelectedProductItem(props: IProps) {
       <Button.Base
         onClick={() => {
           handleRemove();
-
-          // mutation.mutate();
         }}
         styles={css`
           width: 30px;
