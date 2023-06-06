@@ -1,5 +1,9 @@
 version: '3'
 
+networks:
+  dev-net:
+    driver: bridge
+
 services:
   nginx:
     image: nginx:stable-alpine
@@ -9,7 +13,11 @@ services:
     volumes:
       - ../nginx/conf.d:/etc/nginx/conf.d
       - ../nginx/html:/usr/share/nginx/html
+    networks:
+      - dev-net
 
   web:
     image: ghcr.io/${GITHUB_REPOSITORY_OWNER}/kurlyapp/web:${GITHUB_WEBAPP_SHA}
     container_name: kurlyapp-web-web
+    networks:
+      - dev-net
