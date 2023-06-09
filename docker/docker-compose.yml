@@ -2,23 +2,9 @@ version: '3'
 
 networks:
   dev-net:
-    driver: bridge
+    external: true
 
 services:
-  nginx:
-    image: nginx:stable-alpine
-    container_name: nginx
-    ports:
-      - "80:80"
-      - "443:443"
-    volumes:
-      - ../nginx/conf.d:/etc/nginx/conf.d
-      - ../nginx/html:/usr/share/nginx/html
-      - ../nginx/certbot/conf:/etc/letsencrypt
-      - ../nginx/certbot/www:/var/lib/certbot
-    networks:
-      - dev-net
-
   next:
     image: ghcr.io/${GITHUB_REPOSITORY_OWNER}/kurlyapp/web:${GITHUB_WEBAPP_SHA}
     container_name: next

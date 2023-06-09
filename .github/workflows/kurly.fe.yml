@@ -50,7 +50,7 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           source: "./docker/conf.d"
-          target: "~/app/kurly/nginx/conf.d"
+          target: "~/app/nginx/conf.d"
           strip_components: 3
 
   deployment:
@@ -67,10 +67,10 @@ jobs:
           script: |
             echo "Connected with Actions!"
             cd ./app/kurly/docker
-            sudo docker-compose down
+            sudo docker-compose -p kurlyapp down
             sudo docker rmi ghcr.io/sk0x0y/kurlyapp/web:$GITHUB_WEBAPP_SHA
             chmod +x set_env.sh
             ./set_env.sh
             echo "GITHUB_REPOSITORY_OWNER=${{ github.repository_owner }}" > .env
             echo "GITHUB_WEBAPP_SHA=${{ github.sha }}" >> .env
-            sudo docker-compose --env-file .env up -d
+            sudo docker-compose -p kurlyapp --env-file .env up -d
