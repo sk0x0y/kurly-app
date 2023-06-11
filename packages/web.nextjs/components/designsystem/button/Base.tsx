@@ -1,14 +1,12 @@
-import React, { MouseEventHandler } from 'react';
+import React, { ButtonHTMLAttributes } from 'react';
 import { css, SerializedStyles } from '@emotion/react';
 
-interface IProps {
-  onClick?: MouseEventHandler<HTMLButtonElement>;
+interface IProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   styles?: SerializedStyles;
   nomessage?: boolean;
-  children?: React.ReactNode;
 }
 function Base(props: IProps) {
-  const { onClick, styles, nomessage, children } = props;
+  const { onClick, styles, nomessage, disabled, children } = props;
 
   return (
     <button
@@ -24,6 +22,7 @@ function Base(props: IProps) {
         `,
         styles,
       ]}
+      disabled={disabled}
     >
       {!nomessage && (children ?? 'Not have children')}
     </button>

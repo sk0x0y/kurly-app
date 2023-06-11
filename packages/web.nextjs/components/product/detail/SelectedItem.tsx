@@ -89,7 +89,7 @@ function SelectedItem(props: IProps) {
               {/* 선택한 상품 감소 */}
               <Button.Base
                 onClick={() => {
-                  dispatch(actions.decrease(selected));
+                  dispatch(actions.decrease(selected.no));
                 }}
                 styles={css`
                   width: 28px;
@@ -116,7 +116,7 @@ function SelectedItem(props: IProps) {
               {/* 선택한 상품 증가 */}
               <Button.Base
                 onClick={() => {
-                  dispatch(actions.increase(selected));
+                  dispatch(actions.increase(selected.no));
                 }}
                 styles={css`
                   width: 28px;

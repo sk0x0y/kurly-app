@@ -60,6 +60,33 @@ const cartSlice = createSlice({
         return [];
       });
     },
+    increase(state, action: PayloadAction<number>) {
+      const target = state.entity.selectedProduct.filter(entity => entity.no === action.payload)[0];
+      console.log('usecase increase', action.payload, target);
+
+      state.entity.selectedProduct.map(entity => {
+        if (entity === target) {
+          entity.count += 1;
+        }
+
+        return [];
+      });
+    },
+    decrease(state, action: PayloadAction<number>) {
+      const target = state.entity.selectedProduct.filter(selected => selected.no === action.payload)[0];
+
+      state.entity.selectedProduct.map(entity => {
+        if (entity === target) {
+          entity.count -= 1;
+
+          // if (entity.count <= 0) {
+          //   state.entity.selectedProduct = state.entity.selectedProduct.filter(item => item.no !== action.payload);
+          // }
+        }
+
+        return [];
+      });
+    },
     remove(state, action: PayloadAction<number>) {
       state.entity.selectedProduct = state.entity.selectedProduct.filter(selected => selected.no !== action.payload);
     },
