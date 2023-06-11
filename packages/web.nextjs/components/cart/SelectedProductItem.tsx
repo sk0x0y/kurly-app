@@ -1,10 +1,12 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import { useDispatch } from 'react-redux';
 import { css } from '@emotion/react';
 import { ICartProductDetailData } from '../../infrastructure/interface/cart.interface';
 import CheckedIcon from '../designsystem/icon/CheckedIcon';
 import Button from '../designsystem/button';
 import NotCheckedIcon from '../designsystem/icon/NotCheckedIcon';
+import { actions } from '../../application/usecases/cart.usecase';
 
 interface IProps {
   handleChange: (checked: boolean) => void;
@@ -14,6 +16,8 @@ interface IProps {
 }
 function SelectedProductItem(props: IProps) {
   const { handleChange, handleRemove, checked, data } = props;
+
+  const dispatch = useDispatch();
 
   return (
     <li
@@ -138,6 +142,9 @@ function SelectedProductItem(props: IProps) {
         >
           {/* 선택한 상품 감소 */}
           <Button.Base
+            onClick={() => {
+              dispatch(actions.decrease(data.dealProductNo));
+            }}
             styles={css`
               width: 28px;
               height: 28px;
@@ -148,7 +155,7 @@ function SelectedProductItem(props: IProps) {
                 : 'url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAiIGhlaWdodD0iMzAiIHZpZXdCb3g9IjAgMCAzMCAzMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxwYXRoIGQ9Ik0yMCAxNHYySDEwdi0yeiIgZmlsbD0iI0RERCIgZmlsbC1ydWxlPSJub256ZXJvIi8+Cjwvc3ZnPgo=)'};
             `}
             nomessage
-            disabled={data.quantity >= 2}
+            disabled={data.quantity < 2}
           />
 
           {/* 선택한 상품 갯수 */}
@@ -166,6 +173,9 @@ function SelectedProductItem(props: IProps) {
 
           {/* 선택한 상품 증가 */}
           <Button.Base
+            onClick={() => {
+              dispatch(actions.increase(data.dealProductNo));
+            }}
             styles={css`
               width: 28px;
               height: 28px;
