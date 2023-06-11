@@ -1,7 +1,7 @@
-import React, { MouseEventHandler } from 'react';
+import React, { ButtonHTMLAttributes, MouseEventHandler } from 'react';
 import { css, SerializedStyles } from '@emotion/react';
 
-interface IProps {
+interface IProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   onClick?: MouseEventHandler<HTMLButtonElement>;
   styles?: SerializedStyles;
   nomessage?: boolean;
