@@ -33,8 +33,8 @@ const selectedProductSlice = createSlice({
     removeAll: state => {
       state.entity = [];
     },
-    increase: (state, action: PayloadAction<ISelectedProduct>) => {
-      const target = state.entity.filter(entity => entity.no === action.payload.no)[0];
+    increase: (state, action: PayloadAction<number>) => {
+      const target = state.entity.filter(entity => entity.no === action.payload)[0];
 
       state.entity.map(entity => {
         if (entity === target) {
@@ -44,15 +44,15 @@ const selectedProductSlice = createSlice({
         return [];
       });
     },
-    decrease: (state, action: PayloadAction<ISelectedProduct>) => {
-      const target = state.entity.filter(entity => entity.no === action.payload.no)[0];
+    decrease: (state, action: PayloadAction<number>) => {
+      const target = state.entity.filter(entity => entity.no === action.payload)[0];
 
       state.entity.map(entity => {
         if (entity === target) {
           entity.count -= 1;
 
           if (entity.count <= 0) {
-            state.entity = state.entity.filter(item => item.no !== action.payload.no);
+            state.entity = state.entity.filter(item => item.no !== action.payload);
           }
         }
 
