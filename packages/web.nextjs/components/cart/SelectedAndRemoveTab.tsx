@@ -12,9 +12,10 @@ interface IProps {
   cartDetail?: AxiosResponse<ICartDetail>;
   checkedAll: boolean;
   handleChange: (checked: boolean) => void;
+  handleRemove: () => void;
 }
 function SelectedAndRemoveTab(props: IProps) {
-  const { cartEntity, cartDetail, checkedAll, handleChange } = props;
+  const { cartEntity, cartDetail, checkedAll, handleChange, handleRemove } = props;
 
   // TODO: 하나라도 체크 안되어있으면 전체선택풀림, 전체선택체크 안되어있어도 개별 상품 모두 체크시 전체선택체크
 
@@ -91,6 +92,7 @@ function SelectedAndRemoveTab(props: IProps) {
         </span>
       </label>
 
+      {/* 선택삭제 버튼 */}
       <span
         css={css`
           display: inline-block;
@@ -103,6 +105,7 @@ function SelectedAndRemoveTab(props: IProps) {
       />
 
       <Button.Base
+        onClick={() => handleRemove()}
         styles={css`
           font-weight: 500;
         `}

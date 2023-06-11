@@ -45,6 +45,15 @@ function SelectedProductContainer(props: IProps) {
         cartDetail={cartDetail}
         checkedAll={checkedAll}
         handleChange={checked => handleChange(checked)}
+        handleRemove={() => {
+          const targets = cartEntity.entity.selectedProduct.filter(selected => selected.checked);
+
+          targets.map(target => {
+            dispatch(actions.remove(target.no));
+
+            return [];
+          });
+        }}
       />
 
       <div
@@ -75,6 +84,15 @@ function SelectedProductContainer(props: IProps) {
         cartDetail={cartDetail}
         checkedAll={checkedAll}
         handleChange={checked => handleChange(checked)}
+        handleRemove={() => {
+          const targets = cartEntity.entity.selectedProduct.filter(selected => selected.checked);
+
+          targets.map(target => {
+            dispatch(actions.remove(target.no));
+
+            return [];
+          });
+        }}
       />
     </div>
   );
