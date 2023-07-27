@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const axiosInstance = axios.create({
-  baseURL: process.env.NODE_ENV === 'production' ? 'https://api.kurly.com' : '/api',
+  baseURL: process.env.NODE_ENV === 'production' ? '/api' : '/api',
   timeout: 3000,
 });
 
